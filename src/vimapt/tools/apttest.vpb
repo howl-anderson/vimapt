@@ -1,0 +1,11 @@
+control: {depends: '', section: '', source: apttest, version: '0.1'}
+copyright: {author: apttest, license: '', maintiner: ''}
+package:
+- [plugin/apttest.vim, 4]
+- [doc/apttest.txt, 1]
+
+function AptTest(args)
+    echo "hello world" + args
+endfunction
+command! -nargs=* AptTest call AptTest(<q-args>)
+just juck, here no doc
