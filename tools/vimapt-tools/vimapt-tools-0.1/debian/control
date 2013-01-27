@@ -1,0 +1,12 @@
+Source: vimapt-tools
+Maintainer: howlanderson <u1mail2me@gmail.com>
+Section: python
+Priority: optional
+Build-Depends: python-setuptools (>= 0.6b3), python (>= 2.6.6-3), debhelper (>= 7), python-vimapt
+Standards-Version: 3.9.1
+
+Package: vimapt-tools
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+Description: command tools for vimapt
+ vimapt is a vim package manager. this is the command tools for vimapt

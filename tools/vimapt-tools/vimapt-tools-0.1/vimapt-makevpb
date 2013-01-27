@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+import os
+from vimapt import MakeVpb
+
+
+def main():
+    work_dir = os.getcwd()
+    target_dir = os.path.dirname(work_dir)
+    make_vpb_object = MakeVpb.MakeVpb(work_dir, target_dir)
+    make_vpb_object.make_vpb()
+
+
+if __name__ == "__main__":
+    main()

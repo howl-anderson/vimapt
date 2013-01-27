@@ -1,0 +1,11 @@
+Package: python-vimapt
+Source: vimapt
+Version: 0.1-1
+Architecture: all
+Maintainer: howlanderson <u1mail2me@gmail.com>
+Installed-Size: 69
+Depends: python2.7, python (>= 2.7.1-0ubuntu2), python (<< 2.8)
+Section: python
+Priority: optional
+Description: a vim package manager just like debian's apt
+ vimapt is a vim package manager. vimapt's command and function are very like to debian's apt, so it called vim's apt

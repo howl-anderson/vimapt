@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+import os
+from vimapt import MakeTpl
+
+
+def main():
+    work_dir = os.getcwd()
+    make_tpl_object = MakeTpl.MakeTpl(work_dir)
+    make_tpl_object.make_tpl()
+
+
+if __name__ == "__main__":
+    main()

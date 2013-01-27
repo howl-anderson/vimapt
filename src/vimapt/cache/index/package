@@ -1,1 +1,3 @@
+pep8: {path: pool/pep8-0.3.1.vpb, version: 0.3.1}
 supertab: {path: pool/supertab-2.0.vpb, version: '2.0'}
+vimwiki: {path: pool/vimwiki-2.0.1.vpb, version: 2.0.1}

@@ -1,0 +1,14 @@
+package:
+- [vimapt/copyright/vimapt, 5]
+- [vimapt/control/vimapt, 5]
+
+copyright: {
+  author: apttest,
+  license: '',
+  maintiner: ''
+}
+control: {
+  depends: '',
+  section: '',
+  version: '0.1'
+}

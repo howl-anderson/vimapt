@@ -1,0 +1,14 @@
+af85369d377a33eec77566968ebc8aa0  usr/share/doc/python-vimapt/changelog.Debian.gz
+7b6e6d4670f18c3cb7a5ea0db97a19a1  usr/share/doc/python-vimapt/copyright
+be009d10b71ef25b8e2beb301c095a8d  usr/share/pyshared/vimapt-0.1.egg-info/PKG-INFO
+9efd19026c9b6cfe4e0ad88733313ec7  usr/share/pyshared/vimapt-0.1.egg-info/SOURCES.txt
+68b329da9893e34099c7d8ad5cb9c940  usr/share/pyshared/vimapt-0.1.egg-info/dependency_links.txt
+4ce50ccb9d2273a49a3982f375672f88  usr/share/pyshared/vimapt-0.1.egg-info/top_level.txt
+fd2d1e01e9f1170ca280dbf53a55a400  usr/share/pyshared/vimapt/Extract.py
+621fbffab27df3df9578757246ff55f8  usr/share/pyshared/vimapt/Install.py
+20e3f321e9b76b61761ab33a450283ac  usr/share/pyshared/vimapt/LocalRepo.py
+e2d1c16cdd7b7b86184609b96d44b147  usr/share/pyshared/vimapt/MakeTpl.py
+d96047a02b46630902f3ddaf568da172  usr/share/pyshared/vimapt/MakeVpb.py
+bdd938291cc19aefe1f9c4976e393b23  usr/share/pyshared/vimapt/RemoteRepo.py
+d41d8cd98f00b204e9800998ecf8427e  usr/share/pyshared/vimapt/__init__.py
+7f5cd8c2813542650142c7bd690fdf9e  usr/share/pyshared/vimapt/tpl.vpb
