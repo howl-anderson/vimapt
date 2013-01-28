@@ -1,5 +1,0 @@
-control: {
-  depends: '',
-  section: '',
-  version: '0.1'
-}
