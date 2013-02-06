@@ -1,7 +1,6 @@
-a54c270cc2dd09ab6902b3b8384c2c17  usr/bin/vimapt-install
 f528e268f50f876a44e54e5d72344820  usr/bin/vimapt-makeindex
-706887807856eb98310b1ba2cbd6e5e4  usr/bin/vimapt-maketpl
-9b8cb4f3797917db804c371fa8bc9912  usr/bin/vimapt-makevpb
-fc2e7d3f7355c6c7a5c485d224c8c8e8  usr/bin/vimapt-repoinstall
+a391515bd2e9b06ea865b171ac495e6a  usr/bin/vimapt-maketpl
+f63169c41287b34d2d0141288d1e5539  usr/bin/vimapt-makevpb
 5925b50afec5953e6cbbf122f4d97714  usr/share/doc/vimapt-tools/changelog.Debian.gz
 b90223747b454beb6eb116cfd07661a5  usr/share/doc/vimapt-tools/copyright
+c7e60e767e3c75a1efb2b0d1d195e1a9  usr/share/vimapt/tpl.vpb

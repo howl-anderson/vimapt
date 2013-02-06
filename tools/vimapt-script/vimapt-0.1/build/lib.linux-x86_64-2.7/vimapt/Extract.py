@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import tempfile
 from yaml import load, dump
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
@@ -13,41 +12,43 @@ class Extract():
     def __init__(self, input_file, output_dir):
         self.input_file = input_file
         self.output_dir = output_dir
+        self.hook_object = False
+        self.filter_object = False
 
-    def extract(self):
         fd = open(self.input_file, 'r')
         file_stream = fd.read()
         fd.close()
-        meta_stream, package_stream = file_stream.split('\n\n', 1)
-        meta_data = load(meta_stream, Loader=Loader)
-        package_lines = package_stream.split('\n')
-        package_data = {}
+        self.meta_stream, self.ball_stream = file_stream.split('\n\n', 1)
+
+    def extract(self):
+        meta_data = self.get_file_list() 
+        ball_lines = self.ball_stream.split('\n')
         start_point = 0
-        for file, filelines in meta_data['package']:
-            print file, filelines
-            print start_point
+        for file, filelines in meta_data:
             end_point = start_point + filelines
-            list_data = package_lines[start_point:end_point]
+            list_data = ball_lines[start_point: end_point]
             file_stream = "\n".join(list_data)
-            package_data[file] = file_stream
-            package_dir = os.path.dirname(file)
-            package_absdir = os.path.join(self.output_dir, package_dir)
-            package_abspath_file = os.path.join(self.output_dir, file)
-            if not os.path.isdir(package_absdir):
-                os.makedirs(package_absdir)
-            fd = open(package_abspath_file, 'w')
+            if self.filter_object:
+                if not self.filter_object(file, file_stream):
+                    continue
+            if self.hook_object:
+                file, file_stream = self.hook_object(file, file_stream)
+            ball_dir = os.path.dirname(file)
+            ball_absdir = os.path.join(self.output_dir, ball_dir)
+            ball_abspath_file = os.path.join(self.output_dir, file)
+            if not os.path.isdir(ball_absdir):
+                os.makedirs(ball_absdir)
+            fd = open(ball_abspath_file, 'w')
             fd.write(file_stream)
             fd.close()
             start_point += filelines
 
+    def get_file_list(self):
+        meta_data = load(self.meta_stream, Loader=Loader)
+        return meta_data
 
-def main():
-    input_file = 'test-0.3.vpb'
-    #output_dir = tempfile.mkdtemp()
-    output_dir = 'testdir'
-    extract(input_file, output_dir)
-    #plugin_name = get_plugin_name(input_file)
-    #check_depends(tmp_dir, plugin_name)
+    def hook(self, hook_object):
+        self.hook_object = hook_object
 
-if __name__ == "__main__":
-    main()
+    def filter(self, filter_object):
+        self.filter_object = filter_object

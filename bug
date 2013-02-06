@@ -1,0 +1,14 @@
+FIXED:/home/howl/vcs/howlanderson/vimapt-repo/pool/pyflakes-3.01/ftplugin/python/pyflakes/pyflakes/test/harness.py
+Traceback (most recent call last):
+  File "/usr/bin/vimapt-makevpb", line 15, in <module>
+    main()
+  File "/usr/bin/vimapt-makevpb", line 11, in main
+    make_vpb_object.make_vpb()
+  File "/usr/local/lib/python2.7/dist-packages/vimapt-0.1-py2.7.egg/vimapt/MakeVpb.py", line 24, in make_vpb
+    last_line = file_lines[-1]
+IndexError: list index out of range
+
+
+FIXED:vimapt-package index not support '-' in name and can not install as you want to select version.
+
+TODO:when pool have non-pacakge file it will error in vimapt-makeindex

@@ -1,0 +1,167 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc
+dpkg-buildpackage: source package vimapt
+dpkg-buildpackage: source version 0.1-1
+dpkg-buildpackage: source changed by howlanderson <u1mail2me@gmail.com>
+ dpkg-source --before-build vimapt-0.1
+dpkg-buildpackage: host architecture amd64
+ fakeroot debian/rules clean
+dh clean --with python2 --buildsystem=python_distutils
+   dh_testdir -O--buildsystem=python_distutils
+   dh_auto_clean -O--buildsystem=python_distutils
+running clean
+removing 'build/lib.linux-x86_64-2.7' (and everything under it)
+removing 'build/bdist.linux-x86_64' (and everything under it)
+'build/scripts-2.7' does not exist -- can't clean it
+removing 'build'
+   dh_clean -O--buildsystem=python_distutils
+ dpkg-source -b vimapt-0.1
+dpkg-source: info: using source format `3.0 (quilt)'
+dpkg-source: info: building vimapt using existing ./vimapt_0.1.orig.tar.gz
+dpkg-source: warning: ignoring deletion of directory build
+dpkg-source: warning: ignoring deletion of directory build/lib.linux-x86_64-2.7
+dpkg-source: warning: ignoring deletion of directory build/lib.linux-x86_64-2.7/vimapt
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Install.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/MakeVpb.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Extract.bak.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Purge.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/__init__.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/LocalRepo.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Vimapt.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Package.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/MakeTpl.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Compress.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Record.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/RemoteRepo.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Extract.py
+dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Remove.py
+dpkg-source: warning: ignoring deletion of directory build/bdist.linux-x86_64
+dpkg-source: info: building vimapt in vimapt_0.1-1.debian.tar.gz
+dpkg-source: info: building vimapt in vimapt_0.1-1.dsc
+ debian/rules build
+dh build --with python2 --buildsystem=python_distutils
+   dh_testdir -O--buildsystem=python_distutils
+   dh_auto_configure -O--buildsystem=python_distutils
+   dh_auto_build -O--buildsystem=python_distutils
+running build
+running build_py
+creating build
+creating build/lib.linux-x86_64-2.7
+creating build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/Install.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/MakeVpb.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/Extract.bak.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/Purge.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/__init__.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/LocalRepo.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/Vimapt.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/Package.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/MakeTpl.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/Compress.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/Record.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/RemoteRepo.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/Extract.py -> build/lib.linux-x86_64-2.7/vimapt
+copying vimapt/Remove.py -> build/lib.linux-x86_64-2.7/vimapt
+running egg_info
+writing vimapt.egg-info/PKG-INFO
+writing top-level names to vimapt.egg-info/top_level.txt
+writing dependency_links to vimapt.egg-info/dependency_links.txt
+reading manifest file 'vimapt.egg-info/SOURCES.txt'
+writing manifest file 'vimapt.egg-info/SOURCES.txt'
+   dh_auto_test -O--buildsystem=python_distutils
+ fakeroot debian/rules binary
+dh binary --with python2 --buildsystem=python_distutils
+   dh_testroot -O--buildsystem=python_distutils
+   dh_prep -O--buildsystem=python_distutils
+   dh_installdirs -O--buildsystem=python_distutils
+   dh_auto_install -O--buildsystem=python_distutils
+running install
+running build
+running build_py
+running egg_info
+writing vimapt.egg-info/PKG-INFO
+writing top-level names to vimapt.egg-info/top_level.txt
+writing dependency_links to vimapt.egg-info/dependency_links.txt
+reading manifest file 'vimapt.egg-info/SOURCES.txt'
+writing manifest file 'vimapt.egg-info/SOURCES.txt'
+running install_lib
+creating /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr
+creating /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib
+creating /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7
+creating /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages
+creating /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/Install.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/MakeVpb.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/Extract.bak.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/Purge.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/__init__.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/LocalRepo.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/Vimapt.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/Package.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/MakeTpl.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/Compress.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/Record.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/RemoteRepo.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/Extract.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+copying build/lib.linux-x86_64-2.7/vimapt/Remove.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
+running install_egg_info
+Copying vimapt.egg-info to /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt-0.1-py2.7.egg-info
+running install_scripts
+   dh_install -O--buildsystem=python_distutils
+   dh_installdocs -O--buildsystem=python_distutils
+   dh_installchangelogs -O--buildsystem=python_distutils
+   dh_installexamples -O--buildsystem=python_distutils
+   dh_installman -O--buildsystem=python_distutils
+   dh_installcatalogs -O--buildsystem=python_distutils
+   dh_installcron -O--buildsystem=python_distutils
+   dh_installdebconf -O--buildsystem=python_distutils
+   dh_installemacsen -O--buildsystem=python_distutils
+   dh_installifupdown -O--buildsystem=python_distutils
+   dh_installinfo -O--buildsystem=python_distutils
+   dh_installinit -O--buildsystem=python_distutils
+   dh_installmenu -O--buildsystem=python_distutils
+   dh_installmime -O--buildsystem=python_distutils
+   dh_installmodules -O--buildsystem=python_distutils
+   dh_installlogcheck -O--buildsystem=python_distutils
+   dh_installlogrotate -O--buildsystem=python_distutils
+   dh_installpam -O--buildsystem=python_distutils
+   dh_installppp -O--buildsystem=python_distutils
+   dh_installudev -O--buildsystem=python_distutils
+   dh_installwm -O--buildsystem=python_distutils
+   dh_installxfonts -O--buildsystem=python_distutils
+   dh_installgsettings -O--buildsystem=python_distutils
+   dh_bugfiles -O--buildsystem=python_distutils
+   dh_ucf -O--buildsystem=python_distutils
+   dh_lintian -O--buildsystem=python_distutils
+   dh_gconf -O--buildsystem=python_distutils
+   dh_icons -O--buildsystem=python_distutils
+   dh_perl -O--buildsystem=python_distutils
+   dh_python2 -O--buildsystem=python_distutils
+   dh_usrlocal -O--buildsystem=python_distutils
+   dh_link -O--buildsystem=python_distutils
+   dh_compress -O--buildsystem=python_distutils
+   dh_fixperms -O--buildsystem=python_distutils
+   dh_installdeb -O--buildsystem=python_distutils
+   dh_gencontrol -O--buildsystem=python_distutils
+dpkg-gencontrol: warning: package python-vimapt: unused substitution variable ${python:Versions}
+dpkg-gencontrol: warning: package python-vimapt: unused substitution variable ${python:Provides}
+   dh_md5sums -O--buildsystem=python_distutils
+   dh_builddeb -O--buildsystem=python_distutils
+dpkg-deb: building package `python-vimapt' in `../python-vimapt_0.1-1_all.deb'.
+ dpkg-genchanges  >../vimapt_0.1-1_amd64.changes
+dpkg-genchanges: including full source code in upload
+ dpkg-source --after-build vimapt-0.1
+dpkg-buildpackage: full upload (original source is included)
+Now running lintian...
+E: vimapt changes: bad-distribution-in-changes-file unstable
+W: vimapt source: out-of-date-standards-version 3.9.1 (current is 3.9.3)
+W: python-vimapt: new-package-should-close-itp-bug
+E: python-vimapt: copyright-should-refer-to-common-license-file-for-gpl
+W: python-vimapt: description-synopsis-starts-with-article
+W: python-vimapt: extended-description-line-too-long
+Finished running lintian.
+Now signing changes and any dsc files...
+ signfile vimapt_0.1-1.dsc howlanderson <u1mail2me@gmail.com>
+
+ signfile vimapt_0.1-1_amd64.changes howlanderson <u1mail2me@gmail.com>
+
+Successfully signed dsc and changes files

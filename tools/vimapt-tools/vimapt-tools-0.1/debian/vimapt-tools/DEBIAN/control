@@ -2,7 +2,7 @@ Package: vimapt-tools
 Version: 0.1-1
 Architecture: all
 Maintainer: howlanderson <u1mail2me@gmail.com>
-Installed-Size: 30
+Installed-Size: 36
 Depends: python
 Section: python
 Priority: optional

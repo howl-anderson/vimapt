@@ -2,11 +2,11 @@
 
 import urllib
 import os
-from yaml import load, dump
+from yaml import dump
 try:
-    from yaml import CLoader as Loader, CDumper as Dumper
+    from yaml import CDumper as Dumper
 except ImportError:
-    from yaml import Loader, Dumper
+    from yaml import Dumper
 
 
 class RemoteRepo(object):
@@ -14,23 +14,22 @@ class RemoteRepo(object):
         self.repo_dir = repo_dir
 
     def make_package_index(self):
-        base_dir = self.repo_dir
         pool_reldir = "pool"
         package_relpath = "index/package"
-        pool_absdir = os.path.join(base_dir, pool_reldir)
-        package_abspath = os.path.join(base_dir, package_relpath)
-        package_data = self.scan_pool(pool_absdir)
+        self.pool_absdir = os.path.join(self.repo_dir, pool_reldir)
+        self.package_abspath = os.path.join(self.repo_dir, package_relpath)
+        package_data = self.scan_pool()
         package_stream = dump(package_data, Dumper=Dumper)
-        fd = open(package_abspath, 'w')
+        fd = open(self.package_abspath, 'w')
         fd.write(package_stream)
         fd.close()
 
-    def scan_pool(self, pool_dir):
-        files = [f for f in os.listdir(pool_dir)
-                 if os.path.isfile(os.path.join(pool_dir, f))]
+    def scan_pool(self):
+        files = [f for f in os.listdir(self.pool_absdir)
+                 if os.path.isfile(os.path.join(self.pool_absdir, f))]
         package_data = {}
         for file in files:
-            package_name, version_and_ext = file.split('-', 1)
+            package_name, version_and_ext = file.split('_', 1)
             version = os.path.splitext(version_and_ext)[0]
             path = os.path.join('pool/', file)
             package_info = {'version': version, 'path': path}

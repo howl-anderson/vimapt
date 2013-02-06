@@ -1,1 +1,0 @@
-" let g:pep8_map='whatever'

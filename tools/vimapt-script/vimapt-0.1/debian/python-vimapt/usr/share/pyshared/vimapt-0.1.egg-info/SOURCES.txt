@@ -1,10 +1,17 @@
 setup.py
+vimapt/Compress.py
+vimapt/Extract.bak.py
 vimapt/Extract.py
 vimapt/Install.py
 vimapt/LocalRepo.py
 vimapt/MakeTpl.py
 vimapt/MakeVpb.py
+vimapt/Package.py
+vimapt/Purge.py
+vimapt/Record.py
 vimapt/RemoteRepo.py
+vimapt/Remove.py
+vimapt/Vimapt.py
 vimapt/__init__.py
 vimapt.egg-info/PKG-INFO
 vimapt.egg-info/SOURCES.txt

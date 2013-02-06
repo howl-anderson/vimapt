@@ -1,5 +1,4 @@
-vimapt-install usr/bin/
-vimapt-repoinstall usr/bin/
 vimapt-maketpl usr/bin/
 vimapt-makevpb usr/bin/
 vimapt-makeindex usr/bin/
+tpl.vpb usr/share/vimapt/

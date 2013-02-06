@@ -1,0 +1,5 @@
+package:
+- [empty.txt, 0]
+- [text.txt, 1]
+
+test file
