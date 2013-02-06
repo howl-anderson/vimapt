@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import urllib
 import os
 from yaml import dump
 try:
@@ -35,12 +34,3 @@ class RemoteRepo(object):
             package_info = {'version': version, 'path': path}
             package_data[package_name] = package_info
         return package_data
-
-
-def main():
-    current_dir = os.getcwd()
-    repo = RemoteRepo(current_dir)
-    repo.make_package_index()
-
-if __name__ == "__main__":
-    main()

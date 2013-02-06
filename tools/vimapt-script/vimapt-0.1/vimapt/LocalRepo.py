@@ -2,11 +2,11 @@
 
 import urllib
 import os
-from yaml import load, dump
+from yaml import load
 try:
-    from yaml import CLoader as Loader, CDumper as Dumper
+    from yaml import CLoader as Loader
 except ImportError:
-    from yaml import Loader, Dumper
+    from yaml import Loader
 
 
 class LocalRepo(object):
@@ -69,11 +69,3 @@ class LocalRepo(object):
             fd.write(package_stream)
             fd.close()
             return local_package_path
-
-
-if __name__ == "__main__":
-    #update()
-    #make_source()
-    repo = LocalRepo('/home/howl/vcs/howlanderson/vimapt/src/vimapt/tools/test')
-    repo.update()
-    print repo.get_package('supertab')

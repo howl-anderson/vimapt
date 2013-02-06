@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 from vimapt import Extract
 
 
@@ -16,7 +17,8 @@ class Make():
         package_version = raw_input(prompt_message)
         prompt_message = "Input you package revision. A number:\n"
         package_revision = raw_input(prompt_message)
-        package_dir = package_name + '_' + package_version + '-' + package_revision
+        full_version = package_version + '-' + package_revision
+        package_dir = package_name + '_' + full_version
         package_dir_abspath = os.path.join(self.work_dir, package_dir)
         if os.path.isdir(package_dir_abspath):
             print "Target dir exists, exit!"
