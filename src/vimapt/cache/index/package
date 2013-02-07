@@ -1,0 +1,2 @@
+pep8: {path: pool/pep8_0.3.1-1.vpb, version: 0.3.1-1}
+pyflakes: {path: pool/pyflakes_3.0.1-1.vpb, version: 3.0.1-1}
