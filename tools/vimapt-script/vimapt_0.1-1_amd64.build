@@ -21,14 +21,10 @@ dpkg-source: warning: ignoring deletion of directory build
 dpkg-source: warning: ignoring deletion of directory build/lib.linux-x86_64-2.7
 dpkg-source: warning: ignoring deletion of directory build/lib.linux-x86_64-2.7/vimapt
 dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Install.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/MakeVpb.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Extract.bak.py
 dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Purge.py
 dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/__init__.py
 dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/LocalRepo.py
 dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Vimapt.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Package.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/MakeTpl.py
 dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Compress.py
 dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Record.py
 dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/RemoteRepo.py
@@ -48,14 +44,10 @@ creating build
 creating build/lib.linux-x86_64-2.7
 creating build/lib.linux-x86_64-2.7/vimapt
 copying vimapt/Install.py -> build/lib.linux-x86_64-2.7/vimapt
-copying vimapt/MakeVpb.py -> build/lib.linux-x86_64-2.7/vimapt
-copying vimapt/Extract.bak.py -> build/lib.linux-x86_64-2.7/vimapt
 copying vimapt/Purge.py -> build/lib.linux-x86_64-2.7/vimapt
 copying vimapt/__init__.py -> build/lib.linux-x86_64-2.7/vimapt
 copying vimapt/LocalRepo.py -> build/lib.linux-x86_64-2.7/vimapt
 copying vimapt/Vimapt.py -> build/lib.linux-x86_64-2.7/vimapt
-copying vimapt/Package.py -> build/lib.linux-x86_64-2.7/vimapt
-copying vimapt/MakeTpl.py -> build/lib.linux-x86_64-2.7/vimapt
 copying vimapt/Compress.py -> build/lib.linux-x86_64-2.7/vimapt
 copying vimapt/Record.py -> build/lib.linux-x86_64-2.7/vimapt
 copying vimapt/RemoteRepo.py -> build/lib.linux-x86_64-2.7/vimapt
@@ -90,14 +82,10 @@ creating /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debia
 creating /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages
 creating /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
 copying build/lib.linux-x86_64-2.7/vimapt/Install.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
-copying build/lib.linux-x86_64-2.7/vimapt/MakeVpb.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
-copying build/lib.linux-x86_64-2.7/vimapt/Extract.bak.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
 copying build/lib.linux-x86_64-2.7/vimapt/Purge.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
 copying build/lib.linux-x86_64-2.7/vimapt/__init__.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
 copying build/lib.linux-x86_64-2.7/vimapt/LocalRepo.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
 copying build/lib.linux-x86_64-2.7/vimapt/Vimapt.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
-copying build/lib.linux-x86_64-2.7/vimapt/Package.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
-copying build/lib.linux-x86_64-2.7/vimapt/MakeTpl.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
 copying build/lib.linux-x86_64-2.7/vimapt/Compress.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
 copying build/lib.linux-x86_64-2.7/vimapt/Record.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt
 copying build/lib.linux-x86_64-2.7/vimapt/RemoteRepo.py -> /home/howl/vcs/howlanderson/vimapt/tools/vimapt-script/vimapt-0.1/debian/python-vimapt/usr/lib/python2.7/dist-packages/vimapt

@@ -3,6 +3,7 @@
 import os
 from vimapt import Compress
 
+
 class VimAptMakeVpb:
     def __init__(self):
         self.work_dir = os.getcwd()
@@ -14,11 +15,12 @@ class VimAptMakeVpb:
         self.target_file = os.path.join(self.target_dir, self.full_pkg_name)
         compress_object = Compress.Compress(self.work_dir, self.target_file)
         compress_object.compress()
-    
+
     def parse_pkg_name(self):
         self.pkg_name, full_version = self.dir_name.split("_")
-        self.version, self.revision = full_version.split("-") 
-        self.full_pkg_name = self.pkg_name + "_" + self.version + "-" + self.revision + ".vpb"
+        self.version, self.revision = full_version.split("-")
+        full_version = self.version + "-" + self.revision
+        self.full_pkg_name = self.pkg_name + "_" + full_version + ".vpb"
 
 if __name__ == "__main__":
     obj = VimAptMakeVpb()

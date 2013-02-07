@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 import os
-from yaml import load, dump
+from yaml import load
 try:
-    from yaml import CLoader as Loader, CDumper as Dumper
+    from yaml import CLoader as Loader
 except ImportError:
-    from yaml import Loader, Dumper
+    from yaml import Loader
 
 
 class Extract():
@@ -21,7 +21,7 @@ class Extract():
         self.meta_stream, self.ball_stream = file_stream.split('\n\n', 1)
 
     def extract(self):
-        meta_data = self.get_file_list() 
+        meta_data = self.get_file_list()
         ball_lines = self.ball_stream.split('\n')
         start_point = 0
         for file, filelines in meta_data:

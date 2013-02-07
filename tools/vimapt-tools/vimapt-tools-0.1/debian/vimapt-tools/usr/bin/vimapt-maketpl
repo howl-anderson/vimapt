@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 
 import os
+import sys
 from vimapt import Extract
 
 
 class Make():
     def __init__(self, work_dir):
-        self.tpl_file = '/usr/share/vimapt/tpl.vpb'
+        self.tpl_file = '/usr/share/vimapt/vimapt.vpb'
         self.work_dir = work_dir
 
     def make(self):
@@ -16,7 +17,8 @@ class Make():
         package_version = raw_input(prompt_message)
         prompt_message = "Input you package revision. A number:\n"
         package_revision = raw_input(prompt_message)
-        package_dir = package_name + '_' + package_version + '-' + package_revision
+        full_version = package_version + '-' + package_revision
+        package_dir = package_name + '_' + full_version
         package_dir_abspath = os.path.join(self.work_dir, package_dir)
         if os.path.isdir(package_dir_abspath):
             print "Target dir exists, exit!"
@@ -29,9 +31,7 @@ class Make():
 
         rel_tpl_list = ['vimapt/control/vimapt.yaml',
                         'vimapt/copyright/vimapt.yaml',
-                        'vimrc/vimapt.vimrc',
-                        'vimapt/changelog/vimapt',
-                        'vimapt/premise/vimapt.vim']
+                        'vimrc/vimapt.vimrc',]
 
         for rel_tpl_file in rel_tpl_list:
             tpl_file = os.path.join(package_dir_abspath, rel_tpl_file)

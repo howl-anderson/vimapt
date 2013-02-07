@@ -7,7 +7,7 @@ from vimapt import Extract
 
 class Make():
     def __init__(self, work_dir):
-        self.tpl_file = '/usr/share/vimapt/tpl.vpb'
+        self.tpl_file = '/usr/share/vimapt/vimapt.vpb'
         self.work_dir = work_dir
 
     def make(self):
@@ -31,9 +31,7 @@ class Make():
 
         rel_tpl_list = ['vimapt/control/vimapt.yaml',
                         'vimapt/copyright/vimapt.yaml',
-                        'vimrc/vimapt.vimrc',
-                        'vimapt/changelog/vimapt',
-                        'vimapt/premise/vimapt.vim']
+                        'vimrc/vimapt.vimrc',]
 
         for rel_tpl_file in rel_tpl_list:
             tpl_file = os.path.join(package_dir_abspath, rel_tpl_file)

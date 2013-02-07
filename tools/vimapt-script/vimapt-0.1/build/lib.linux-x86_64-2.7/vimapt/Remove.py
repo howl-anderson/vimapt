@@ -14,7 +14,9 @@ class Remove():
         self.package_name = package_name
 
     def remove_package(self):
-        file_path = os.path.join(self.vim_dir, 'vimapt/install', self.package_name)
+        file_path = os.path.join(self.vim_dir,
+                                 'vimapt/install',
+                                 self.package_name)
         fd = open(file_path, 'r')
         file_stream = fd.read()
         fd.close()
@@ -24,10 +26,12 @@ class Remove():
             file_token = file.split("/")
             if file_token[0] == "vimrc":
                 continue
-            target_path = os.path.join(self.vim_dir, file) 
+            target_path = os.path.join(self.vim_dir, file)
             if os.path.isfile(target_path):
                 os.unlink(target_path)
             else:
                 pass
-        remove_path = os.path.join(self.vim_dir, 'vimapt/remove', self.package_name)
+        remove_path = os.path.join(self.vim_dir,
+                                   'vimapt/remove',
+                                   self.package_name)
         os.rename(file_path, remove_path)

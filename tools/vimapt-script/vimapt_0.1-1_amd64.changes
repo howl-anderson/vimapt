@@ -18,29 +18,29 @@ Changes:
  .
    * source package automatically created by stdeb 0.6.0+git
 Checksums-Sha1: 
- 2f044c05eb94f44487755b33b1e9b5c06bea18f3 1345 vimapt_0.1-1.dsc
- dd5af5d1f6ed101d8211b818a444b74d6c379e56 38415 vimapt_0.1.orig.tar.gz
- 4424422cdd63ef5e2774d9218b036fa6344db861 872 vimapt_0.1-1.debian.tar.gz
- 0fcb7497d86398d723e97bb1eac56210b2594e3c 7490 python-vimapt_0.1-1_all.deb
+ 030ab04500918ceede64da6725401ac1ec6624fd 1345 vimapt_0.1-1.dsc
+ b02f52c7dc39d46f031ab709d9ad62922cf6c193 25584 vimapt_0.1.orig.tar.gz
+ 25c5b5ff7dcb39439dafcbdf9eac6e95c4f8a7d1 871 vimapt_0.1-1.debian.tar.gz
+ 83cf17cf9dab15e134202d04de7485fbf15021b1 5594 python-vimapt_0.1-1_all.deb
 Checksums-Sha256: 
- 786bfb67d284c576fb10e6eb6b6f264d831d4a887d5d7d6fb89d865888bdc78b 1345 vimapt_0.1-1.dsc
- 3a280b51929478e706dbc6e5274087f177bdc4f6192dbd20e457bd4383931ba7 38415 vimapt_0.1.orig.tar.gz
- c50db4a5ad3728b5b5e2c1ee854d41671b25d061da48bb4783f1c73b7729fd16 872 vimapt_0.1-1.debian.tar.gz
- dc921c92186172668cb63f8dbbb8d382025c9f6edbee34d5b8669475db43cb9c 7490 python-vimapt_0.1-1_all.deb
+ a64df5a3a63cf183a8d8b4e43a8fca3ba6c5bf3138042f1e2701ab71dd6ef3fb 1345 vimapt_0.1-1.dsc
+ a8c710dd7f9acaf268ab133a4b7ada5fcf85e212a27ba3660716cff016223166 25584 vimapt_0.1.orig.tar.gz
+ 132dad5cf9e73a8c53d3eda1faab6830dd298d9739056e555da15673b7fd4325 871 vimapt_0.1-1.debian.tar.gz
+ f8f6021921174e2092dedec3527c13c0bad4e6fa753d0687adbb276f18e35feb 5594 python-vimapt_0.1-1_all.deb
 Files: 
- 680753c88b0be88c7fad186e0c2e3718 1345 python optional vimapt_0.1-1.dsc
- bee63ff0cf67f24eb2cb42a8854356f1 38415 python optional vimapt_0.1.orig.tar.gz
- 4804fa7c5357e080c3f2cbadfdbc7742 872 python optional vimapt_0.1-1.debian.tar.gz
- b343be4434add12a760b2a9c092cbb42 7490 python optional python-vimapt_0.1-1_all.deb
+ 2cc7b47df39776824f63e771240ab233 1345 python optional vimapt_0.1-1.dsc
+ c3e6053c78090cea481553b26da19118 25584 python optional vimapt_0.1.orig.tar.gz
+ aa3bc855bdfa0c86f82f8ef64e044c70 871 python optional vimapt_0.1-1.debian.tar.gz
+ 422af0e4c5efeccd4f30bd1f94206b62 5594 python optional python-vimapt_0.1-1_all.deb
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.11 (GNU/Linux)
 
-iQEcBAEBAgAGBQJREjlCAAoJEBzA6WVNMoXaXXcH+gOs/xgZhrrd5LikyJ4e3+tz
-eP9M6/xpvs0sIFPOjyinwSVW0qlWCGvmlfa1BzY22Pt/veDNSBLp1Ggz6BBAVJfe
-WuZQlyTB+k0RZMqpuBuYVwSOeszS618tWwiBbQwkH09GO9bEClAbZ6jA6VRXBwSN
-EgUzNgHQKJB96Lj/rJOPkzMo3mGj0qb95RCfHJek1hMkmbiEv54cX1B3AgjTnlRk
-r2LcbVO7XOa5Y6Rv619HGSCKGZAdx42S9W/lYwEXuNfivs3cICCKzdVt8G3pXnLI
-23E09drSFkjltj3Mn59vfpbBcffoQnkr+ycVFYO8FVvs78T896Ep5EfoRn01XtQ=
-=lb+M
+iQEcBAEBAgAGBQJRE3L6AAoJEBzA6WVNMoXa/GEH/0q/9/ExYrdPrb5qOlOKHxAE
+Pd/lKj1eKk909em9xqECXLjwFfVfrNiy+bfX4BI8+2YddV9vSnokB+lvEQdzWJOq
+MmF4dIjtP2RzmkFzD9PsyxPH5vntNr0FzqpYnC1PuBNVgxfir98wNIMjb+BAbedu
+l67v7r6AP7ynWBs10Nnw1p1t93H75nA8EVq5LX6FdyLo2CRj1LYlYLJgjMBPrMkr
+kf368R8dETaLGTIOsCabxpqlkJyk5xWy8MkMiN5BFWkWGQQ0TnqhHaPZOWgRbHkJ
+4AQ51JsVuE3/HVPYYLgCKkV0h3LVS9IWtnbv3VUwqr4DKuEDhiB0rF7ld9xPZpg=
+=MUCy
 -----END PGP SIGNATURE-----
