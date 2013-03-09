@@ -3,7 +3,7 @@ Source: vimapt
 Version: 0.1-1
 Architecture: all
 Maintainer: howlanderson <u1mail2me@gmail.com>
-Installed-Size: 71
+Installed-Size: 72
 Depends: python2.7, python (>= 2.7.1-0ubuntu2), python (<< 2.8)
 Section: python
 Priority: optional

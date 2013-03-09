@@ -1,3 +1,8 @@
+- [vimapt/copyright/pep8, 0]
+- [vimapt/control/pep8, 0]
+- [ftplugin/python/pep8.vim, 56]
+- [vimrc/pep8.vimrc, 1]
+
 " To change mapping, just put
 " let g:pep8_map='whatever'
 " in your .vimrc
@@ -53,3 +58,5 @@ else
           \ g:pep8_map ." is taken and a replacement was not assigned."
   endif
 endif
+
+let g:pep8_map='<Leader>8'

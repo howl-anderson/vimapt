@@ -12,5 +12,5 @@ adde2eeeb89568f91e20fae8a402a78a  usr/share/pyshared/vimapt/Purge.py
 83552585b161735185956969f5721d31  usr/share/pyshared/vimapt/Record.py
 76c0b0363de7c47ad97bdc238c0fb169  usr/share/pyshared/vimapt/RemoteRepo.py
 66fa73a81297cdc4f48b9dedca40eae4  usr/share/pyshared/vimapt/Remove.py
-a134521b8f9706f876832962a29ad890  usr/share/pyshared/vimapt/Vimapt.py
+f189d4ff1014b682bdb0fa528e0a0dee  usr/share/pyshared/vimapt/Vimapt.py
 d41d8cd98f00b204e9800998ecf8427e  usr/share/pyshared/vimapt/__init__.py

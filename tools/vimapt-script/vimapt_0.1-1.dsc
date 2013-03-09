@@ -12,23 +12,23 @@ Build-Depends: python-setuptools (>= 0.6b3), python-all (>= 2.6.6-3), debhelper 
 Package-List: 
  python-vimapt deb python optional
 Checksums-Sha1: 
- b02f52c7dc39d46f031ab709d9ad62922cf6c193 25584 vimapt_0.1.orig.tar.gz
- 25c5b5ff7dcb39439dafcbdf9eac6e95c4f8a7d1 871 vimapt_0.1-1.debian.tar.gz
+ d929b05ab56a807cefddfaef63b3e84b78d1789c 25792 vimapt_0.1.orig.tar.gz
+ f7272807a05a7e3a7373c27daa17416735744038 873 vimapt_0.1-1.debian.tar.gz
 Checksums-Sha256: 
- a8c710dd7f9acaf268ab133a4b7ada5fcf85e212a27ba3660716cff016223166 25584 vimapt_0.1.orig.tar.gz
- 132dad5cf9e73a8c53d3eda1faab6830dd298d9739056e555da15673b7fd4325 871 vimapt_0.1-1.debian.tar.gz
+ b4dfcedcbb46e9183be8c1143560894a61c65122cc044ed593aae26c4d5fe9c9 25792 vimapt_0.1.orig.tar.gz
+ 6f9f758db86422b5b6c9fed22c5529103975b1e91b90862f1b02621e2b2fbc67 873 vimapt_0.1-1.debian.tar.gz
 Files: 
- c3e6053c78090cea481553b26da19118 25584 vimapt_0.1.orig.tar.gz
- aa3bc855bdfa0c86f82f8ef64e044c70 871 vimapt_0.1-1.debian.tar.gz
+ 604608fc1bc0d49ad3aacac6b102cf56 25792 vimapt_0.1.orig.tar.gz
+ b3585f9b5849ce87728820bc56857b6d 873 vimapt_0.1-1.debian.tar.gz
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.11 (GNU/Linux)
 
-iQEcBAEBAgAGBQJRE3L6AAoJEBzA6WVNMoXadtQH/0cMPJQRzh0Ci9Z1pKVd1v9n
-/hoEdcYtN5cbglD0oJ9UO8l1F3IDvJ5JN/ds6Wb36ZV3/VH4/55BNkdP8kSMkckr
-6Wnha0YedF7bGhkWZ9kWrcXvcIoCVsHWWyuCbc9DjijJOSbylduDNB6DzIA7zI8l
-pgLDuZeW8VOa+j0QW1TKML6diYGy6QMxv5T0bt8MCfah/ET9QTz1sUWoYRU1w6jR
-jS/eAbMarTSIuekYgMkxOMCltrVbsIM28TwQ4NxzmXAAeKGttO0PRY7VjPNeLT7p
-v39X5f6EkfpS50BVgD5sb6Ep/uBtXgkc/GJ3iW7hhdgCUc0ZOWTNKvpXTj1jqW4=
-=DSY3
+iQEcBAEBAgAGBQJRKN0jAAoJEBzA6WVNMoXa39QH+QGxIKZQl20oOXAWWwQLj3+E
+VW5JOIr163lwEBozREKTV08jx44T8oPM4ZTs2uCDbXOMdoWbgRdPSzmJbCP3NaZn
+Mn5MMjbtEGQZcnbhZdhKMce1jAlxMQWohWDC1DyCTAboOxLvBV3Rid34d2r/5l2f
+SzLn8aIFM8OuPZa1t/DnE5TAloKA0KH2kZipohzoHIiXMZCw9Hs4HVoR772vo3WA
+NCvLyp/PSdVIplAmIcBHBzBSBkFSiQn69OqV1r9AqwzkGvD7ce506qwJu3lRTF0q
+7Od80LhyVeon0aDfsNTWV3BNjdtLZ0FXDAYk8NRO9IAAThcNnATMHIggqE8YuqM=
+=Pv6F
 -----END PGP SIGNATURE-----

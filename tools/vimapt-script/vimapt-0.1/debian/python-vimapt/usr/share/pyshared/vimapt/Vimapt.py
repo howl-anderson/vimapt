@@ -9,8 +9,11 @@ class Vimapt:
 
     def get_installed_list(self):
         record_dir = os.path.join(self.vim_dir, 'vimapt/control')
-        pkg_list = [f for f in os.listdir(record_dir)
-                    if os.path.isfile(os.path.join(record_dir, f))]
+        pkg_list = []
+        for f in os.listdir(record_dir):
+            if os.path.isfile(os.path.join(record_dir, f)):
+                root, ext = os.path.splitext(f)
+                pkg_list.append(root)
         return pkg_list
 
     def get_presist_list(self):
@@ -24,6 +27,9 @@ class Vimapt:
 
     def scan_package_name(self):
         record_dir = os.path.join(self.vim_dir, 'vimapt/control')
-        pkg_list = [f for f in os.listdir(record_dir)
-                    if os.path.isfile(os.path.join(record_dir, f))]
+        pkg_list = []
+        for f in os.listdir(record_dir):
+            if os.path.isfile(os.path.join(record_dir, f)):
+                root, ext = os.path.splitext(f)
+                pkg_list.append(root)
         return pkg_list[0]

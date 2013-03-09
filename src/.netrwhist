@@ -1,6 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/howl/vcs/howlanderson/vimapt/tools/vimapt-script'
 let g:netrw_dirhist_2='/home/howl/vcs/howlanderson/tdic/tdic-1.0'
 let g:netrw_dirhist_3='/home/howl/vcs/howlanderson/vimapt/src/vimapt/cache/index'
 let g:netrw_dirhist_4='/home/howl/vcs/howlanderson/vimapt/src/vimapt/cache'
+let g:netrw_dirhist_5='/home/howl/vcs/howlanderson/prest/consult/konstrukt-master/script/includes/geshi/geshi'
+let g:netrw_dirhist_6='/home/howl/vcs/howlanderson/vimapt-repo/pool/powerline-develop/scripts'
+let g:netrw_dirhist_7='/home/howl/vcs/howlanderson/xpress/src/www/.xpress'
+let g:netrw_dirhist_8='/home/howl/vcs/howlanderson/vimapt'
