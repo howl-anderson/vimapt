@@ -129,4 +129,5 @@ autocmd FileType vim setl shiftwidth=4
 " WriteJSDocComment()<CR>
 "
 " let g:pep8_map='<leader>8'
-"
+
+highlight SpellBad term=bold cterm=bold

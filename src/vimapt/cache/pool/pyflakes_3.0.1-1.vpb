@@ -1,5 +1,5 @@
-- [vimapt/copyright/pyflakes, 5]
-- [vimapt/control/pyflakes, 5]
+- [vimapt/copyright/pyflakes.yaml, 4]
+- [vimapt/control/pyflakes.yaml, 5]
 - [ftplugin/python/pyflakes.vim, 321]
 - [ftplugin/python/pyflakes/NEWS.txt, 29]
 - [ftplugin/python/pyflakes/setup.py, 28]
@@ -16,17 +16,17 @@
 - [ftplugin/python/pyflakes/pyflakes/test/__init__.py, 0]
 - [ftplugin/python/pyflakes/pyflakes/test/test_imports.py, 673]
 - [ftplugin/python/pyflakes/pyflakes/test/harness.py, 27]
+- [vimrc/pyflakes.vimrc, 1]
 
-copyright: {
-  author: apttest,
-  license: '',
-  maintiner: ''
-}
-control: {
-  depends: '',
-  section: '',
-  version: '0.1'
-}
+author: 'iHynek Urban <wwuzzy@gmail.com>'
+license: ''
+maintiner: 'Howl Anderson <u1mail2me@gmail.com>'
+source: 'ihttp://www.vim.org/scripts/script.php?script_id=4374'
+depends: ''
+section: 'ftplugin'
+version: '3.0.1'
+short-description: ''
+long-description: ''
 " pyflakes.vim - A script to highlight Python code on the fly with warnings
 " from Pyflakes, a Python lint tool.
 "
@@ -2968,3 +2968,4 @@ expected outputs:
 but got:
 %s''' % (input, repr(expectedOutputs), '\n'.join([str(o) for o in w.messages])))
         return w
+"autocmd FileType python map <buffer> <F3> :call Pyflakes()<CR> 

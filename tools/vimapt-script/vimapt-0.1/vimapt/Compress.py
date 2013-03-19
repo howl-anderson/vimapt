@@ -19,16 +19,16 @@ class Compress():
         ball_file_list = self.scan_dir()
         ball_data = []
         ball_content = []
-        for file in ball_file_list:
-            fd = open(file, 'r')
+        for f in ball_file_list:
+            fd = open(f, 'r')
             file_lines = fd.readlines()
             fd.close()
-            relfile_path = os.path.relpath(file, self.source_dir)
+            relfile_path = os.path.relpath(f, self.source_dir)
             if self.filter_object:
                 if not self.filter_object(relfile_path, file_lines):
                     continue
             if self.hook_object:
-                file, file_lines = self.hook_object(file, file_lines)
+                f, file_lines = self.hook_object(f, file_lines)
             line_number = len(file_lines)
             #if is not empty file
             if line_number:
@@ -49,8 +49,8 @@ class Compress():
         file_path_list = []
         yid = os.walk(self.source_dir)
         for root_dir, path_list, file_list in yid:
-            for file in file_list:
-                abspath = os.path.join(root_dir, file)
+            for f in file_list:
+                abspath = os.path.join(root_dir, f)
                 file_path_list.append(abspath)
         return file_path_list
 
