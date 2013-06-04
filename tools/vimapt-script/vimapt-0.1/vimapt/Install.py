@@ -84,9 +84,16 @@ class Install():
             package_depends_list = []
             for depend in depends_list:
                 match = re.match("\s*([\.a-z][a-z0-9]+)\s*\(\s*([^\(\)]+)\s*\)\s*", depend)
-                match_list = match.groups()
+                if match == None:
+                    match = re.match("\s*([\.a-z][a-z0-9]+)\s*", depend)
+                    match_list = match.groups()
+                else:
+                    match_list = match.groups()
+
                 if len(match_list) == 0:
-                    pass
+                    msg = "package's depend format is broken"
+                    print msg
+                    raise AssertionError()
                 else:
                     match_soft = match_list[0]
                     if len(match_list) == 1:
@@ -95,13 +102,13 @@ class Install():
                     else:
                         operate = match_list[1]
                         operate_match = re.match("([=><]+)\s*([0-9\.]+)", operate)
-                    operate_match_list = operate_match.groups()
-                    if len(operate_match_list) == 1:
-                        match_operater = "*"
-                        match_version = operate_match_list[0]
-                    else:
-                        match_operater = operate_match_list[0]
-                        match_version = operate_match_list[1]
+                        operate_match_list = operate_match.groups()
+                        if len(operate_match_list) == 1:
+                            match_operater = "*"
+                            match_version = operate_match_list[0]
+                        else:
+                            match_operater = operate_match_list[0]
+                            match_version = operate_match_list[1]
                 depend_info = [match_soft, match_operater, match_version] 
                 package_depends_list.append(depend_info)
             inner_package_depends_list = []
@@ -115,40 +122,41 @@ class Install():
                     outer_package_depends_list.append(depend)
 
             version_dict = Vimapt.Vimapt(self.vim_dir).get_version_dict()
+            print version_dict
             print inner_package_depends_list
             for depend in inner_package_depends_list:
                 if depend[0] in version_dict:
                     if depend[1] != "*":
                         if depend[1] == "=":
-                            if depend[2] == version_dict[depend[0]]:
+                            if version_dict[depend[0]] == depend[2]:
                                 continue
                             else:
                                 msg = "package: " + depend[0] + "'s version is " + version_dict[depend[0]] + ", but package want it = " + depend[2]
                                 print msg
                                 raise AssertionError()
                         elif depend[1] == ">=":
-                            if depend[2] >= version_dict[depend[0]]:
+                            if version_dict[depend[0]] >=  depend[2]:
                                 continue
                             else:
                                 msg = depend[0] + "'s version is " + version_dict[depend[0]] + ", but package want it >= " + depend[2]
                                 print msg
                                 raise AssertionError()
                         elif depend[1] == "<=":
-                            if depend[2] <= version_dict[depend[0]]:
+                            if version_dict[depend[0]] <=  depend[2]:
                                 continue
                             else:
                                 msg = depend[0] + "'s version is " + version_dict[depend[0]] + ", but package want it <= " + depend[2]
                                 print msg
                                 raise AssertionError()
                         elif depend[1] == ">":
-                            if depend[2] > version_dict[depend[0]]:
+                            if version_dict[depend[0]] > depend[2]:
                                 continue
                             else:
                                 msg = depend[0] + "'s version is " + version_dict[depend[0]] + ", but package want it > " + depend[2]
                                 print msg
                                 raise AssertionError()
                         elif depend[1] == "<":
-                            if depend[2] < version_dict[depend[0]]:
+                            if version_dict[depend[0]] < depend[2]:
                                 continue
                             else:
                                 msg = depend[0] + "'s version is " + version_dict[depend[0]] + ", but package want it < " + depend[2]
@@ -164,4 +172,3 @@ class Install():
             msg = "package format is broken"
             print msg
             raise AssertionError()
-
