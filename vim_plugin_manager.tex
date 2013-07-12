@@ -1,0 +1,63 @@
+\documentclass{report}
+\usepackage{listings}
+\title{Vim plugin manager}
+\author{Howl Anderson}
+\date{\today}
+\begin{document}
+\maketitle
+\chapter{Introduction}
+Vim is a great text editor. It can use plugin to extend vim's function. But as you know vim don't have office plugin manager. Recently, Emacs: the great enemy of vim, finally has it's office plugin/package manager. But vim plugin manager is still in the war. We will study some of famous vim plugin manager, learn them how to work.
+\chapter{Vundle}
+Vundle is the short for Vim bundle and is a vim plugin manager.
+office website is: https://github.com/gmarik/vundle
+Vundle maybe was the most popular vim plugin manager on the world.
+\section{Quick start}
+\subsection{setup Vundle}
+\begin{lstlisting}[language=bash]
+$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+\end{lstlisting}
+\subsection{Configure bundles}
+Sample .vimrc
+\begin{lstlisting}
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+" non github repos
+Bundle 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (ie. when working on your own plugin)
+Bundle 'file:///Users/gmarik/path/to/plugin'
+" ...
+
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+\end{lstlisting}
+\subsection{Install configured bundles}
+Launch vim, run :BundleInstall (or vim +BundleInstall +qall for CLI lovers)\\
+Windows users see Vundle for Windows\\
+Installing requires Git and triggers Git clone for each configured repo to ~/.vim/bundle/.
+\end{document}
