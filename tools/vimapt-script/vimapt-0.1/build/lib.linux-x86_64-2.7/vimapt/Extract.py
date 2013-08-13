@@ -18,7 +18,7 @@ class Extract():
         fd = open(self.input_file, 'r')
         file_stream = fd.read()
         fd.close()
-        self.meta_stream, self.ball_stream = file_stream.split('\n\n', 1)
+        self.meta_stream, self.ball_stream = file_stream.split('\n\n', 1) #split the meta and data
 
     def extract(self):
         meta_data = self.get_file_list()
@@ -29,9 +29,11 @@ class Extract():
             list_data = ball_lines[start_point: end_point]
             file_stream = "\n".join(list_data)
             if self.filter_object:
+                #hook to filter_object
                 if not self.filter_object(file, file_stream):
                     continue
             if self.hook_object:
+                #hook to hook_object
                 file, file_stream = self.hook_object(file, file_stream)
             ball_dir = os.path.dirname(file)
             ball_absdir = os.path.join(self.output_dir, ball_dir)
@@ -44,7 +46,7 @@ class Extract():
             start_point += filelines
 
     def get_file_list(self):
-        meta_data = load(self.meta_stream, Loader=Loader)
+        meta_data = load(self.meta_stream, Loader=Loader) #load list from meta, use yaml format
         return meta_data
 
     def hook(self, hook_object):
@@ -52,3 +54,7 @@ class Extract():
 
     def filter(self, filter_object):
         self.filter_object = filter_object
+
+if __name__ == "__main__":
+    o = Extract("vimapt_1.0-1.vpb","./output")
+    o.extract()

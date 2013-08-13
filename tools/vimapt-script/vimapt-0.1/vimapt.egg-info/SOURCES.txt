@@ -2,6 +2,7 @@ setup.py
 vimapt/Compress.py
 vimapt/Extract.py
 vimapt/Install.py
+vimapt/Installtest.py
 vimapt/LocalRepo.py
 vimapt/Purge.py
 vimapt/Record.py

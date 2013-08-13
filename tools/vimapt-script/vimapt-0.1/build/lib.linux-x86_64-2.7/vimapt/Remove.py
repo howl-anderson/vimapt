@@ -17,6 +17,7 @@ class Remove():
         file_path = os.path.join(self.vim_dir,
                                  'vimapt/install',
                                  self.package_name)
+        #print file_path
         fd = open(file_path, 'r')
         file_stream = fd.read()
         fd.close()
@@ -27,6 +28,8 @@ class Remove():
             if file_token[0] == "vimrc":
                 continue
             target_path = os.path.join(self.vim_dir, file)
+
+            #print target_path
             if os.path.isfile(target_path):
                 os.unlink(target_path)
             else:

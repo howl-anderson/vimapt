@@ -1,0 +1,4 @@
+vimapt.egg-info/PKG-INFO
+vimapt.egg-info/SOURCES.txt
+vimapt.egg-info/dependency_links.txt
+vimapt.egg-info/top_level.txt

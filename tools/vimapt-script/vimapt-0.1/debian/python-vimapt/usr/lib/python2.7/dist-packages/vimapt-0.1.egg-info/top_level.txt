@@ -1,1 +1,0 @@
-../../../../share/pyshared/vimapt-0.1.egg-info/top_level.txt
