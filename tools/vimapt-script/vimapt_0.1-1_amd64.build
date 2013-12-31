@@ -10,9 +10,23 @@ dh clean --with python2 --buildsystem=python_distutils
    dh_auto_clean -O--buildsystem=python_distutils
 running clean
 removing 'build/lib.linux-x86_64-2.7' (and everything under it)
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/__init__.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/Compress.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/Purge.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/Remove.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/RemoteRepo.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/Extract.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/LocalRepo.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/Record.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/Install.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/vimapt_1.0-1.vpb: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/Installtest.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt/Vimapt.py: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7/vimapt: Permission denied
+error removing build/lib.linux-x86_64-2.7: build/lib.linux-x86_64-2.7: Permission denied
 removing 'build/bdist.linux-x86_64' (and everything under it)
+error removing build/bdist.linux-x86_64: build/bdist.linux-x86_64: Permission denied
 'build/scripts-2.7' does not exist -- can't clean it
-removing 'build'
    dh_clean -O--buildsystem=python_distutils
  dpkg-source -b vimapt-0.1
 dpkg-source: info: using source format `3.0 (quilt)'
@@ -25,23 +39,23 @@ dpkg-source: warning: ignoring deletion of file vimapt/LocalRepo.pyc
 dpkg-source: warning: ignoring deletion of file vimapt/vim/ftplugin/python/pyflakes/pyflakes/checker.pyc
 dpkg-source: warning: ignoring deletion of file vimapt/vim/ftplugin/python/pyflakes/pyflakes/__init__.pyc
 dpkg-source: warning: ignoring deletion of file vimapt/vim/ftplugin/python/pyflakes/pyflakes/messages.pyc
-dpkg-source: warning: ignoring deletion of directory build
-dpkg-source: warning: ignoring deletion of directory build/bdist.linux-x86_64
-dpkg-source: warning: ignoring deletion of directory build/lib.linux-x86_64-2.7
-dpkg-source: warning: ignoring deletion of directory build/lib.linux-x86_64-2.7/vimapt
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/__init__.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Compress.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Purge.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Remove.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/RemoteRepo.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Extract.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/LocalRepo.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Record.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Install.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/vimapt_1.0-1.vpb
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Installtest.py
-dpkg-source: warning: ignoring deletion of file build/lib.linux-x86_64-2.7/vimapt/Vimapt.py
-dpkg-source: error: cannot represent change to dist/vimapt-0.1-py2.7.egg: binary file contents changed
-dpkg-source: error: add dist/vimapt-0.1-py2.7.egg in debian/source/include-binaries if you want to store the modified binary in the debian tarball
-dpkg-source: error: unrepresentable changes to source
+dpkg-source: warning: ignoring deletion of file dist/vimapt-0.1-py2.7.egg
+dpkg-source: warning: file vimapt-0.1/vimapt/vimapt.egg-info/SOURCES.txt has no final newline (either original or modified version)
+dpkg-source: info: local changes detected, the modified files are:
+ vimapt-0.1/README
+ vimapt-0.1/build/lib.linux-x86_64-2.7/vimapt/Compress.py
+ vimapt-0.1/build/lib.linux-x86_64-2.7/vimapt/Extract.py
+ vimapt-0.1/build/lib.linux-x86_64-2.7/vimapt/Install.py
+ vimapt-0.1/build/lib.linux-x86_64-2.7/vimapt/Remove.py
+ vimapt-0.1/setup.py
+ vimapt-0.1/vimapt.egg-info/PKG-INFO
+ vimapt-0.1/vimapt.egg-info/SOURCES.txt
+ vimapt-0.1/vimapt/Install.py
+ vimapt-0.1/vimapt/Remove.py
+ vimapt-0.1/vimapt/vimapt.egg-info/PKG-INFO
+ vimapt-0.1/vimapt/vimapt.egg-info/SOURCES.txt
+ vimapt-0.1/vimapt/vimapt.egg-info/dependency_links.txt
+ vimapt-0.1/vimapt/vimapt.egg-info/top_level.txt
+dpkg-source: error: aborting due to unexpected upstream changes, see /tmp/vimapt_0.1-1.diff.v9qpRp
+dpkg-source: info: you can integrate the local changes with dpkg-source --commit
 dpkg-buildpackage: error: dpkg-source -b vimapt-0.1 gave error exit status 2

@@ -22,8 +22,8 @@ import Extract
 
 class Install():
     def __init__(self, vim_dir):
-        self.vim_dir = vim_dir
-        self.pkg_name = None
+        self.vim_dir = vim_dir # user's .vim dir path
+        self.pkg_name = None # package's name
         self.tmpdir = None
 
     def extract_hook(self, file, _):

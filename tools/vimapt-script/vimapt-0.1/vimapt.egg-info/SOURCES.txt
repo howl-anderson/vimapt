@@ -1,3 +1,4 @@
+README
 setup.py
 vimapt/Compress.py
 vimapt/Extract.py

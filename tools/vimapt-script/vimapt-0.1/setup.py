@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 #-*- coding:utf8 -*-
 
+import os
 from setuptools import setup
 from setuptools import find_packages
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name="vimapt",
@@ -12,12 +16,17 @@ setup(
     package_data={'': ['*.vpb']},
 
     description="a vim package manager just like debian's apt",
-    long_description="vimapt is a vim package manager. vimapt's command and function are very like to debian's apt, so it called vim's apt",
+    long_description=read('README'),
     author="howlanderson",
     author_email="u1mail2me@gmail.com",
 
     license="GPL",
     keywords="vimapt vim plugin",
     platforms="Independant",
-    url="http://www.howlanderson.net",
+    url="http://howlanderson.bitbucket.org",
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Topic :: Utilities",
+        "License :: OSI Approved :: GPL License",
+        ],
 )

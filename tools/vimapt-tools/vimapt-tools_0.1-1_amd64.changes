@@ -1,6 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
 Format: 1.8
 Date: Thu, 24 Jan 2013 11:31:49 +0800
 Source: vimapt-tools
@@ -18,29 +15,17 @@ Changes:
  .
    * source package automatically created by stdeb 0.6.0+git
 Checksums-Sha1: 
- a673c9960efdc37ee06e27dc68213f57d57e6464 1393 vimapt-tools_0.1-1.dsc
- fb0e2ef0ad39d5d2253f29565215f313be25b59d 3293 vimapt-tools_0.1.orig.tar.gz
- 4a5caf0e6b87d85fd44337b8049658843b26d19f 871 vimapt-tools_0.1-1.debian.tar.gz
- 6549f693390573f54a7cc4057f89e50ca645cf4e 2512 vimapt-tools_0.1-1_all.deb
+ 80fd830389691f8ca26178faa0d1c71a430c5848 855 vimapt-tools_0.1-1.dsc
+ ab829cc46018d51d77e7d220b19d6653ab962b78 3452 vimapt-tools_0.1.orig.tar.xz
+ b09e78b033949118e738c96704a0dee017a86290 846 vimapt-tools_0.1-1.debian.tar.gz
+ e2474a59845b27b6d8d93ee57a2a24d51e1e92a4 2494 vimapt-tools_0.1-1_all.deb
 Checksums-Sha256: 
- 37fc48fada42c311948f21e2c142c338f2c1f2471a647f5f778b0df883e7f02a 1393 vimapt-tools_0.1-1.dsc
- f67e05a6bb3426d7842b2638963d9fe8804a96eed02b59e1dcbbfa419190b2a7 3293 vimapt-tools_0.1.orig.tar.gz
- 9cd046c95bff22aaeafe6644660aefadc26fe7f87b8a6c7fcf712763eb2bc32b 871 vimapt-tools_0.1-1.debian.tar.gz
- 71dace6012ab5249b5051739eea0cdd8902197436c2bcb822d6041b91d6d75b6 2512 vimapt-tools_0.1-1_all.deb
+ 40b4b3a7f2ad444736f8f8880183b61f31ec37b72ac97984f8558c6c7fbc91ce 855 vimapt-tools_0.1-1.dsc
+ eee5acda9ad99839b7eb1fcaf5b274d2dd3e6a5f5d5161299ce53e2c98d01c53 3452 vimapt-tools_0.1.orig.tar.xz
+ 4f8e4181462d5569c415f6f292b57fae0ca69e25ffc76269920ec853fd43e20e 846 vimapt-tools_0.1-1.debian.tar.gz
+ 113ca889bdb31a3377593f1c5df7ea69b570dffa9468d5048fee9aa9399e6df1 2494 vimapt-tools_0.1-1_all.deb
 Files: 
- 07bddb3e7f38871599c0d69bc74c5ab4 1393 python optional vimapt-tools_0.1-1.dsc
- dd5d223dcb15057b1c0169ec640f5c7f 3293 python optional vimapt-tools_0.1.orig.tar.gz
- d4f74180759a14d795f8e30624297c02 871 python optional vimapt-tools_0.1-1.debian.tar.gz
- be14f099ad6adf290828e27927b7fe0c 2512 python optional vimapt-tools_0.1-1_all.deb
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.11 (GNU/Linux)
-
-iQEcBAEBAgAGBQJRE3LAAAoJEBzA6WVNMoXaCo8H/2WIKnBlY0nUnZpGcNBq4YXp
-ipk1zs7aqPpQvP/KF42GS0reJLtX/PV3K3I18DYi0mNjBOJsjbXlM8VqT6J4C7Mt
-BtOHE4VQSuXDml0rTc01BVoGsPkBY6fJ3eKwIPbttUhIBgOfEbUhGVPWm0b6jSWh
-aTv8ANtfFgFPn9GLG3CNwr1n2P6SPWMyQuamgCbsPUwGMUNPEi9ldmNrXWBy0sKR
-46gB0/r+Im69Gjxl/LGrMBxgNxZrZTFfF5RzYJNSRP5vpPt5OiJDW+dNXoganMiw
-jopTKYgOJ5czOmJAYpHU1GcXu8E7eLRvCRgRZGyMY61NH2e4dcvX9jeQHs97mWA=
-=0cMz
------END PGP SIGNATURE-----
+ 06e774546f2afa2a4fa32176e38189f2 855 python optional vimapt-tools_0.1-1.dsc
+ 7d044d91f7348cda39be92178b1bfe01 3452 python optional vimapt-tools_0.1.orig.tar.xz
+ f0be9030e85c0ac958904c59f939ccb3 846 python optional vimapt-tools_0.1-1.debian.tar.gz
+ 2f1cffbac63cd00b67c8602fd2441005 2494 python optional vimapt-tools_0.1-1_all.deb

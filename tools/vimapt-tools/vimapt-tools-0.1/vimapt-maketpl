@@ -10,7 +10,7 @@ class Make():
         self.tpl_file = '/usr/share/vimapt/vimapt.vpb'
         self.work_dir = work_dir
 
-    def make(self):
+    def manual_make(self):
         tpl_absfile = self.tpl_file
         package_name = raw_input("Input you package name:\n")
         prompt_message = "Input you package version. Format like x.y.z:\n"
@@ -45,8 +45,32 @@ class Make():
         print "Every thing done! Tpl making is successed!"
         print "Have fun!"
 
+    def auto_make(self, package_name, package_version, package_revision):
+        tpl_absfile = self.tpl_file
+        full_version = package_version + '-' + package_revision
+        package_dir = package_name + '_' + full_version
+        package_dir_abspath = os.path.join(self.work_dir, package_dir)
+        if os.path.isdir(package_dir_abspath):
+            print "Target dir exists, exit!"
+            sys.exit(0)
+        else:
+            os.mkdir(package_dir_abspath)
+        extract_object = Extract.Extract(tpl_absfile, package_dir_abspath)
+        extract_object.extract()
+        rel_tpl_list = ['vimapt/control/vimapt.yaml',
+                        'vimapt/copyright/vimapt.yaml',
+                        'vimrc/vimapt.vimrc',]
+
+        for rel_tpl_file in rel_tpl_list:
+            tpl_file = os.path.join(package_dir_abspath, rel_tpl_file)
+            tpl_file_dir = os.path.dirname(tpl_file)
+            _, ext_name = os.path.splitext(tpl_file)
+            target_file = os.path.join(tpl_file_dir, package_name + ext_name)
+            print tpl_file
+            print target_file
+            os.rename(tpl_file, target_file)
 
 if __name__ == "__main__":
     current_dir = os.getcwd()
     make = Make(current_dir)
-    make.make()
+    make.manual_make()

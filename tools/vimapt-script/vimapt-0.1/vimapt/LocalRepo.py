@@ -59,7 +59,7 @@ class LocalRepo(object):
             source_server = self.get_config()
             package_url = os.path.join(source_server, package_relpath)
 
-            filehandle = urllib.urlopen(package_url)
+            filehandle = urllib.urlopen(package_url) # TODO: add proxy and timeout
             package_stream = filehandle.read()
             package_full_name = os.path.basename(package_url)
             local_package_path = os.path.join(self.cache_pool_dir,
