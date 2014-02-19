@@ -7,7 +7,7 @@ from vimapt import Extract
 
 class Make():
     def __init__(self, work_dir):
-        self.tpl_file = '/usr/share/vimapt/vimapt.vpb'
+        self.tpl_file = 'vimapt.vpb'
         self.work_dir = work_dir
 
     def manual_make(self):

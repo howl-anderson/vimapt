@@ -21,44 +21,44 @@ set number
 "set tab to space
 set expandtab
 
-""set coffeescript filetype
-autocmd BufRead,BufNewFile *.coffee set ft=coffee 
-
-"tab width .py file
-autocmd FileType python setl tabstop=4
-autocmd FileType python setl shiftwidth=4
-
-""tab width .c file
-autocmd FileType c setl tabstop=4
-autocmd FileType c setl shiftwidth=4
-
-"tab width .erl file
-autocmd FileType erlang setl tabstop=4
-autocmd FileType erlang setl shiftwidth=4
-
-""tab width .html file
-autocmd FileType html setl tabstop=2
-autocmd FileType html setl shiftwidth=2
-
-"tab width .js file
-autocmd FileType javascript setl tabstop=2
-autocmd FileType javascript setl shiftwidth=2
-
-""tab width .css file
-autocmd FileType css setl tabstop=2
-autocmd FileType css setl shiftwidth=2
-
-"tab width .php file
-autocmd FileType php setl tabstop=4
-autocmd FileType php setl shiftwidth=4
+"""set coffeescript filetype
+"autocmd BufRead,BufNewFile *.coffee set ft=coffee 
 "
-""tab width coffeescript file
-autocmd FileType coffee setl tabstop=4
-autocmd FileType coffee setl shiftwidth=4
-
-"tab width vim file
-autocmd FileType vim setl tabstop=4
-autocmd FileType vim setl shiftwidth=4
+""tab width .py file
+"autocmd FileType python setl tabstop=4
+"autocmd FileType python setl shiftwidth=4
+"
+"""tab width .c file
+"autocmd FileType c setl tabstop=4
+"autocmd FileType c setl shiftwidth=4
+"
+""tab width .erl file
+"autocmd FileType erlang setl tabstop=4
+"autocmd FileType erlang setl shiftwidth=4
+"
+"""tab width .html file
+"autocmd FileType html setl tabstop=2
+"autocmd FileType html setl shiftwidth=2
+"
+""tab width .js file
+"autocmd FileType javascript setl tabstop=2
+"autocmd FileType javascript setl shiftwidth=2
+"
+"""tab width .css file
+"autocmd FileType css setl tabstop=2
+"autocmd FileType css setl shiftwidth=2
+"
+""tab width .php file
+"autocmd FileType php setl tabstop=4
+"autocmd FileType php setl shiftwidth=4
+""
+"""tab width coffeescript file
+"autocmd FileType coffee setl tabstop=4
+"autocmd FileType coffee setl shiftwidth=4
+"
+""tab width vim file
+"autocmd FileType vim setl tabstop=4
+"autocmd FileType vim setl shiftwidth=4
 
 ""for filetype key map
 "source ~/.vim/keymap/keymap.vim

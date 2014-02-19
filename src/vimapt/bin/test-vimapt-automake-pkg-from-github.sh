@@ -1,1 +1,1 @@
-./vimapt-automake-pkg-from-github vim-scripts Conque-Shell
+./vimapt_automake_pkg_from_github.py vim-scripts Conque-Shell

@@ -6,8 +6,9 @@ import sys
 import os
 import shutil
 from vimapt import Compress
+from vimapt import Extract  
 
-class VimAptAutomakeFromGithub:
+class AutomakeFromGithub:
     def __init__(self, user_name, plugin_name):
         self.version = "1.0"
         self.revision = "1"
@@ -27,7 +28,21 @@ class VimAptAutomakeFromGithub:
         shutil.rmtree(dot_git_dir)
 
     def build_package_struct(self):
-        pass # TODO
+        obj = Extract.Extract('vimapt.vpb', self.work_dir)
+        obj.extract()
+
+        rel_tpl_list = ['vimapt/control/vimapt.yaml',                           
+                        'vimapt/copyright/vimapt.yaml',                         
+                        'vimrc/vimapt.vimrc',] 
+
+        for rel_tpl_file in rel_tpl_list:                                       
+            tpl_file = os.path.join(self.work_dir, rel_tpl_file)          
+            tpl_file_dir = os.path.dirname(tpl_file)                            
+            _, ext_name = os.path.splitext(tpl_file)                            
+            target_file = os.path.join(tpl_file_dir, self.pkg_name + ext_name)   
+            print tpl_file                                                      
+            print target_file                                                   
+            os.rename(tpl_file, target_file)  
 
     def build_package(self):
         full_version = self.version + "-" + self.revision
@@ -43,7 +58,8 @@ class VimAptAutomakeFromGithub:
 if __name__ == "__main__":
     user_name = sys.argv[1]
     plugin_name = sys.argv[2]
-    obj = VimAptAutomakeFromGithub(user_name, plugin_name)
+    obj = AutomakeFromGithub(user_name, plugin_name)
     obj.remove_dot_git_dir()
+    obj.build_package_struct()
     obj.build_package()
     print obj.report_package_path()

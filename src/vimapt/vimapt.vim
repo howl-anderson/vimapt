@@ -3,7 +3,7 @@ for vimrc_file in split(glob('~/.vim/vimrc/*.vimrc'), '\n')
 endfor
 
 let s:current_file=expand("<sfile>")
-let s:command_list = ['install', 'remove', 'purge', 'update', 'repolist', 'list', 'purgelist']
+let s:command_list = ['install', 'githubinstall', 'remove', 'purge', 'update', 'repolist', 'list', 'purgelist']
 let runtimepath_stream = &runtimepath
 let runtimepath_list = split(runtimepath_stream, ',')
 let vim_dir_var = get(runtimepath_list, 0)
@@ -17,9 +17,31 @@ function VimAptGetInstall(vim_dir, package_name)
     python import os
     python import sys
     python current_dir = os.path.dirname(vim.eval("s:current_file"))
+    python bin_dir = os.path.join(current_dir, 'bin')
+    python sys.path.append(bin_dir)
     python python_script = os.path.join(current_dir, 'bin/install.py')
     python vim.command('let l:python_script = "' + python_script + '"')
     python sys.argv = ["", vim.eval("a:vim_dir"), vim.eval("a:package_name")]
+    execute "pyfile " . python_script
+    "let shell = "python " . l:python_script . " " . a:vim_dir . " " . a:package_name
+    "echo shell
+    "let output = system(shell)
+    "echo output
+endfunction
+
+function VimAptGetGithubInstall(vim_dir, user_package)
+    let user_package_list = split(a:user_package, "/")
+    let user_name = user_package_list[0]
+    let package_name = user_package_list[1]
+    python import vim
+    python import os
+    python import sys
+    python current_dir = os.path.dirname(vim.eval("s:current_file"))
+    python bin_dir = os.path.join(current_dir, 'bin')
+    python sys.path.append(bin_dir)
+    python python_script = os.path.join(current_dir, 'bin/github_install.py')
+    python vim.command('let l:python_script = "' + python_script + '"')
+    python sys.argv = ["", vim.eval("a:vim_dir"), vim.eval("l:user_name"), vim.eval("l:package_name")]
     execute "pyfile " . python_script
     "let shell = "python " . l:python_script . " " . a:vim_dir . " " . a:package_name
     "echo shell
@@ -32,6 +54,8 @@ function VimAptGetRemove(vim_dir, package_name)
     python import os
     python import sys
     python current_dir = os.path.dirname(vim.eval("s:current_file"))
+    python bin_dir = os.path.join(current_dir, 'bin')
+    python sys.path.append(bin_dir)
     python python_script = os.path.join(current_dir, 'bin/remove.py')
     python vim.command('let l:python_script = "' + python_script + '"')
     python sys.argv = ["", vim.eval("a:vim_dir"), vim.eval("a:package_name"), python_script]
@@ -43,6 +67,8 @@ function VimAptGetPurge(vim_dir, package_name)
     python import os
     python import sys
     python current_dir = os.path.dirname(vim.eval("s:current_file"))
+    python bin_dir = os.path.join(current_dir, 'bin')
+    python sys.path.append(bin_dir)
     python python_script = os.path.join(current_dir, 'bin/purge.py')
     python vim.command('let l:python_script = "' + python_script + '"')
     python sys.argv = ["", vim.eval("a:vim_dir"), vim.eval("a:package_name"), python_script]
@@ -54,6 +80,8 @@ function VimAptGetUpdate()
     python import os
     python import sys
     python current_dir = os.path.dirname(vim.eval("s:current_file"))
+    python bin_dir = os.path.join(current_dir, 'bin')
+    python sys.path.append(bin_dir)
     python python_script = os.path.join(current_dir, 'bin/update.py')
     python vim.command('let l:python_script = "' + python_script + '"')
     python sys.argv = ["", vim.eval("s:vim_dir_path")]
@@ -72,6 +100,8 @@ function VimAptGet(command_arg, ...)
     endif
     if vapt_command == 'install'
         call VimAptGetInstall(s:vim_dir_path, package_arg)
+    elseif vapt_command == 'githubinstall'
+        call VimAptGetGithubInstall(s:vim_dir_path, package_arg)
     elseif vapt_command == 'remove'
         call VimAptGetRemove(s:vim_dir_path, package_arg)
     elseif vapt_command == 'purge'
@@ -94,6 +124,8 @@ function VimAptGetPackageList()
     python import os
     python import sys
     python current_dir = os.path.dirname(vim.eval("s:current_file"))
+    python bin_dir = os.path.join(current_dir, 'bin')
+    python sys.path.append(bin_dir)
     python python_script = os.path.join(current_dir, 'bin/pkg_list.py')
     python vim.command('let l:python_script = "' + python_script + '"')
     python sys.argv = ["", vim.eval("s:vim_dir_path")]
@@ -105,6 +137,8 @@ function VimAptGetPackageRemoveList()
     python import os
     python import sys
     python current_dir = os.path.dirname(vim.eval("s:current_file"))
+    python bin_dir = os.path.join(current_dir, 'bin')
+    python sys.path.append(bin_dir)
     python python_script = os.path.join(current_dir, 'bin/pkg_remove_list.py')
     python vim.command('let l:python_script = "' + python_script + '"')
     python sys.argv = ["", vim.eval("s:vim_dir_path")]
@@ -116,6 +150,8 @@ function VimAptGetPackagePurgeList()
     python import os
     python import sys
     python current_dir = os.path.dirname(vim.eval("s:current_file"))
+    python bin_dir = os.path.join(current_dir, 'bin')
+    python sys.path.append(bin_dir)
     python python_script = os.path.join(current_dir, 'bin/pkg_purge_list.py')
     python vim.command('let l:python_script = "' + python_script + '"')
     python sys.argv = ["", vim.eval("s:vim_dir_path")]
