@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+import os
+from vimapt import RemoteRepo
+
+
+def main():
+    work_dir = os.getcwd()
+    repo_object = RemoteRepo.RemoteRepo(work_dir)
+    repo_object.make_package_index()
+
+
+if __name__ == "__main__":
+    main()
