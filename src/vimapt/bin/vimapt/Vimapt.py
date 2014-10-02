@@ -8,7 +8,6 @@ except ImportError:
     from yaml import Loader
 
 
-
 class Vimapt:
     def __init__(self, vim_dir):
         self.vim_dir = vim_dir
@@ -37,6 +36,7 @@ class Vimapt:
                 version_dict[root] = version
         return version_dict
 
+    # TODO: function name need do something
     def get_presist_list(self):
         record_dir = os.path.join(self.vim_dir, 'vimapt/install')
         pkg_list = [f for f in os.listdir(record_dir)

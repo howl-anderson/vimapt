@@ -8,6 +8,7 @@ import shutil
 from vimapt import Compress
 from vimapt import Extract  
 
+
 class VimAptAutomakeFromGithub:
     def __init__(self, user_name, plugin_name):
         self.version = "1.0"

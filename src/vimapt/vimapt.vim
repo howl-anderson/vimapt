@@ -12,7 +12,7 @@ let s:package_list = []
 let s:package_remove_list = []
 let s:package_purge_list = []
 
-function VimAptGetInstall(vim_dir, package_name)
+function VimAptInstall(vim_dir, package_name)
     python import vim
     python import os
     python import sys
@@ -29,7 +29,7 @@ function VimAptGetInstall(vim_dir, package_name)
     "echo output
 endfunction
 
-function VimAptGetGithubInstall(vim_dir, user_package)
+function VimAptGithubInstall(vim_dir, user_package)
     let user_package_list = split(a:user_package, "/")
     let user_name = user_package_list[0]
     let package_name = user_package_list[1]
@@ -88,7 +88,7 @@ function VimAptGetUpdate()
     execute "pyfile " . python_script
 endfunction
 
-function VimAptGet(command_arg, ...)
+function VimApt(command_arg, ...)
     let vapt_command = ''
     for commands in s:command_list
         if commands == a:command_arg
@@ -99,27 +99,27 @@ function VimAptGet(command_arg, ...)
         let package_arg = a:1
     endif
     if vapt_command == 'install'
-        call VimAptGetInstall(s:vim_dir_path, package_arg)
+        call VimAptInstall(s:vim_dir_path, package_arg)
     elseif vapt_command == 'githubinstall'
-        call VimAptGetGithubInstall(s:vim_dir_path, package_arg)
+        call VimAptGithubInstall(s:vim_dir_path, package_arg)
     elseif vapt_command == 'remove'
-        call VimAptGetRemove(s:vim_dir_path, package_arg)
+        call VimAptRemove(s:vim_dir_path, package_arg)
     elseif vapt_command == 'purge'
-        call VimAptGetPurge(s:vim_dir_path, package_arg)
+        call VimAptPurge(s:vim_dir_path, package_arg)
     elseif vapt_command == 'update'
-        call VimAptGetUpdate()
+        call VimAptUpdate()
     elseif vapt_command == 'list'
-        call VimAptGetList()
+        call VimAptList()
     elseif vapt_command == 'repolist'
-        call VimAptGetRepolist()
+        call VimAptRepolist()
     elseif vapt_command == 'purgelist'
-        call VimAptGetPurgelist()
+        call VimAptPurgelist()
     else
         echo "Error: unknow command"
     endif
 endfunction
 
-function VimAptGetPackageList()
+function VimAptPackageList()
     python import vim
     python import os
     python import sys
@@ -132,7 +132,7 @@ function VimAptGetPackageList()
     execute "pyfile " . python_script
 endfunction
 
-function VimAptGetPackageRemoveList()
+function VimAptPackageRemoveList()
     python import vim
     python import os
     python import sys
@@ -145,7 +145,7 @@ function VimAptGetPackageRemoveList()
     execute "pyfile " . python_script
 endfunction
 
-function VimAptGetPackagePurgeList()
+function VimAptPackagePurgeList()
     python import vim
     python import os
     python import sys
@@ -158,22 +158,22 @@ function VimAptGetPackagePurgeList()
     execute "pyfile " . python_script
 endfunction
 
-function VimAptGetList()
-    call VimAptGetPackageRemoveList()
+function VimAptList()
+    call VimAptPackageRemoveList()
     echo join(s:package_remove_list, "\n")
 endfunction
 
-function VimAptGetRepolist()
-    call VimAptGetPackageList()
+function VimAptRepolist()
+    call VimAptPackageList()
     echo join(s:package_list, "\n")
 endfunction
 
-function VimAptGetPurgelist()
-    call VimAptGetPackagePurgeList()
+function VimAptPurgelist()
+    call VimAptPackagePurgeList()
     echo join(s:package_purge_list, "\n")
 endfunction
 
-function VimAptGetComplete(ArgLead, CmdLine, CursorPos)
+function VimAptComplete(ArgLead, CmdLine, CursorPos)
     let token = split(a:CmdLine, '\_s\+')
     if len(token) == 1
     " there no arg
@@ -193,22 +193,22 @@ function VimAptGetComplete(ArgLead, CmdLine, CursorPos)
             return join(s:command_list, "\n")
         elseif complete_package_flag
             if current_command == "install"
-                call VimAptGetPackageList()
+                call VimAptPackageList()
                 return join(s:package_list, "\n")
             elseif current_command == "remove"
-                call VimAptGetPackageRemoveList()
+                call VimAptPackageRemoveList()
                 return join(s:package_remove_list, "\n")
             elseif current_command == "purge"
-                call VimAptGetPackagePurgeList()
+                call VimAptPackagePurgeList()
                 return join(s:package_purge_list, "\n")
             endif
         else
             return ""
         endif
     else
-        call VimAptGetPackageList()
+        call VimAptPackageList()
         return join(s:package_list, "\n")
     endif
 endfunction
 
-command! -nargs=* -complete=custom,VimAptGetComplete VimAptGet call VimAptGet(<f-args>)
+command! -nargs=* -complete=custom,VimAptComplete VimApt call VimApt(<f-args>)

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 import sys
-#import traceback
 from vimapt import Install
+
 
 def main():
     vim_dir = sys.argv[1]
@@ -12,7 +12,6 @@ def main():
         install.repo_install(package_name)
     except Exception, e:
         print "Error:", e
-        #traceback.print_exc()
         print "Install Failed!",
     else:
         print "Install Succeed!",

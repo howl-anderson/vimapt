@@ -1,87 +1,98 @@
-# Vimapt #
-vimapt is a vim package manager, it works like debian's apt tools,
-# feature #
-1. text-base & portable package ball format:"VPB", "VPB" is the abbreviation of "Vim Package Ball", it nomorally write as 'vpb'
-2. big and standard web-based repository
-3. "one package one config file", make vim package managable, easy to share your config, easy to backup
+Vimapt
+===
+**The missing package manager for Vim**
+
+
+Vimapt is a vim package manager, it's name have double meaning one is "vimapt" is the abbreviate of "VIM's Advantage Package Tools", two it works like `apt` tools on debian.
+
+## Feature ##
+1. text-based and  portable package ball format: "VPB", "VPB" is the abbreviation of "Vim Package Ball", it normally write as 'vpb'
+2. web-based centerise repository
+3. "one package, one config file", make vim package manageable, easy to share your config, easy to backup
 4. full-stack tools from package-make-tools to repository-build-tools, anything have the tools no mater what do you want to do with vimapt
-# Quick start #
-## get vimapt ##
-1. you can always download it from github/bitbucket
-2. i will buy the domain "vimapt.org" for the vimapt's office website, so when i done, you can download from the office website
-(as a poor graduate student, zero-income, if you want, you can donate for the vimapt, email me, thank you)
-## Install ##
-1. in your home dir's subdir '.vim',
-you should make dir "vimapt" and "vimrc"
-2. put the vimapt source to the "vimapt"
-3. bakup you ".vimrc" file(you will use it latter)
-clean you ".vimrc", add code as below show
 
-    source ~/.vim/vimapt/vimapt.vim
 
-4. if your ".vimrc" contain your vim setting, mv the common setting to the ".vim/vimrc/vim.vimrc".
-if your vim is new, well, jump this
-## Usage ##
-in your vim console, you type "VimAptGet install xxx" and press enter.
-if everything is ok, you well soon get the xxx plugin
-Notice: make sure you are online and the xxx plugin is in the repository
-# make a vpb package #
-use the tools, it's activate, just ask it's simple question. and you will get the package tpl dir
-go to your "xxx-yyy" dir,
-here xxx stand for your package name, yyy stand for your package version, it very like the debian package workflow
-put you plugin file in the right dir, ps: put your xxx.vim to "plugin" dir and so on
-run the "put.py" tools in your "xxx-yyy" dir, you will get a file named "xxx-yyy.vpb" in your parent dir.
-the .vpb is your package
-# build the repository #
-you can rsync the repo from the vimapt office website.
-but if you want manage you own repo, it still have the tools
-# Why not vimapt
+## Get vimapt
+1. you can always download from github / bitbucket
+2. I will buy the domain "vimapt.org" as vimapt's office website, so when I done, you can download from the office website
+(if you want, you can donate for the vimapt, email me, thank you)
 
-vimapt not only allows to:
+## Install
+1. in your home dir's subdir `.vim`, you should make directory `vimapt` and `vimrc`
+2. put the vimapt source to the `vimapt`
+3. bakup you `.vimrc` file (you will use it latter)
+4. clean you `.vimrc`, add code as below show  
+`source ~/.vim/vimapt/vimapt.vim`
 
-    keep track and configure your scripts right in .vimrc
-    install configured scripts
-    update configured scripts
-    search by name all available vim scripts
-    clean unused scripts up
-    run above actions in a single keypress with interactive mode
+5. if your `.vimrc` contain your vim setting, move the common setting to the `.vim/vimrc/vim.vimrc`. if your vim is new, well, jump this step
 
-But also Vimapt:
+## Usage
 
-    pack your package with you config file, so every one can quickly use it
-    can bakup you vimrc use git or hg
-    update but keep your vimrc
-    every can have it's package, beacause you have your own config
-    remove package
-    package depends can check
-    protect the vimscript author and mainiter's right
+In vim console, type `VimApt install xxx` and press enter.
 
-# Docs #
+If everything is OK, you well soon get the `xxx` plugin
+
+Notice: make sure you are online and the `xxx` plugin is in the repository
+
+## Make a vpb package
+Use the tools, it's interactive, just ask few simple questions. Then you will get the package template directory named `xxx-yyy`
+
+Here `xxx` stand for your package name, `yyy` stand for your package version, it very like the debian package workflow
+
+put you plugin file in the right directory (e.g. put your xxx.vim to "plugin" directory)
+
+run the `put.py` tools in your `xxx-yyy` directory, you will get a file named `xxx-yyy.vpb` in your parent directory.
+and the `xxx-yyy.vpb` file is your package
+
+## Build the repository
+general user should use office repository.
+
+but if you want manage you own repository, it still have the tools for you.
+
+## Why not vimapt
+Vimapt not only allows to:
+
+* keep track and configure your scripts right in .vimrc
+* install configured scripts
+* update configured scripts
+* search by name all available vim scripts
+* clean unused scripts up
+* run above actions in a single keypress with interactive mode
+
+But also vimapt:
+
+* pack your package with you config file, so every one can quickly use it
+* can bakup you vimrc use git or hg
+* update but keep your vimrc
+* every can have it's package, beacause you have your own config
+* remove package
+* package depends can check
+* protect the vimscript author and mainiter's right
+
+## Docs
 
 see :h vimapt vimdoc for more details.
 
-# People Using Vimapt #
+## People Using vimapt
 
 see Examples
 
-# FAQ #
+## FAQ
 
 see wiki
 
-# Contributors #
-
+## Contributors
 see vundle contributors
 
 Thank you!
 
-# Inspiration and ideas from #
+## Inspiration and ideas from
 
-    vundle
-    pathogen
-    bundler
-    Scott Bronson
+* Debian's apt tools
+* Homebrew on Mac OS X
 
-# Also #
+## Also
 
-    Vimapt was developed and tested with Vim 7.3 on *nux
-    Vimapt tries to be the top package manageer for vim
+Vimapt was developed and tested with Vim 7.3 on *nux
+
+Vimapt try to be **the missing one**

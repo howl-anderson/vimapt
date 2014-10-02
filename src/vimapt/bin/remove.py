@@ -5,6 +5,7 @@ from vimapt import Remove
 
 import traceback
 
+
 def main():
     vim_dir = sys.argv[1]
     package_name = sys.argv[2]

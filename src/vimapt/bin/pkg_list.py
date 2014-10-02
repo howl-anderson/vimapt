@@ -18,11 +18,11 @@ def main():
     source_stream = fd.read()
     fd.close()
     source_data = load(source_stream, Loader=Loader)
-    package_list = source_data.keys()
-    return package_list
+    package_name_list = source_data.keys()
+    return package_name_list
 
 
 if __name__ == "__main__":
     package_list = main()
-    pkg_list_string = "[" + ",".join(["'" + i + "'" for i in package_list ]) + "]"
+    pkg_list_string = "[" + ",".join(["'" + i + "'" for i in package_list]) + "]"
     vim.command('let s:package_list = ' + pkg_list_string)

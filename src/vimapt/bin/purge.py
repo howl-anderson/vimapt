@@ -3,6 +3,7 @@
 import sys
 from vimapt import Purge
 
+
 def main():
     vim_dir = sys.argv[1]
     package_name = sys.argv[2]

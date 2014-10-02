@@ -23,11 +23,11 @@ class Remove():
         fd.close()
         meta_data = load(file_stream, Loader=Loader)
 
-        for file, _ in meta_data:
-            file_token = file.split("/")
+        for file_name, _ in meta_data:
+            file_token = file_name.split("/")
             if file_token[0] == "vimrc":
                 continue
-            target_path = os.path.join(self.vim_dir, file)
+            target_path = os.path.join(self.vim_dir, file_name)
 
             #print target_path
             if os.path.isfile(target_path):

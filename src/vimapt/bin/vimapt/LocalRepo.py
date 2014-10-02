@@ -17,11 +17,12 @@ class LocalRepo(object):
         self.cache_pool_dir = os.path.join(self.cache_dir, 'pool')
         self.local_package_index_path = os.path.join(self.cache_dir,
                                                      'index/package')
-        self.remote_package_index_relpath = 'index/package'
+        self.remote_package_index_relative_path = 'index/package'
 
     def get_remote_package_index(self, source_url):
-        filehandle = urllib.urlopen(source_url)
-        source_stream = filehandle.read()
+        fd = urllib.urlopen(source_url)
+        source_stream = fd.read()
+        fd.close()
         return source_stream
 
     def write_local_package_index(self, stream):
@@ -38,7 +39,7 @@ class LocalRepo(object):
     def update(self):
         source_server = self.get_config()
         remote_source_url = os.path.join(source_server,
-                                         self.remote_package_index_relpath)
+                                         self.remote_package_index_relative_path)
         source_stream = self.get_remote_package_index(remote_source_url)
         self.write_local_package_index(source_stream)
 
@@ -52,15 +53,16 @@ class LocalRepo(object):
     def get_package(self, package_name):
         source_data = self.extract()
         if not package_name in source_data:
-            print "NOT FOUND package: " + package_name
+            print "Not found package: " + package_name
             return False
         else:
-            package_relpath = source_data[package_name]['path']
+            package_relative_path = source_data[package_name]['path']
             source_server = self.get_config()
-            package_url = os.path.join(source_server, package_relpath)
+            package_url = os.path.join(source_server, package_relative_path)
 
-            filehandle = urllib.urlopen(package_url) # TODO: add proxy and timeout
-            package_stream = filehandle.read()
+            fd = urllib.urlopen(package_url) # TODO: add proxy and timeout, may use requests library
+            package_stream = fd.read()
+            fd.close()
             package_full_name = os.path.basename(package_url)
             local_package_path = os.path.join(self.cache_pool_dir,
                                               package_full_name)

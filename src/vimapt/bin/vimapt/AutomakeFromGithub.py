@@ -8,6 +8,7 @@ import shutil
 from vimapt import Compress
 from vimapt import Extract  
 
+
 class AutomakeFromGithub:
     def __init__(self, user_name, plugin_name):
         self.version = "1.0"
@@ -47,7 +48,7 @@ class AutomakeFromGithub:
     def build_package(self):
         full_version = self.version + "-" + self.revision
         self.full_pkg_name = self.pkg_name + "_" + full_version + ".vpb"
-        self.target_file = self.full_pkg_name # TODO
+        self.target_file = self.full_pkg_name  # TODO
         compress_object = Compress.Compress(self.work_dir, self.target_file)
         compress_object.compress()
 

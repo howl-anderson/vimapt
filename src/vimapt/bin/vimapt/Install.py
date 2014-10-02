@@ -22,14 +22,14 @@ import Extract
 
 class Install():
     def __init__(self, vim_dir):
-        self.vim_dir = vim_dir # user's .vim dir path
-        self.pkg_name = None # package's name
-        self.tmpdir = None
+        self.vim_dir = vim_dir  # user's .vim dir path
+        self.pkg_name = None  # package's name
+        self.tmp_dir = None
 
-    def extract_hook(self, file, _):
-        token = file.split("/")
+    def extract_hook(self, file_name, _):
+        token = file_name.split("/")
         if token[0] == "vimrc":
-            file_path = os.path.join(self.vim_dir, file)
+            file_path = os.path.join(self.vim_dir, file_name)
             if os.path.exists(file_path):
                 return False
         else:
@@ -52,7 +52,6 @@ class Install():
     def repo_install(self, package_name):
         repo = LocalRepo.LocalRepo(self.vim_dir)
         package_path = repo.get_package(package_name)
-        #print package_path
         if package_path:
             self.install_package(package_path)
         else:
@@ -60,11 +59,11 @@ class Install():
             raise AssertionError()
 
     def init_check(self, package_file):
-        self.tmpdir = tempfile.mkdtemp()
-        Extract.Extract(package_file, self.tmpdir).extract()
+        self.tmp_dir = tempfile.mkdtemp()
+        Extract.Extract(package_file, self.tmp_dir).extract()
 
     def check_repeat_install(self):
-        self.pkg_name = Vimapt.Vimapt(self.tmpdir).scan_package_name()
+        self.pkg_name = Vimapt.Vimapt(self.tmp_dir).scan_package_name()
         installed_list = Vimapt.Vimapt(self.vim_dir).get_installed_list()
         if self.pkg_name in installed_list:
             msg = "package: '" + self.pkg_name + "' already installed!"
@@ -72,10 +71,10 @@ class Install():
             raise AssertionError()
 
     def check_depend(self):
-        controll_dir = os.path.join(self.tmpdir, "vimapt/control/")
-        dir_list = os.listdir(controll_dir)
-        if len(dir_list) == 1 and os.path.isfile(os.path.join(controll_dir, dir_list[0])):
-            fp = open(os.path.join(controll_dir, dir_list[0]))
+        controller_dir = os.path.join(self.tmp_dir, "vimapt/control/")
+        dir_list = os.listdir(controller_dir)
+        if len(dir_list) == 1 and os.path.isfile(os.path.join(controller_dir, dir_list[0])):
+            fp = open(os.path.join(controller_dir, dir_list[0]))
             file_stream = fp.read()
             fp.close()
             control_data = load(file_stream, Loader=Loader)
@@ -83,13 +82,11 @@ class Install():
             if depends_data == "":
                 pass
             else:
-                #print depends_data
                 depends_list = depends_data.split(",")
-                #print depends_list
                 package_depends_list = []
                 for depend in depends_list:
                     match = re.match("\s*([\.a-z][a-z0-9]+)\s*\(\s*([^\(\)]+)\s*\)\s*", depend)
-                    if match == None:
+                    if match is None:
                         match = re.match("\s*([\.a-z][a-z0-9]+)\s*", depend)
                         match_list = match.groups()
                     else:
@@ -103,18 +100,18 @@ class Install():
                         match_soft = match_list[0]
                         if len(match_list) == 1:
                             match_version = ""
-                            match_operater = "*"
+                            match_operator = "*"
                         else:
                             operate = match_list[1]
                             operate_match = re.match("([=><]+)\s*([0-9\.]+)", operate)
                             operate_match_list = operate_match.groups()
                             if len(operate_match_list) == 1:
-                                match_operater = "*"
+                                match_operator = "*"
                                 match_version = operate_match_list[0]
                             else:
-                                match_operater = operate_match_list[0]
+                                match_operator = operate_match_list[0]
                                 match_version = operate_match_list[1]
-                    depend_info = [match_soft, match_operater, match_version] 
+                    depend_info = [match_soft, match_operator, match_version]
                     package_depends_list.append(depend_info)
                 inner_package_depends_list = []
                 outer_package_depends_list = []
@@ -127,6 +124,7 @@ class Install():
                         outer_package_depends_list.append(depend)
 
                 version_dict = Vimapt.Vimapt(self.vim_dir).get_version_dict()
+                # TODO:version compare need find a better way
                 print version_dict
                 print inner_package_depends_list
                 for depend in inner_package_depends_list:
@@ -140,14 +138,14 @@ class Install():
                                     print msg
                                     raise AssertionError()
                             elif depend[1] == ">=":
-                                if version_dict[depend[0]] >=  depend[2]:
+                                if version_dict[depend[0]] >= depend[2]:
                                     continue
                                 else:
                                     msg = depend[0] + "'s version is " + version_dict[depend[0]] + ", but package want it >= " + depend[2]
                                     print msg
                                     raise AssertionError()
                             elif depend[1] == "<=":
-                                if version_dict[depend[0]] <=  depend[2]:
+                                if version_dict[depend[0]] <= depend[2]:
                                     continue
                                 else:
                                     msg = depend[0] + "'s version is " + version_dict[depend[0]] + ", but package want it <= " + depend[2]

@@ -23,9 +23,9 @@ class Compress():
             fd = open(f, 'r')
             file_lines = fd.readlines()
             fd.close()
-            relfile_path = os.path.relpath(f, self.source_dir)
+            relative_file_path = os.path.relpath(f, self.source_dir)
             if self.filter_object:
-                if not self.filter_object(relfile_path, file_lines):
+                if not self.filter_object(relative_file_path, file_lines):
                     continue
             if self.hook_object:
                 f, file_lines = self.hook_object(f, file_lines)
@@ -36,7 +36,7 @@ class Compress():
                 if not last_line.endswith("\n"):
                     file_lines[-1] += "\n"
                 ball_content += file_lines
-            ball_data.append([relfile_path, line_number])
+            ball_data.append([relative_file_path, line_number])
 
         meta_output = dump(ball_data, Dumper=Dumper)
         ball_output = "".join(ball_content)

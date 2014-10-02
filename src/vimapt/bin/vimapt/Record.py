@@ -7,6 +7,7 @@ try:
 except ImportError:
     from yaml import Dumper
 
+
 class Record:
     def __init__(self, package_name, output_dir):
         self.output_dir = output_dir

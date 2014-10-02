@@ -4,6 +4,7 @@ import unittest
 
 import Install
 
+
 class DefaultWidgetSizeTestCase(unittest.TestCase):
     def runTest(self): 
         install = Install.Install("./vim")
