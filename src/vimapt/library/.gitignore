@@ -1,0 +1,4 @@
+dist/
+vimapt.egg-info/
+build/
+debian/
