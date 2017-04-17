@@ -36,6 +36,11 @@ class Compress(object):
             ball_data.append([relative_file_path, line_number])
 
         meta_output = dumps(ball_data)
+
+        if meta_output[-1] != '\n':
+            # if meta data is not tailed with \n, append one to it
+            meta_output += '\n'
+
         ball_output = "".join(ball_content)
         output = meta_output + "\n" + ball_output
         fd = open(self.output_file, 'w')
