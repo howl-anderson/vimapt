@@ -5,7 +5,7 @@ setup(
     name='vimapt',
     version='0.1',
     install_requires=[
-        'pureyaml',
+        'pyyaml',
         'six',
         'semantic_version'
     ],
