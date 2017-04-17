@@ -1,4 +1,4 @@
-from pureyaml import dump
-from pureyaml import load
+from pureyaml import dump as dumps
+from pureyaml import load as loads
 
-__all__ = ['dump', 'load']
+__all__ = ['dumps', 'loads']
