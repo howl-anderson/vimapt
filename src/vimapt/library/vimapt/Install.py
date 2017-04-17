@@ -69,9 +69,9 @@ class Install(object):
             fp = open(os.path.join(controller_dir, dir_list[0]))
             file_stream = fp.read()
             fp.close()
-            control_data = loads(file_stream)
-            depends_data = control_data["depends"]
-            if depends_data == "":
+            control_data = loads(file_stream) or dict()  # in case control file is empty
+            depends_data = control_data.get("depends")
+            if depends_data is None:
                 pass
             else:
                 depends_list = depends_data.split(",")
