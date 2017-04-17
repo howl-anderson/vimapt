@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+
 from vimapt import Purge
 
 
@@ -10,11 +11,12 @@ def main():
     try:
         purge = Purge.Purge(package_name, vim_dir)
         purge.purge_package()
-    except Exception, e:
-        print "Error:", e
-        print "Purge Failed!"
+    except Exception as e:
+        print("Error:", e)
+        print("Purge Failed!")
     else:
-        print "Purge Succeed!"
+        print("Purge Succeed!")
+
 
 if __name__ == "__main__":
     main()

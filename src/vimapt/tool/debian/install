@@ -1,0 +1,4 @@
+vimapt-maketpl usr/bin/
+vimapt-makevpb usr/bin/
+vimapt-makeindex usr/bin/
+vimapt.vpb usr/share/vimapt/

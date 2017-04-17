@@ -1,0 +1,7 @@
+Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
+Name: python-vimapt
+Maintainer: Xiaoquan Kong <u1mail2me@gmail.com>
+Source: http://www.vimapt.org
+
+Copyright: 2012-2017 Xiaoquan Kong <u1mail2me@gmail.com>
+License: GPL-2+

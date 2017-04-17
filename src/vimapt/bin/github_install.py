@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
-import sys
 import os
-from vimapt import Extract
+import sys
+
 from vimapt import AutomakeFromGithub
+from vimapt import Extract
 
 
 def main():
@@ -19,11 +20,11 @@ def main():
         package_file_full_path = os.path.join(vim_dir, "vimapt/bin", package_file)
         obj = Extract.Extract(package_file_full_path, vim_dir)
         obj.extract()
-    except Exception, e:
-        print "Error:", e
-        print "Github Install Failed!",
+    except Exception as e:
+        print("Error:", e)
+        print("Github Install Failed!")
     else:
-        print "Github Install Succeed!",
+        print("Github Install Succeed!")
 
 
 if __name__ == "__main__":

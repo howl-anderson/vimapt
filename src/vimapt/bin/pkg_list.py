@@ -2,22 +2,21 @@
 
 import os
 import sys
+
 import vim
-from yaml import load
-try:
-    from yaml import CLoader as Loader
-except ImportError:
-    from yaml import Loader
+
+from vimapt.data_format.yaml import load
 
 
 def main():
     vim_dir = sys.argv[1]
     cache_dir = os.path.join(vim_dir, 'vimapt/cache')
     local_package_index_path = os.path.join(cache_dir, 'index/package')
-    fd = open(local_package_index_path)
-    source_stream = fd.read()
-    fd.close()
-    source_data = load(source_stream, Loader=Loader)
+
+    with open(local_package_index_path) as fd:
+        source_stream = fd.read()
+
+    source_data = load(source_stream)
     package_name_list = source_data.keys()
     return package_name_list
 

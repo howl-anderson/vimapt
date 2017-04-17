@@ -1,0 +1,6 @@
+*/
+!vimapt/
+!vimapt/**/*
+!vimrc/
+!vimrc/*
+!.gitignore
