@@ -1,3 +1,0 @@
-pureyaml
-six
-semantic_version
