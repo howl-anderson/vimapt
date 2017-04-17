@@ -2,7 +2,7 @@
 
 import os
 
-from .data_format import load
+from .data_format import loads
 
 
 class Extract(object):
@@ -43,7 +43,7 @@ class Extract(object):
             start_point += file_length
 
     def get_file_list(self):
-        meta_data = load(self.meta_stream)  # load list from meta, use YAML format
+        meta_data = loads(self.meta_stream)  # load list from meta, use YAML format
         return meta_data
 
     def hook(self, hook_object):

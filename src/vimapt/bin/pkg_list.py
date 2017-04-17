@@ -5,7 +5,7 @@ import sys
 
 import vim
 
-from vimapt.data_format import load
+from vimapt.data_format import loads
 
 
 def main():
@@ -16,7 +16,7 @@ def main():
     with open(local_package_index_path) as fd:
         source_stream = fd.read()
 
-    source_data = load(source_stream)
+    source_data = loads(source_stream)
     package_name_list = source_data.keys()
     return package_name_list
 

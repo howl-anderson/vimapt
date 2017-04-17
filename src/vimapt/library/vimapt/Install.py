@@ -4,7 +4,7 @@ import os
 import re
 import tempfile
 
-from .data_format import load
+from .data_format import loads
 
 from . import Record
 from . import LocalRepo
@@ -69,7 +69,7 @@ class Install(object):
             fp = open(os.path.join(controller_dir, dir_list[0]))
             file_stream = fp.read()
             fp.close()
-            control_data = load(file_stream)
+            control_data = loads(file_stream)
             depends_data = control_data["depends"]
             if depends_data == "":
                 pass

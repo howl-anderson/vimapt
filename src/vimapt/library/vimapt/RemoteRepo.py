@@ -2,7 +2,7 @@
 
 import os
 
-from .data_format import dump
+from .data_format import dumps
 
 
 class RemoteRepo(object):
@@ -17,7 +17,7 @@ class RemoteRepo(object):
 
     def make_package_index(self):
         package_data = self.scan_pool()
-        package_stream = dump(package_data)
+        package_stream = dumps(package_data)
         fd = open(self.package_abspath, 'w')
         fd.write(package_stream)
         fd.close()

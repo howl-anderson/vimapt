@@ -2,7 +2,7 @@
 
 import os
 
-from .data_format import dump
+from .data_format import dumps
 
 
 class Compress(object):
@@ -35,7 +35,7 @@ class Compress(object):
                 ball_content += file_lines
             ball_data.append([relative_file_path, line_number])
 
-        meta_output = dump(ball_data)
+        meta_output = dumps(ball_data)
         ball_output = "".join(ball_content)
         output = meta_output + "\n" + ball_output
         fd = open(self.output_file, 'w')

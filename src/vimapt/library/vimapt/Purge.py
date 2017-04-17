@@ -2,7 +2,7 @@
 
 import os
 
-from .data_format import load
+from .data_format import loads
 
 
 class Purge(object):
@@ -24,7 +24,7 @@ class Purge(object):
         fd = open(file_path, 'r')
         file_stream = fd.read()
         fd.close()
-        meta_data = load(file_stream)
+        meta_data = loads(file_stream)
 
         for file_name, _ in meta_data:
             target_path = os.path.join(self.vim_dir, file_name)

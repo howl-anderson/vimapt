@@ -2,7 +2,7 @@
 
 import os
 
-from .data_format import dump
+from .data_format import dumps
 
 
 class Record:
@@ -14,6 +14,6 @@ class Record:
         record_dir = os.path.join(self.output_dir, "vimapt/install")
         record_file = os.path.join(record_dir, self.package_name)
         fd = open(record_file, 'w')
-        meta_stream = dump(meta_data)
+        meta_stream = dumps(meta_data)
         fd.write(meta_stream)
         fd.close()

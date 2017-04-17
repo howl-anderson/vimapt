@@ -6,7 +6,7 @@ import contextlib
 import six
 import six.moves.urllib.request as urllib_request
 
-from .data_format import load
+from .data_format import loads
 
 
 class LocalRepo(object):
@@ -51,7 +51,7 @@ class LocalRepo(object):
         fd = open(self.local_package_index_path)
         source_stream = fd.read()
         fd.close()
-        source_data = load(source_stream)
+        source_data = loads(source_stream)
         return source_data
 
     def get_package(self, package_name):

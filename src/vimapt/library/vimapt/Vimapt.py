@@ -2,7 +2,7 @@
 
 import os
 
-from .data_format import load
+from .data_format import loads
 
 
 class Vimapt(object):
@@ -27,7 +27,7 @@ class Vimapt(object):
                 fd = open(f_abspath)
                 file_stream = fd.read()
                 fd.close()
-                control_data = load(file_stream)
+                control_data = loads(file_stream)
                 version = control_data["version"]
                 root, ext = os.path.splitext(f)
                 version_dict[root] = version
