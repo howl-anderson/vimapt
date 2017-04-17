@@ -5,7 +5,7 @@ import sys
 
 import vim
 
-from vimapt.data_format.yaml import load
+from vimapt.data_format import load
 
 
 def main():

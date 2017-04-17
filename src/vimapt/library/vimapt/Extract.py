@@ -2,7 +2,7 @@
 
 import os
 
-from .data_format.yaml import load
+from .data_format import load
 
 
 class Extract(object):

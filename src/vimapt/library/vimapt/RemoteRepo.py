@@ -2,7 +2,7 @@
 
 import os
 
-from .data_format.yaml import dump
+from .data_format import dump
 
 
 class RemoteRepo(object):

@@ -6,7 +6,7 @@ import contextlib
 import six
 import six.moves.urllib.request as urllib_request
 
-from .data_format.yaml import load
+from .data_format import load
 
 
 class LocalRepo(object):

@@ -4,7 +4,7 @@ import os
 import re
 import tempfile
 
-from .data_format.yaml import load
+from .data_format import load
 
 from . import Record
 from . import LocalRepo
