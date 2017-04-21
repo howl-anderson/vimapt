@@ -109,3 +109,4 @@ Session.vim
 tags
 # pycharm
 .idea
+.DS_Store
