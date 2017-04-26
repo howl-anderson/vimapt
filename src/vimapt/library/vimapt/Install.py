@@ -1,15 +1,19 @@
 #!/usr/bin/env python
 
 import os
-import re
 import tempfile
+import logging
+
+import requirements
+import semantic_version
 
 from .data_format import loads
-
 from . import Record
 from . import LocalRepo
 from . import Vimapt
 from . import Extract
+
+logger = logging.getLogger(__name__)
 
 
 class Install(object):
@@ -65,110 +69,88 @@ class Install(object):
     def check_depend(self):
         controller_dir = os.path.join(self.tmp_dir, "vimapt/control/")
         dir_list = os.listdir(controller_dir)
-        if len(dir_list) == 1 and os.path.isfile(os.path.join(controller_dir, dir_list[0])):
-            fp = open(os.path.join(controller_dir, dir_list[0]))
+        controller_file = os.path.join(controller_dir, dir_list[0])
+
+        with open(controller_file) as fp:
             file_stream = fp.read()
-            fp.close()
-            control_data = loads(file_stream) or dict()  # in case control file is empty
-            depends_data = control_data.get("depends")
-            if depends_data is None:
-                pass
-            else:
-                depends_list = depends_data.split(",")
-                package_depends_list = []
-                for depend in depends_list:
-                    match = re.match("\s*([\.a-z][a-z0-9]+)\s*\(\s*([^\(\)]+)\s*\)\s*", depend)
-                    if match is None:
-                        match = re.match("\s*([\.a-z][a-z0-9]+)\s*", depend)
-                        match_list = match.groups()
-                    else:
-                        match_list = match.groups()
 
-                    if len(match_list) == 0:
-                        msg = "package's depend format is broken"
-                        print(msg)
-                        raise AssertionError()
-                    else:
-                        match_soft = match_list[0]
-                        if len(match_list) == 1:
-                            match_version = ""
-                            match_operator = "*"
-                        else:
-                            operate = match_list[1]
-                            operate_match = re.match("([=><]+)\s*([0-9\.]+)", operate)
-                            operate_match_list = operate_match.groups()
-                            if len(operate_match_list) == 1:
-                                match_operator = "*"
-                                match_version = operate_match_list[0]
-                            else:
-                                match_operator = operate_match_list[0]
-                                match_version = operate_match_list[1]
-                    depend_info = [match_soft, match_operator, match_version]
-                    package_depends_list.append(depend_info)
-                inner_package_depends_list = []
-                outer_package_depends_list = []
-                for depend in package_depends_list:
-                    if depend[0].startswith("."):
-                        inner_depend = depend
-                        inner_depend[0] = inner_depend[0][1:]
-                        inner_package_depends_list.append(depend)
-                    else:
-                        outer_package_depends_list.append(depend)
+        control_data = loads(file_stream) or dict()  # in case control file is empty
 
-                version_dict = Vimapt.Vimapt(self.vim_dir).get_version_dict()
-                # TODO:version compare need find a better way
-                print(version_dict)
-                print(inner_package_depends_list)
-                for depend in inner_package_depends_list:
-                    if depend[0] in version_dict:
-                        if depend[1] != "*":
-                            if depend[1] == "=":
-                                if version_dict[depend[0]] == depend[2]:
-                                    continue
-                                else:
-                                    msg = "package: " + depend[0] + "'s version is " + version_dict[
-                                        depend[0]] + ", but package want it = " + depend[2]
-                                    print(msg)
-                                    raise AssertionError()
-                            elif depend[1] == ">=":
-                                if version_dict[depend[0]] >= depend[2]:
-                                    continue
-                                else:
-                                    msg = depend[0] + "'s version is " + version_dict[
-                                        depend[0]] + ", but package want it >= " + depend[2]
-                                    print(msg)
-                                    raise AssertionError()
-                            elif depend[1] == "<=":
-                                if version_dict[depend[0]] <= depend[2]:
-                                    continue
-                                else:
-                                    msg = depend[0] + "'s version is " + version_dict[
-                                        depend[0]] + ", but package want it <= " + depend[2]
-                                    print(msg)
-                                    raise AssertionError()
-                            elif depend[1] == ">":
-                                if version_dict[depend[0]] > depend[2]:
-                                    continue
-                                else:
-                                    msg = depend[0] + "'s version is " + version_dict[
-                                        depend[0]] + ", but package want it > " + depend[2]
-                                    print(msg)
-                                    raise AssertionError()
-                            elif depend[1] == "<":
-                                if version_dict[depend[0]] < depend[2]:
-                                    continue
-                                else:
-                                    msg = depend[0] + "'s version is " + version_dict[
-                                        depend[0]] + ", but package want it < " + depend[2]
-                                    print(msg)
-                                    raise AssertionError()
-                        else:
-                            pass
-                    else:
-                        msg = "inner depend package '" + depend[0] + "' is not install!"
-                        print(msg)
-                        raise AssertionError()
-        else:
-            msg = "package format is broken"
-            print(msg)
-            raise AssertionError()
+        logger.info("<%s> control data: %s", controller_file, control_data)
+
+        depends_data = control_data.get("depends", [])
+        conflicts_data = control_data.get("conflicts", [])
+
+        depend_items = self._parse_requirement(depends_data)
+        conflicts_items = self._parse_requirement(conflicts_data)
+
+        logger.info("<%s> depend data: %s", controller_file, depend_items)
+        logger.info("<%s> conflicts data: %s", controller_file, conflicts_items)
+
+        _, not_matched_requirements = self.check_requirement(depend_items)
+        matched_requirements, _ = self.check_requirement(conflicts_items)
+
+        if not len(not_matched_requirements) and not len(matched_requirements):
+            logger.info("<%s> check depend is pass!", controller_file)
+            return True
+
+        msg = "package requirements is not meet, depend missing: %s, conflict appear: %s"
+        print(msg % (not_matched_requirements, matched_requirements))
+        raise AssertionError()
+
+    def _parse_requirement(self, requirements_data):
+        requirements_items = []
+
+        # if requirement is a string, then translate to a single element list
+        if isinstance(requirements_data, str):
+            requirements_data = [requirements_data]
+
+        for requirement_str in requirements_data:
+            requirements_items.extend(list(requirements.parse(requirement_str)))
+        return requirements_items
+
+    def check_requirement(self, requirements):
+        not_matched_requirements = []
+        matched_requirements = []
+
+        version_dict = Vimapt.Vimapt(self.vim_dir).get_version_dict()
+
+        for requirement in requirements:
+            try:
+                package_version = version_dict[requirement.name]
+            except KeyError:
+                not_matched_requirements.append(requirement)
+                continue
+
+            check_pass_flag = True
+
+            installed_version = semantic_version.Version(package_version)
+
+            for spec_requirement in requirement.specs:
+                version_comparer = self.get_comparer(spec_requirement[0])
+                require_version = semantic_version.Version(spec_requirement[1])
+                if not version_comparer(installed_version, require_version):
+                    not_matched_requirements.append(requirement)
+                    check_pass_flag = False
+                    break
+
+            if check_pass_flag:
+                matched_requirements.append(requirement)
+
+        return matched_requirements, not_matched_requirements
+
+    def get_comparer(self, comparer_str):
+        mapping = {
+            "<": lambda x, y: x < y,
+            ">": lambda x, y: x > y,
+            "<=": lambda x, y: x <= y,
+            ">=": lambda x, y: x >= y
+        }
+
+        try:
+            comparer = mapping[comparer_str]
+        except KeyError:
+            raise ValueError("No such comparer %s" % comparer_str)
+
+        return comparer
+
