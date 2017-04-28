@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 import os
-import sys
 
+import sys
 import vim
 
 
@@ -16,5 +16,5 @@ def main():
 
 if __name__ == "__main__":
     package_list = main()
-    pkg_list_string = "[" + ",".join(["'" + i + "'" for i in package_list ]) + "]"
+    pkg_list_string = "[" + ",".join(["'" + i + "'" for i in package_list]) + "]"
     vim.command('let s:package_remove_list = ' + pkg_list_string)

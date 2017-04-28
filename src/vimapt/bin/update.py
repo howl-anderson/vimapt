@@ -7,14 +7,9 @@ from vimapt import LocalRepo
 
 def main():
     vim_dir = sys.argv[1]
-    try:
-        repo = LocalRepo.LocalRepo(vim_dir)
-        repo.update()
-    except Exception as e:
-        print("Error:", e)
-        print("Update Failed!")
-    else:
-        print("Update Succeed!")
+    repo = LocalRepo.LocalRepo(vim_dir)
+    repo.update()
+    print("Update Succeed!")
 
 
 if __name__ == "__main__":
