@@ -31,8 +31,6 @@ function VimAptCommand(command_name, ...)
     call VimAptPythonCall('current_dir = os.path.dirname(vim.eval("s:current_file"))')
     call VimAptPythonCall('library_dir = os.path.join(current_dir, "library")')
     call VimAptPythonCall('sys.path.append(library_dir)')
-    call VimAptPythonCall('third_party_dir = os.path.join(current_dir, "third_party")')
-    call VimAptPythonCall('sys.path.append(third_party_dir)')
 
     call VimAptPythonCall('python_script = os.path.join(current_dir, "bin/' . a:command_name . '.py")')
     call VimAptPythonCall('vim.command("let s:python_script = \"" + python_script + "\"")')
