@@ -51,7 +51,3 @@ class Extract(object):
 
     def filter(self, filter_object):
         self.filter_object = filter_object
-
-if __name__ == "__main__":
-    o = Extract("vimapt_1.0-1.vpb", "./output")
-    o.extract()
