@@ -7,7 +7,8 @@ setup(
     install_requires=[
         'pyyaml',
         'six',
-        'semantic_version'
+        'semantic_version',
+        'requirements-parser'
     ],
     packages=find_packages(exclude=[]),
     url='www.vimapt.org',
