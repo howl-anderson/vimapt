@@ -1,1 +1,4 @@
-from .VimAptException import VimAptException
+from __future__ import absolute_import
+
+from .VimaptException import VimaptException
+from .VimaptAbortOperationException import VimaptAbortOperationException
