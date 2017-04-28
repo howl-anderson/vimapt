@@ -8,6 +8,7 @@ import requirements
 import semantic_version
 
 from .data_format import loads
+from vimapt.exception import VimaptAbortOperationException
 from . import Record
 from . import LocalRepo
 from . import Vimapt
@@ -51,8 +52,7 @@ class Install(object):
         if package_path:
             self.install_package(package_path)
         else:
-            print("use network to get repository package error!")
-            raise AssertionError()
+            raise VimaptAbortOperationException("use network to get repository package error!")
 
     def init_check(self, package_file):
         self.tmp_dir = tempfile.mkdtemp()
@@ -63,8 +63,7 @@ class Install(object):
         installed_list = Vimapt.Vimapt(self.vim_dir).get_installed_list()
         if self.pkg_name in installed_list:
             msg = "package: '" + self.pkg_name + "' already installed!"
-            print(msg)
-            raise AssertionError()
+            raise VimaptAbortOperationException(msg)
 
     def check_depend(self):
         controller_dir = os.path.join(self.tmp_dir, "vimapt/control/")
@@ -95,8 +94,7 @@ class Install(object):
             return True
 
         msg = "package requirements is not meet, depend missing: %s, conflict appear: %s"
-        print(msg % (not_matched_requirements, matched_requirements))
-        raise AssertionError()
+        raise VimaptAbortOperationException(msg % (not_matched_requirements, matched_requirements))
 
     def _parse_requirement(self, requirements_data):
         requirements_items = []
@@ -153,4 +151,3 @@ class Install(object):
             raise ValueError("No such comparer %s" % comparer_str)
 
         return comparer
-
