@@ -16,7 +16,7 @@ class Vimapt(object):
         record_dir = os.path.join(self.vim_dir, 'vimapt/control')
         pkg_list = []
         for f in os.listdir(record_dir):
-            if os.path.isfile(os.path.join(record_dir, f)):
+            if os.path.isfile(os.path.join(record_dir, f)) and not os.path.basename(f).startswith('.'):
                 root, ext = os.path.splitext(f)
                 pkg_list.append(root)
         return pkg_list
@@ -50,8 +50,12 @@ class Vimapt(object):
     # TODO: function name need do something
     def get_presist_list(self):
         record_dir = os.path.join(self.vim_dir, 'vimapt/install')
-        pkg_list = [f for f in os.listdir(record_dir)
-                    if os.path.isfile(os.path.join(record_dir, f))]
+        pkg_list = []
+
+        for f in os.listdir(record_dir):
+            if os.path.isfile(os.path.join(record_dir, f)) and not os.path.basename(f).startswith('.'):
+                pkg_list.append(f)
+
         return pkg_list
 
     def get_package_list(self):
@@ -61,7 +65,8 @@ class Vimapt(object):
         record_dir = os.path.join(self.vim_dir, 'vimapt/control')
         pkg_list = []
         for f in os.listdir(record_dir):
-            if os.path.isfile(os.path.join(record_dir, f)):
+            if os.path.isfile(os.path.join(record_dir, f)) and not os.path.basename(f).startswith('.'):
                 root, ext = os.path.splitext(f)
                 pkg_list.append(root)
+
         return pkg_list[0]

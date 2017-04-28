@@ -9,8 +9,12 @@ import vim
 def main():
     vim_dir = sys.argv[1]
     install_dir = os.path.join(vim_dir, 'vimapt/install')
-    file_list = [f for f in os.listdir(install_dir)
-                 if os.path.isfile(os.path.join(install_dir, f))]
+    file_list = []
+
+    for f in os.listdir(install_dir):
+        if os.path.isfile(os.path.join(install_dir, f)) and not os.path.basename(f).startswith('.'):
+            file_list.append(f)
+
     return file_list
 
 
