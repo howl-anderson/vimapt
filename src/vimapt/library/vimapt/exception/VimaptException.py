@@ -1,2 +1,2 @@
-class VimAptException(Exception):
+class VimaptException(Exception):
     pass
