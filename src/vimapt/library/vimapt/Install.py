@@ -93,7 +93,9 @@ class Install(object):
             logger.info("<%s> check depend is pass!", controller_file)
             return True
 
-        msg = "package requirements is not meet, depend missing: %s, conflict appear: %s"
+        msg = ("package requirements is not meet,"
+               " fellow dependency: %s is not meet,"
+               " or fellow conflicted package: %s already installed")
         raise VimaptAbortOperationException(msg % (not_matched_requirements, matched_requirements))
 
     def _parse_requirement(self, requirements_data):
