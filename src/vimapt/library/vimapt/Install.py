@@ -99,6 +99,12 @@ class Install(object):
         raise VimaptAbortOperationException(msg % (not_matched_requirements, matched_requirements))
 
     def _parse_requirement(self, requirements_data):
+        """
+        parse the requirement data
+        
+        :param requirements_data: list of string or string
+        :return: list of requirements object
+        """
         requirements_items = []
 
         # if requirement is a string, then translate to a single element list
