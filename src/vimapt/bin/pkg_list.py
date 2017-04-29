@@ -23,5 +23,7 @@ def main():
 
 if __name__ == "__main__":
     package_list = main()
+
+    # set vim's variable to make command complete function works
     pkg_list_string = "[" + ",".join(["'" + i + "'" for i in package_list]) + "]"
     vim.command('let s:package_list = ' + pkg_list_string)
