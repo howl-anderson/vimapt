@@ -23,7 +23,8 @@ you can always download from github / bitbucket
     `source ~/.vim/vimapt/vimapt.vim`
 
 5. if your `.vimrc` contain your vim setting, move the common setting to the `.vim/vimrc/vim.vimrc`.
-6. execute `pip install -r ~/.vim/vimapt/library/requirements.txt` to install all the dependencies that vimapt will need.
+6. execute `pip install -r ~/.vim/vimapt/library/requirements.txt`
+ and `pip3 install -r ~/.vim/vimapt/library/requirements.txt` to install all the dependencies that vimapt will need.
 
 ## Usage
 
