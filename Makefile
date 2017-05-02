@@ -11,3 +11,9 @@ helper_tool:
 
 .PHONY: python_vimapt
 python_vimpapt:
+	# this is a placeholder for build vimapt's python package
+
+.PHONY: install_dependency
+install_dependency:
+	pip install -r ./src/vimapt/library/requirements.txt
+	pip3 install -r ./src/vimapt/library/requirements.txt
