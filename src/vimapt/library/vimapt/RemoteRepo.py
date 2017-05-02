@@ -27,7 +27,10 @@ class RemoteRepo(object):
                  if os.path.isfile(os.path.join(self.pool_absolute_dir, f))]
         package_data = {}
         for file_name in files:
-            package_name, version_and_ext = file_name.split('_', 1)
+            pkg_name_segments = file_name.split("_")
+            package_name = '_'.join(pkg_name_segments[:-1])
+            version_and_ext = pkg_name_segments[-1]
+
             version = os.path.splitext(version_and_ext)[0]
             path = os.path.join('pool/', file_name)
             package_info = {'version': version, 'path': path}
