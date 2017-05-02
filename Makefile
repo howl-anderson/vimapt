@@ -7,11 +7,11 @@ clean_packages:
 
 .PHONY: helper_tool
 helper_tool:
-	cd src/vimapt/bin & debuild -i -us -uc -b
+	$(MAKE) -C src/vimapt/tool build
 
-.PHONY: python_vimapt
-python_vimpapt:
-	# this is a placeholder for build vimapt's python package
+.PHONY: install_vimapt
+install_vimapt:
+	$(MAKE) -C src/vimapt/library bdist_and_install
 
 .PHONY: install_dependency
 install_dependency:
