@@ -12,7 +12,10 @@ class VimAptMakeVpb(object):
         self.dir_name = os.path.basename(self.work_dir)
 
         # initial setup
-        self.pkg_name, full_version = self.dir_name.split("_")
+        pkg_name_segments = self.dir_name.split("_")
+        self.pkg_name = '_'.join(pkg_name_segments[:-1])
+        full_version = pkg_name_segments[-1]
+
         self.full_pkg_name = self.pkg_name + "_" + full_version + ".vpb"
         self.target_file = os.path.join(self.target_dir, self.full_pkg_name)
 
