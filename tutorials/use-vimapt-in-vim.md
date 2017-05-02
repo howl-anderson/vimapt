@@ -29,10 +29,21 @@ You can use `VimApt remove vimapt-demo-package` to remove `vimapt-demo-package` 
 
 `remove` will remove package but keep the configure file in case of you reinstall the package in the near future.
 
-### VimApt purge
-Similar with `remove`, but don't keep package configure file
+### VimApt list
+List all the packages that already installed
+
+
 
 ## Additional Command in vimapt
 
 Beside the Essential command listed above, vimapt come with additional command.
-But you should note that ** those additional commands are not stable, may change in the future ** .
+But you should note that **those additional commands are not stable, may change in the future** .
+
+### VimApt purge
+Similar with `remove`, but don't keep package configure file
+
+### VimApt repolist
+List all the package that currently repository can provide
+
+### VimApt pugelist
+List all the package that can puge, include installed packages and packages that removed but still leave configure file behind.
