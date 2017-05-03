@@ -42,7 +42,7 @@ vimapt will show the list of all package that you can install.
 
 ### vimapt install
 
-In vim console, type `VimApt install xxx` and press enter.
+In vim console, type `:VimApt install xxx` and press enter.
 
 If everything is OK, you well soon get the `xxx` or packages
 
@@ -50,6 +50,27 @@ Notice: make sure you are online and the `xxx` plugin is in the repository
 
 ### vimapt remove
 
-In vim console, type `VimApt remove xxx` and press enter.
+In vim console, type `:VimApt remove xxx` and press enter.
 
 Vimapt will remove the package `xxx` from your vim system.
+
+### Tips
+
+Vimapt support auto complete very well. you can auto complete command and packages.
+Please notice that vim use TAB as auto complete key.
+
+#### auto complete on commands
+
+In vim console, type `:VimApt `, notice that last character is blank character. 
+now you can press Tab / TAB to auto-complete now. Just like auto-complete function in shell. 
+
+Partial command auto-complete is also supported. For example, you want type command `:VimApt install`,
+ In vim console, type `:VimApt inst`, and now you can press Tab / TAB to auto-complete now,
+ vimapt will auto complete the command line to `:VimApt install`.
+ 
+#### auto complete on packages
+
+Almost every command in vimapt support auto-complete.For example, if you want remove a package that named 'example-package',
+When you type `:VimApt remove example-`, then press TAB / Tab, if there are only one package installed in vimapt which name begin with `example-`,
+vimapt will auto-completed with `:VimApt remove example-package`,
+if there multiply packages which name begin with `example-`, vimapt will auto-recycle during those package names.
