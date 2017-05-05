@@ -18,6 +18,10 @@ class Extract(object):
         self.meta_stream, self.ball_stream = file_stream.split('\n\n', 1)  # split the meta and data
 
     def extract(self):
+        """
+        extract input_file to output_dir
+        :return: None
+        """
         meta_data = self.get_file_list()
         ball_lines = self.ball_stream.split('\n')
         start_point = 0
@@ -43,11 +47,28 @@ class Extract(object):
             start_point += file_length
 
     def get_file_list(self):
+        """
+        get file list of a package
+        :return: List of file name and length pair
+        """
         meta_data = loads(self.meta_stream)  # load list from meta, use YAML format
         return meta_data
 
     def hook(self, hook_object):
+        """
+        Bind hook object. 
+        :param hook_object: an executable object take to args (file name and content) and return boolean.
+                            Return False means the file is not extract to system, used to protect overwrite.
+        :return: None
+        """
         self.hook_object = hook_object
 
     def filter(self, filter_object):
+        """
+        Bind filter object
+        :param filter_object: an executable object take to args (file name and content)
+                              and return tuple of file name and content.
+                              This object can change the file name and file content.
+        :return: None
+        """
         self.filter_object = filter_object
