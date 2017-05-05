@@ -6,14 +6,13 @@ from .data_format import loads
 
 
 class Remove(object):
-    def __init__(self, package_name, vim_dir):
+    def __init__(self, vim_dir):
         self.vim_dir = vim_dir
-        self.package_name = package_name
 
-    def remove_package(self):
+    def remove_package(self, package_name):
         file_path = os.path.join(self.vim_dir,
                                  'vimapt/install',
-                                 self.package_name)
+                                 package_name)
         # print file_path
         fd = open(file_path, 'r')
         file_stream = fd.read()
@@ -33,5 +32,5 @@ class Remove(object):
                 pass
         remove_path = os.path.join(self.vim_dir,
                                    'vimapt/remove',
-                                   self.package_name)
+                                   package_name)
         os.rename(file_path, remove_path)

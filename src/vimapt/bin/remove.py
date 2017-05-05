@@ -8,8 +8,8 @@ from vimapt import Remove
 def main():
     vim_dir = sys.argv[1]
     package_name = sys.argv[2]
-    remove = Remove.Remove(package_name, vim_dir)
-    remove.remove_package()
+    remove = Remove.Remove(vim_dir)
+    remove.remove_package(package_name)
     print("Remove Succeed!")
 
 
