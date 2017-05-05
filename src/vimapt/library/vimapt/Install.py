@@ -51,8 +51,8 @@ class Install(object):
         file_list = install.get_file_list()
         install.filter(self._extract_hook)
         install.extract()
-        record = Record.Record(self.pkg_name, self.vim_dir)
-        record.install(file_list)
+        record = Record.Record(self.vim_dir)
+        record.install(self.pkg_name, file_list)
 
     def file_install(self, package_file):
         """
