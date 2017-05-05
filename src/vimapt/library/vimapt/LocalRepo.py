@@ -20,6 +20,11 @@ class LocalRepo(object):
         self.remote_package_index_relative_path = 'index/package'
 
     def get_remote_package_index(self, source_url):
+        """
+        Get package repository's index content
+        :param source_url: URL of repository's index
+        :return: string, content of index
+        """
         fd = urllib_request.urlopen(source_url)
         source_stream = fd.read()
         fd.close()
@@ -30,17 +35,30 @@ class LocalRepo(object):
             return source_stream.decode('utf-8')
 
     def write_local_package_index(self, stream):
+        """
+        Write repository's index to local repository cache
+        :param stream: content of index
+        :return: None
+        """
         fd = open(self.local_package_index_path, 'w')
         fd.write(stream)
         fd.close()
 
     def get_config(self):
+        """
+        read package source URL
+        :return: string, URL of package repository
+        """
         fd = open(self.config_path)
         source_stream = fd.read()
         fd.close()
         return source_stream.strip()
 
     def update(self):
+        """
+        Update local repository's index from remote index
+        :return: 
+        """
         source_server = self.get_config()
         remote_source_url = os.path.join(source_server,
                                          self.remote_package_index_relative_path)
@@ -48,6 +66,10 @@ class LocalRepo(object):
         self.write_local_package_index(source_stream)
 
     def extract(self):
+        """
+        Load local repository's index
+        :return: Dict, repository's index
+        """
         fd = open(self.local_package_index_path)
         source_stream = fd.read()
         fd.close()
@@ -55,6 +77,11 @@ class LocalRepo(object):
         return source_data
 
     def get_package(self, package_name):
+        """
+        Get package by name from remote repository
+        :param package_name: name of package
+        :return: local path of package file
+        """
         source_data = self.extract()
         if package_name not in source_data:
             print("Not found package: " + package_name)
