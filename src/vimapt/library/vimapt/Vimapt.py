@@ -13,6 +13,10 @@ class Vimapt(object):
         self.vim_dir = vim_dir
 
     def get_installed_list(self):
+        """
+        Get installed packages list by scan 'vimapt/control' directory
+        :return: List of package names
+        """
         record_dir = os.path.join(self.vim_dir, 'vimapt/control')
         pkg_list = []
         for f in os.listdir(record_dir):
@@ -22,6 +26,10 @@ class Vimapt(object):
         return pkg_list
 
     def get_version_dict(self):
+        """
+        Get installed package name-version dict by scan 'vimapt/control' directory
+        :return: Dict of package-version mapping, e.g. {'pkg1': 'version-string', 'pkg2': 'other-version-string'}
+        """
         record_dir = os.path.join(self.vim_dir, 'vimapt/control')
         version_dict = {}
         for f in os.listdir(record_dir):
@@ -49,6 +57,10 @@ class Vimapt(object):
 
     # TODO: function name need do something
     def get_presist_list(self):
+        """
+        Get package name list by scan 'vimapt/install' directory
+        :return: List of package names
+        """
         record_dir = os.path.join(self.vim_dir, 'vimapt/install')
         pkg_list = []
 
@@ -62,6 +74,10 @@ class Vimapt(object):
         pass
 
     def scan_package_name(self):
+        """
+        Get package name by scan 'vimapt/control', used to discover the package's name only
+        :return: String of package name
+        """
         record_dir = os.path.join(self.vim_dir, 'vimapt/control')
         pkg_list = []
         for f in os.listdir(record_dir):
