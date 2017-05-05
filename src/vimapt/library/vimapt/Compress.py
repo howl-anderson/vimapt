@@ -13,6 +13,10 @@ class Compress(object):
         self.filter_object = None
 
     def compress(self):
+        """
+        Compress directory to file
+        :return: None
+        """
         ball_file_list = self.scan_dir()
         ball_data = []
         ball_content = []
@@ -48,6 +52,10 @@ class Compress(object):
         fd.close()
 
     def scan_dir(self):
+        """
+        Fetch absolute path of file list of directory
+        :return: List of file absolute location
+        """
         file_path_list = []
         yid = os.walk(self.source_dir)
         for root_dir, path_list, file_list in yid:
