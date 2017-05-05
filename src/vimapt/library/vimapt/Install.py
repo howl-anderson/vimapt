@@ -23,7 +23,7 @@ class Install(object):
         self.pkg_name = None  # package's name
         self.tmp_dir = None
 
-    def extract_hook(self, file_name, _):
+    def _extract_hook(self, file_name, _):
         """
         Installer filter object: if *.vimrc file exists in the system, new *.vimrc file will not overwrite it.
         :param file_name: name of the file
@@ -38,18 +38,18 @@ class Install(object):
         else:
             return True
 
-    def install_package(self, package_file):
+    def _install_package(self, package_file):
         """
         The real method that install package from local file
         :param package_file: locaton of the package file
         :return: None
         """
-        self.init_check(package_file)
-        self.check_repeat_install()
-        self.check_depend()
+        self._init_check(package_file)
+        self._check_repeat_install()
+        self._check_depend()
         install = Extract.Extract(package_file, self.vim_dir)
         file_list = install.get_file_list()
-        install.filter(self.extract_hook)
+        install.filter(self._extract_hook)
         install.extract()
         record = Record.Record(self.pkg_name, self.vim_dir)
         record.install(file_list)
@@ -60,7 +60,7 @@ class Install(object):
         :param package_file: location of package file
         :return: None
         """
-        self.install_package(package_file)
+        self._install_package(package_file)
 
     def repo_install(self, package_name):
         """
@@ -71,15 +71,15 @@ class Install(object):
         repo = LocalRepo.LocalRepo(self.vim_dir)
         package_path = repo.get_package(package_name)
         if package_path:
-            self.install_package(package_path)
+            self._install_package(package_path)
         else:
             raise VimaptAbortOperationException("use network to get repository package error!")
 
-    def init_check(self, package_file):
+    def _init_check(self, package_file):
         self.tmp_dir = tempfile.mkdtemp()
         Extract.Extract(package_file, self.tmp_dir).extract()
 
-    def check_repeat_install(self):
+    def _check_repeat_install(self):
         """
         Check if same package name has been installed
         :return: None
@@ -90,7 +90,7 @@ class Install(object):
             msg = "package: '" + self.pkg_name + "' already installed!"
             raise VimaptAbortOperationException(msg)
 
-    def check_depend(self):
+    def _check_depend(self):
         """
         Check if all the requirements is meet
         :return: None
@@ -115,8 +115,8 @@ class Install(object):
         logger.info("<%s> depend data: %s", controller_file, depend_items)
         logger.info("<%s> conflicts data: %s", controller_file, conflicts_items)
 
-        _, not_matched_requirements = self.check_requirement(depend_items)
-        matched_requirements, _ = self.check_requirement(conflicts_items)
+        _, not_matched_requirements = self._check_requirement(depend_items)
+        matched_requirements, _ = self._check_requirement(conflicts_items)
 
         if not len(not_matched_requirements) and not len(matched_requirements):
             logger.info("<%s> check depend is pass!", controller_file)
@@ -144,7 +144,7 @@ class Install(object):
             requirements_items.extend(list(requirements.parse(requirement_str)))
         return requirements_items
 
-    def check_requirement(self, requirements):
+    def _check_requirement(self, requirements):
         """
         get list of packages installed or not installed
         :param requirements: list of package specification
@@ -167,7 +167,7 @@ class Install(object):
             installed_version = semantic_version.Version(package_version)
 
             for spec_requirement in requirement.specs:
-                version_comparer = self.get_comparer(spec_requirement[0])
+                version_comparer = self._get_comparer(spec_requirement[0])
                 require_version = semantic_version.Version(spec_requirement[1])
                 if not version_comparer(installed_version, require_version):
                     not_matched_requirements.append(requirement)
@@ -179,7 +179,7 @@ class Install(object):
 
         return matched_requirements, not_matched_requirements
 
-    def get_comparer(self, comparer_str):
+    def _get_comparer(self, comparer_str):
         """
         Get comparer object by comparer string
         :param comparer_str: string represent the compare operator
