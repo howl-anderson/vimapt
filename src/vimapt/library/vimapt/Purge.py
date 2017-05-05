@@ -6,11 +6,13 @@ from .data_format import loads
 
 
 class Purge(object):
-    def __init__(self, package_name, vim_dir):
+    def __init__(self, vim_dir):
         self.vim_dir = vim_dir
+        self.package_name = None
+
+    def purge_package(self, package_name):
         self.package_name = package_name
 
-    def purge_package(self):
         file_install_path = os.path.join(self.vim_dir,
                                          'vimapt/install',
                                          self.package_name)
