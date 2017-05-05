@@ -19,7 +19,7 @@ class LocalRepo(object):
                                                      'index/package')
         self.remote_package_index_relative_path = 'index/package'
 
-    def get_remote_package_index(self, source_url):
+    def _get_remote_package_index(self, source_url):
         """
         Get package repository's index content
         :param source_url: URL of repository's index
@@ -34,7 +34,7 @@ class LocalRepo(object):
         else:
             return source_stream.decode('utf-8')
 
-    def write_local_package_index(self, stream):
+    def _write_local_package_index(self, stream):
         """
         Write repository's index to local repository cache
         :param stream: content of index
@@ -44,7 +44,7 @@ class LocalRepo(object):
         fd.write(stream)
         fd.close()
 
-    def get_config(self):
+    def _get_config(self):
         """
         read package source URL
         :return: string, URL of package repository
@@ -59,13 +59,13 @@ class LocalRepo(object):
         Update local repository's index from remote index
         :return: 
         """
-        source_server = self.get_config()
+        source_server = self._get_config()
         remote_source_url = os.path.join(source_server,
                                          self.remote_package_index_relative_path)
-        source_stream = self.get_remote_package_index(remote_source_url)
-        self.write_local_package_index(source_stream)
+        source_stream = self._get_remote_package_index(remote_source_url)
+        self._write_local_package_index(source_stream)
 
-    def extract(self):
+    def _extract(self):
         """
         Load local repository's index
         :return: Dict, repository's index
@@ -82,13 +82,13 @@ class LocalRepo(object):
         :param package_name: name of package
         :return: local path of package file
         """
-        source_data = self.extract()
+        source_data = self._extract()
         if package_name not in source_data:
             print("Not found package: " + package_name)
             return False
         else:
             package_relative_path = source_data[package_name]['path']
-            source_server = self.get_config()
+            source_server = self._get_config()
             package_url = os.path.join(source_server, package_relative_path)
 
             with contextlib.closing(urllib_request.urlopen(package_url)) as fd:  # TODO: add proxy and timeout, may use requests library
