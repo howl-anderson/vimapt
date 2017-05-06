@@ -1,7 +1,5 @@
 Vimapt
 ===
-**The missing package manager for Vim**
-
 
 Vimapt is a vim package manager, "vimapt" is the abbreviate of "Vim's Advantage Package Tools".
 
@@ -74,3 +72,21 @@ Almost every command in vimapt support auto-complete.For example, if you want re
 When you type `:VimApt remove example-`, then press TAB / Tab, if there are only one package installed in vimapt which name begin with `example-`,
 vimapt will auto-completed with `:VimApt remove example-package`,
 if there multiply packages which name begin with `example-`, vimapt will auto-recycle during those package names.
+
+## Tutorial
+
+After you installed vimapt, here I will use install `nerd-tree` as an example, show the process of how usage vimapt.
+
+1. Update your vimapt repository cache.
+    
+    Using `:Vimapt update`, vimapt will update package list to newest package list.
+2. Install `nerd-tree`
+    
+    Using `:Vimapt install nerd-tree`, vimapt will install the package to your vim. Tips: you can use auto-complete function of vimapt.
+3. Using `nerd-tree`
+    
+    Since, `nerd-tree` is installed, you can use it now, press `Ctrl-D` in normal mode, see if the `nerd-tree` works, press the key again will close the tree.
+4. Remove `nerd-tree`
+    
+    If you don't want `nerd-tree` anymore, you can using `:Vimapt remove nerd-tree`, remove the package.
+    After removing, you can press `Ctrl-D` to see if it still work. if everything is ok, the key should not work anymore.
