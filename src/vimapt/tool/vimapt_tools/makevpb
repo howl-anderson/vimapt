@@ -24,6 +24,9 @@ class VimAptMakeVpb(object):
         compress_object.compress()
 
 
-if __name__ == "__main__":
+def main():
     obj = VimAptMakeVpb()
     obj.make()
+
+if __name__ == "__main__":
+    main()

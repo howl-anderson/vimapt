@@ -76,7 +76,10 @@ class Make(object):
             os.rename(tpl_file, target_file)
 
 
-if __name__ == "__main__":
+def main():
     current_dir = os.getcwd()
     make = Make(current_dir)
     make.manual_make()
+
+if __name__ == "__main__":
+    main()
