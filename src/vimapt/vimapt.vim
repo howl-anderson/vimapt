@@ -10,17 +10,17 @@ else
         finish 
 endif
 
-" python abstruct function
+" python abstract function
 function VimAptPythonCall(clause)
     execute s:python . ' ' . a:clause 
 endfunction
 
-" pycall abstruct function
+" pycall abstract function
 function VimAptPyfileCall(python_file)
     execute s:pyfile . ' ' . a:python_file 
 endfunction
 
-" VimApt abstruct command
+" VimApt abstract command
 function VimAptCommand(command_name, ...)
     let s:command_args = a:000
 
@@ -41,13 +41,7 @@ function VimAptCommand(command_name, ...)
     call VimAptPyfileCall(s:python_script)
 endfunction
 
-
-for vimrc_file in split(glob('~/.vim/vimrc/*.vimrc'), '\n')
-    execute 'source' vimrc_file
-endfor
-
-
-
+" Load all the .vimrc file
 for vimrc_file in split(glob('~/.vim/vimrc/*.vimrc'), '\n')
     execute 'source' vimrc_file
 endfor
