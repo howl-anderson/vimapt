@@ -6,8 +6,8 @@ from vimapt import Compress
 
 
 class VimAptMakeVpb(object):
-    def __init__(self):
-        self.work_dir = os.getcwd()
+    def __init__(self, work_dir):
+        self.work_dir = work_dir
         self.target_dir = os.path.dirname(self.work_dir)
         self.dir_name = os.path.basename(self.work_dir)
 
@@ -25,7 +25,7 @@ class VimAptMakeVpb(object):
 
 
 def main():
-    obj = VimAptMakeVpb()
+    obj = VimAptMakeVpb(os.getcwd())
     obj.make()
 
 if __name__ == "__main__":
