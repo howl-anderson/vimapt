@@ -14,6 +14,8 @@ setup(
 
     version='0.1.0',
 
+    include_package_data=True,
+
     description='CLI tools for vimapt',
     long_description=long_description,
 
