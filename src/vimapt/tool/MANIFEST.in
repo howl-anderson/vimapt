@@ -1,1 +1,1 @@
-recursive-include data *
+recursive-include vimapt_tools/data *

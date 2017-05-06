@@ -10,8 +10,8 @@ from vimapt import Extract
 
 class Make(object):
     def __init__(self, work_dir):
-        current_file_dir = os.path.basename(os.path.abspath(__file__))
-        self.tpl_file = os.path.join(current_file_dir, '..', 'data', 'vimapt.vpb')
+        current_file_dir = os.path.dirname(os.path.abspath(__file__))
+        self.tpl_file = os.path.join(current_file_dir, 'data', 'vimapt.vpb')
         self.work_dir = work_dir
 
     def manual_make(self):
