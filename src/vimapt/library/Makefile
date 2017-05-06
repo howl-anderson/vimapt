@@ -1,3 +1,5 @@
+PKG_NAME = vimapt_library
+
 .PHONY: sdist
 sdist:
 	python setup.py sdist
@@ -11,15 +13,15 @@ bdist:
 .PHONY: deb
 
 .PHONY: install
-intall:
-	pip install dist/vimapt-*.whl
-	pip3 install dist/vimapt-*.whl
+install:
+	pip install dist/*.whl
+	pip3 install dist/*.whl
 
 .PHONY: uninstall
 uninstall:
-	pip uninstall -y vimapt
-	pip3 uninstall -y vimapt
+	pip uninstall -y ${PKG_NAME}
+	pip3 uninstall -y ${PKG_NAME}
 
 .PHONY: bdist_and_install
-bdist_and_install: bdist uninstall intall
+bdist_and_install: bdist uninstall install
 	# nothing to do here
