@@ -1,5 +1,10 @@
 SRC_ROOT=src
 
+.PHONY: all
+all:
+	$(MAKE) -C ${SRC_ROOT}/vimapt/library bdist_and_install
+	$(MAKE) -C ${SRC_ROOT}/vimapt/tool bdist_and_install
+
 .PHONY: clean_packages
 clean_packages:
 	find ${SRC_ROOT} -mindepth 1 -maxdepth 1 -type d ! -name 'vimapt' ! -name 'vimrc' -exec rm -r {} \;
