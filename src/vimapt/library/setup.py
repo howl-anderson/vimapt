@@ -2,7 +2,7 @@ from distutils.core import setup
 from setuptools import find_packages
 
 setup(
-    name='vimapt_library',
+    name='vimapt-library',
     version='0.1.0',
     install_requires=[
         'pyyaml',
