@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 
 import os
+import logging
 
 from .data_format import loads
+
+logger = logging.getLogger(__name__)
 
 
 class Extract(object):
@@ -32,6 +35,11 @@ class Extract(object):
             if self.filter_object:  # unfinished part
                 # hook to filter_object
                 if not self.filter_object(file_name, file_stream):
+                    # this file will be ignored
+                    start_point += file_length
+
+                    logger.info("package <%s>: <%s> was passed.", self.input_file, file_name)
+
                     continue
             if self.hook_object:  # unfinished part
                 # hook to hook_object
@@ -44,6 +52,9 @@ class Extract(object):
             fd = open(ball_abspath_file, 'w')
             fd.write(file_stream)
             fd.close()
+
+            logger.info("package <%s>: <%s> was write.", self.input_file, ball_abspath_file)
+
             start_point += file_length
 
     def get_file_list(self):

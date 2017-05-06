@@ -34,9 +34,9 @@ class Install(object):
         if token[0] == "vimrc":
             file_path = os.path.join(self.vim_dir, file_name)
             if os.path.exists(file_path):
+                logger.info("<%s> keep local version, developer's version is not overwrite.", file_name)
                 return False
-        else:
-            return True
+        return True
 
     def _install_package(self, package_file):
         """
