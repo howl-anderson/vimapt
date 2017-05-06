@@ -2,7 +2,7 @@
 build:
 	debuild -i -us -uc -b
 
-PKG_NAME = vimapt_tools
+PKG_NAME = vimapt-tools
 
 .PHONY: sdist
 sdist:
@@ -23,8 +23,8 @@ install:
 
 .PHONY: uninstall
 uninstall:
-	pip uninstall -y ${PKG_NAME}
-	pip3 uninstall -y ${PKG_NAME}
+	find_package=`pip list --format=legacy | grep "${PKG_NAME}" -c`; if [ $$find_package = "1" ]; then pip uninstall -y ${PKG_NAME}; fi;
+	find_package=`pip3 list --format=legacy | grep "${PKG_NAME}" -c`; if [ $$find_package = "1" ]; then pip3 uninstall -y ${PKG_NAME}; fi
 
 .PHONY: bdist_and_install
 bdist_and_install: bdist uninstall install
