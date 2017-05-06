@@ -1,4 +1,4 @@
 dist/
-vimapt.egg-info/
+*.egg-info/
 build/
 debian/
