@@ -39,7 +39,7 @@ class Make(object):
             tpl_file_dir = os.path.dirname(tpl_file)
             _, ext_name = os.path.splitext(tpl_file)
             target_file = os.path.join(tpl_file_dir, package_name + ext_name)
-            print(tpl_file)
+            # print(tpl_file)
             print(target_file)
             os.rename(tpl_file, target_file)
 
