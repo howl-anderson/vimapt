@@ -10,25 +10,22 @@ from vimapt import Extract
 
 class Make(object):
     def __init__(self, work_dir):
-        self.tpl_file = 'vimapt.vpb'
+        current_file_dir = os.path.basename(os.path.abspath(__file__))
+        self.tpl_file = os.path.join(current_file_dir, '..', 'data', 'vimapt.vpb')
         self.work_dir = work_dir
 
     def manual_make(self):
-        tpl_abs_file = self.tpl_file
         package_name = input("Input you package name:\n")
         prompt_message = "Input you package version. Format like x.y.z:\n"
         package_version = input(prompt_message)
-        prompt_message = "Input you package revision. A number:\n"
-        package_revision = input(prompt_message)
-        full_version = package_version + '-' + package_revision
-        package_dir = package_name + '_' + full_version
+        package_dir = package_name + '_' + package_version
         package_dir_abspath = os.path.join(self.work_dir, package_dir)
         if os.path.isdir(package_dir_abspath):
             print("Target dir exists, exit!")
             sys.exit(0)
         else:
             os.mkdir(package_dir_abspath)
-        extract_object = Extract.Extract(tpl_abs_file, package_dir_abspath)
+        extract_object = Extract.Extract(self.tpl_file, package_dir_abspath)
         extract_object.extract()
         print("New packaging directory build in: %s" % package_dir_abspath)
 
