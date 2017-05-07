@@ -83,10 +83,13 @@ After you installed vimapt, here I will use install `nerd-tree` as an example, s
 2. Install `nerd-tree`
     
     Using `:Vimapt install nerd-tree`, vimapt will install the package to your vim. Tips: you can use auto-complete function of vimapt.
-3. Using `nerd-tree`
+3. Restart vim
+
+    Everything won't work until you exit from vim and restart it.
+4. Using `nerd-tree`
     
     Since, `nerd-tree` is installed, you can use it now, press `Ctrl-D` in normal mode, see if the `nerd-tree` works, press the key again will close the tree.
-4. Remove `nerd-tree`
+5. Remove `nerd-tree`
     
     If you don't want `nerd-tree` anymore, you can using `:Vimapt remove nerd-tree`, remove the package.
     After removing, you can press `Ctrl-D` to see if it still work. if everything is ok, the key should not work anymore.
