@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# 
 
 # A guarding function to avoid executing an incompletely downloaded script
 guard () {
@@ -11,7 +10,43 @@ guard () {
     Blue='\033[0;34m'         # Blue
 
     # Constant
-    VIMAPT_GIT_REPO_URL='https://howl-anderson@bitbucket.org/howl-anderson/vimapt.git'
+    VIMAPT_GIT_REPO_URL='https://bitbucket.org/howl-anderson/vimapt.git'
+
+    # vim detect
+    if ! hash "vim" &>/dev/null; then
+        echo -e "${Red}vim is not installed${Color_off}"
+        exit -2
+    fi
+
+    # python supporting detect
+    HAS_PYTHON=$(vim --version | grep -c '+python')
+    HAS_PYTHON3=$(vim --version | grep -c '+python3')
+
+    if ! ([ ${HAS_PYTHON} ] || [ ${HAS_PYTHON3} ]); then
+        echo -e "${Red}vim not support python binding${Color_off}"
+        exit -1
+    fi
+
+    check_python_pip () {
+        PIP=0
+        if [ ${HAS_PYTHON3} ]; then
+            if hash "pip3" &>/dev/null; then
+                PIP='pip3'
+            fi
+        else
+            if hash "pip" &>/dev/null; then
+                PIP='pip'
+            fi
+        fi
+        if ! [ ${PIP} ]; then
+            if ${HAS_PYTHON3}; then
+                echo -e "${Red}need 'pip3' (command not found)${Color_off}"
+            else
+                echo -e "${Red}need 'pip' (command not found)${Color_off}"
+            fi
+            exit 1
+        fi
+    }
 
     check_system_dependency () {
         if ! hash "$1" &>/dev/null; then
@@ -21,15 +56,16 @@ guard () {
     }
 
     fetch_repo () {
-        # make sure directory exists
+        # make sure directories exists
         mkdir -p "$HOME/.VimApt"
+        mkdir -p "$HOME/.VimApt/vimapt/"
 
         if [[ -d "$HOME/.VimAptRepo" ]]; then
             # Update VimApt
             git --git-dir "$HOME/.VimAptRepo/.git" pull
 
             # update file from .VimAptRepo to .VimApt
-            cp -R "$HOME/.VimAptRepo/src/vimapt{bin,library,tool}" "$HOME/.VimApt/vimapt/"
+            cp -R "$HOME/.VimAptRepo/src/vimapt/"{bin,library,tool} "$HOME/.VimApt/vimapt/"
             cp "$HOME/.VimAptRepo/src/vimapt/vimapt.vim" "$HOME/.VimApt/vimapt/"
 
             echo -e "${Blue}Successfully update VimApt${Color_off}"
@@ -44,11 +80,16 @@ guard () {
     }
 
     install_vim () {
+        # backup .vimrc file
         if [[ -f "$HOME/.vimrc" ]]; then
             mv "$HOME/.vimrc" "$HOME/.vimrc_back"
             echo -e "${Blue}BackUp $HOME/.vimrc${Color_off}"
         fi
 
+        # copy .vimrc
+        cp "$HOME/.VimAptRepo/src/vimapt/entry_point.vimrc" "$HOME/.vimrc"
+
+        # backup .vim directory
         if [[ -d "$HOME/.vim" ]]; then
             if [[ "$(readlink $HOME/.vim)" =~ \.VimApt$ ]]; then
                 echo -e "${Blue}Installed VimApt for vim${Color_off}"
@@ -62,6 +103,14 @@ guard () {
         else
             ln -s "$HOME/.VimApt" "$HOME/.vim"
             echo -e "${Blue}Installed VimApt for vim${Color_off}"
+        fi
+    }
+
+    install_pip_dependency () {
+        if [ ${HAS_PYTHON3} ]; then
+            pip install -r "$HOME/.vim/vimapt/library/requirements.txt"
+        else
+            pip3 install -r "$HOME/.vim/vimapt/library/requirements.txt"
         fi
     }
 
@@ -150,11 +199,16 @@ guard () {
                 exit 0
         esac
     fi
-    # if no argv, installer will install SpaceVim
+
+    check_python_pip
     check_system_dependency 'git'
+
     fetch_repo
     install_vim
+    install_pip_dependency
 #    install_neovim
+
+    echo -e "${Blue}VimApt have been installed! Have fun!${Color_off}"
 
     # end of guard
 }
