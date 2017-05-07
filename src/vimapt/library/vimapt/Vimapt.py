@@ -46,8 +46,8 @@ class Vimapt(object):
                 fd = open(f_abspath)
                 file_stream = fd.read()
                 fd.close()
-                control_data = loads(file_stream)
-                version = control_data["version"]
+                control_data = loads(file_stream) or dict()
+                version = control_data.get("version")
                 root, ext = os.path.splitext(f)
                 version_dict[root] = version
 
