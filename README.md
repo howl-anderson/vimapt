@@ -106,3 +106,7 @@ After you installed vimapt, here will use install `nerd-tree` as an example, sho
     
     If you don't want `nerd-tree` anymore, you can using `:Vimapt remove nerd-tree`, remove the package.
     After removing, you can press `Ctrl-D` to see if it still work. if everything is ok, the key should not work anymore.
+
+## Acknowledge
+
+1. Auto install script are modified from [SpaceVim](https://github.com/SpaceVim/SpaceVim) project

@@ -101,3 +101,7 @@ vimapt会自动补全命令 `:VimApt remove example-package`,
     
     当你不再需要 `nerd-tree` 了, 你可以使用 `:Vimapt remove nerd-tree` 来移除这个包.
     移除后,你可以使用按键 `Ctrl-D` 来确定它是否还能工作. 如果一切正常,这个按键应该不会起作用了.
+
+## 致谢
+
+1. 自动安装脚本修改自[SpaceVim](https://github.com/SpaceVim/SpaceVim)项目
