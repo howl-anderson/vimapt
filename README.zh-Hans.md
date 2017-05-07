@@ -94,10 +94,13 @@ vimapt会自动补全命令 `:VimApt remove example-package`,
 2. 安装 `nerd-tree`
     
     使用  `:Vimapt install nerd-tree`, vimapt将会自动帮你安装该软件. 提示:你可以使用自动补全来加速你的输入.
-3. 使用 `nerd-tree`
+3. 重启 vim
+
+    vim重启之前，插件并不能工作（至少当前版本不行），所以需要重启启动vim
+4. 使用 `nerd-tree`
     
     现在 `nerd-tree` 已经安装完成, 你可以开始使用了, 通过在普通模式中按键 `Ctrl-D`, 你可以看见`nerd-tree`的文件树出现在左侧, 再次按`Ctrl-D`则消失.
-4. 移除 `nerd-tree`
+5. 移除 `nerd-tree`
     
     当你不再需要 `nerd-tree` 了, 你可以使用 `:Vimapt remove nerd-tree` 来移除这个包.
     移除后,你可以使用按键 `Ctrl-D` 来确定它是否还能工作. 如果一切正常,这个按键应该不会起作用了.
