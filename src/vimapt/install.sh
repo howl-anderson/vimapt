@@ -73,7 +73,7 @@ guard () {
             git clone ${VIMAPT_GIT_REPO_URL} "$HOME/.VimAptRepo"
 
             # copy file from .VimAptRepo to .VimApt
-            cp -R $HOME/.VimAptRepo/src/"{vimapt,vimrc} "$HOME/.VimApt/"
+            cp -R "$HOME/.VimAptRepo/src/"{vimapt,vimrc} "$HOME/.VimApt/"
 
             echo -e "${Blue}Successfully clone VimApt${Color_off}"
         fi
