@@ -1,0 +1,1 @@
+source ~/.vim/vimapt/vimapt.vim
