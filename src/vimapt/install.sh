@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # A guarding function to avoid executing an incompletely downloaded script
 guard () {
@@ -62,7 +62,7 @@ guard () {
 
         if [[ -d "$HOME/.VimAptRepo" ]]; then
             # Update VimApt
-            git --git-dir "$HOME/.VimAptRepo/.git" pull
+            git -C "$HOME/.VimAptRepo/.git" pull
 
             # update file from .VimAptRepo to .VimApt
             cp -R "$HOME/.VimAptRepo/src/vimapt/"{bin,library,tool} "$HOME/.VimApt/vimapt/"
@@ -73,7 +73,7 @@ guard () {
             git clone ${VIMAPT_GIT_REPO_URL} "$HOME/.VimAptRepo"
 
             # copy file from .VimAptRepo to .VimApt
-            cp -R "$HOME/.VimAptRepo/src/*" "$HOME/.VimApt/"
+            cp -R $HOME/.VimAptRepo/src/"{vimapt,vimrc} "$HOME/.VimApt/"
 
             echo -e "${Blue}Successfully clone VimApt${Color_off}"
         fi
