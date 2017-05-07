@@ -10,7 +10,7 @@ Vimapt is a vim package manager, "vimapt" is the abbreviate of "Vim's Advantage 
 
 
 ## Get vimapt
-you can always download from github / [bitbucket](https://bitbucket.org/howl-anderson/vimapt)
+you can always download from [github](https://github.com/howl-anderson/vimapt) / [bitbucket](https://bitbucket.org/howl-anderson/vimapt)
 
 ## Install by shell
 

@@ -10,7 +10,7 @@ Vimapt是一个Vim的软件包管理器／软件包管理软件, 其中"vimapt"�
 
 
 ## 获取 vimapt
-你可以从 github / [bitbucket](https://bitbucket.org/howl-anderson/vimapt) 上下载
+你可以从 [github](https://github.com/howl-anderson/vimapt) / [bitbucket](https://bitbucket.org/howl-anderson/vimapt) 上下载
 
 ## 安装
 
