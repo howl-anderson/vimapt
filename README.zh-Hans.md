@@ -10,83 +10,94 @@ Vimapt是一个Vim的软件包管理器／软件包管理软件, 其中"vimapt"�
 
 
 ## 获取 vimapt
-你可以从 github / bitbucket 上下载
+你可以从 github / [bitbucket](https://bitbucket.org/howl-anderson/vimapt) 上下载
 
-## Install
-1. in your home dir's subdir `.vim`, you should make directory `vimapt` and `vimrc`, if their already exists, backup them.
-2. put the vimapt source to the `vimapt`, if you get the source from git repository, vimapt's source locate in `src` directory.
-3. backup you `.vimrc` file (you will use it latter)
-4. clean you `.vimrc`, add code as below show  
+## 安装
+
+Vimpat提供了自动安装的脚本:
+
+    `curl -sLf http://www.vimapt.org/install.sh | bash`
+    
+Windows用户请按照`手动安装`章节进行安装
+
+## 手动安装
+在你开始安装前,你需要确认你的vim支持python扩展,通过执行`vim --version`, 你需要观察输出的特性列表中是否有`+python`或者 `+python3`,
+前者表示支持python2,后者表示支持python3. `-python`或者 `-python3` 分别表示对上述特性不支持. vimapt需要vim支持python,
+同时你需要记住vim对python支持的版本情况,因为后续会用到这个信息.
+
+1. 将vimapt的源代码放到`.vim`目录中. 如果你是从git仓库获取的代码, vimapt的源代码位于`src`目录.
+2. 备份你的`.vimrc`文件 (稍后你将用到)
+3. 清除`.vimrc`内容并添加如下代码: 
 
     `source ~/.vim/vimapt/vimapt.vim`
 
-5. if your `.vimrc` contain your vim setting, move the common setting to the `.vim/vimrc/vim.vimrc`.
-6. execute `pip install -r ~/.vim/vimapt/library/requirements.txt`
- and `pip3 install -r ~/.vim/vimapt/library/requirements.txt` to install all the dependencies that vimapt will need.
+5. 如果你的备份的`.vimrc`包含有设置信息, 那么请把它移动到这个文件`.vim/vimrc/vim.vimrc`.
+6. 执行 `pip install -r ~/.vim/vimapt/library/requirements.txt` 如果你的vim支持python2
+或者 `pip3 install -r ~/.vim/vimapt/library/requirements.txt` 如果你的vim支持python3, 这些命令是为了安装vimapt所需的python依赖包.
 
-## Usage
+## 使用
 
 ### vimapt update
 
-In vim console, type `:VimApt update` and press enter.
+在vim终端中, 输入 `:VimApt update` 并按回车.
 
-vimapt will connect to the official repository, and update package list.
+vimapt将会连接官方仓库,并更新本地软件列表.
 
 ### vimapt repolist
 
-In vim console, type `:VimApt repolist` and press enter.
+在vim终端中, 输入 `:VimApt repolist` 并按回车.
 
-vimapt will show the list of all package that you can install.
+vimapt将会显示一个你可以安装的软件的列表.
 
 ### vimapt install
 
-In vim console, type `:VimApt install xxx` and press enter.
+在vim终端中, 输入 `:VimApt install xxx` 并按回车.
 
-If everything is OK, you well soon get the `xxx` or packages
+如果一切正常,你将很快会被提示 `xxx` 软件包安装成功.
 
-Notice: make sure you are online and the `xxx` plugin is in the repository
+注意: 这个过程需要你的计算机联网并且 `xxx` 包在仓库中
 
 ### vimapt remove
 
-In vim console, type `:VimApt remove xxx` and press enter.
+在vim终端中, 输入 `:VimApt remove xxx` 并按回车.
 
-Vimapt will remove the package `xxx` from your vim system.
+vimapt 将会把 `xxx` 从你的系统中移除.
 
-### Tips
+### 小贴士
 
-Vimapt support auto complete very well. you can auto complete command and packages.
-Please notice that vim use TAB as auto complete key.
+Vimapt 对自动补全的支持非常好. 你可以补全命令和软件包的名字.
+请注意vim使用 TAB 作为自动补全的触发键.
 
-#### auto complete on commands
+#### 自动补全命令
 
-In vim console, type `:VimApt `, notice that last character is blank character. 
-now you can press Tab / TAB to auto-complete now. Just like auto-complete function in shell. 
+在vim终端中, 输入 `:VimApt `, 注意最后一个输入字符是空格. 
+现在你按 Tab / TAB 去自动补全. 就像shell中的自动补全一样. 你会轮流看到可能的命令.
 
-Partial command auto-complete is also supported. For example, you want type command `:VimApt install`,
- In vim console, type `:VimApt inst`, and now you can press Tab / TAB to auto-complete now,
- vimapt will auto complete the command line to `:VimApt install`.
+部分命令补全也是支持的. 比如, 你想输入命令 `:VimApt install`,
+在vim终端中, 输入 `:VimApt inst`, 现在你按 Tab / TAB 去自动补全.
+ vimapt将会自动帮你补全命令至 `:VimApt install`.
  
-#### auto complete on packages
+#### 自动补全软件包名
 
-Almost every command in vimapt support auto-complete.For example, if you want remove a package that named 'example-package',
-When you type `:VimApt remove example-`, then press TAB / Tab, if there are only one package installed in vimapt which name begin with `example-`,
-vimapt will auto-completed with `:VimApt remove example-package`,
-if there multiply packages which name begin with `example-`, vimapt will auto-recycle during those package names.
+几乎所有的vimapt命令都支持补全.比如, 你想移除名为 'example-package'的包,
+当你输入 `:VimApt remove example-`, 然后按 TAB / Tab, 如果vimapt中安装的包只有一个包名字开头为 `example-`,
+vimapt会自动补全命令 `:VimApt remove example-package`,
+如果有多个包开头是 `example-`, vimapt 会自动循环显示这些名字.
 
-## Tutorial
+## 教程
 
-After you installed vimapt, here I will use install `nerd-tree` as an example, show the process of how usage vimapt.
+在安装vimapt后, 这里将使用安装 `nerd-tree` 作为案例, 来显示使用vimapt的一般流程.
 
-1. Update your vimapt repository cache.
+1. 更新你的vimapt仓库.
     
-    Using `:Vimapt update`, vimapt will update package list to newest package list.
-2. Install `nerd-tree`
+    使用 `:Vimapt update`, vimapt 将会自动更新至最新的软件列表.
+2. 安装 `nerd-tree`
     
-    Using `:Vimapt install nerd-tree`, vimapt will install the package to your vim. Tips: you can use auto-complete function of vimapt.
-3. Using `nerd-tree`
+    使用  `:Vimapt install nerd-tree`, vimapt将会自动帮你安装该软件. 提示:你可以使用自动补全来加速你的输入.
+3. 使用 `nerd-tree`
     
-    Since, `nerd-tree` is installed, you can use it now, press `Ctrl-D` in normal mode, see if the `nerd-tree` works, press the key again will close the tree.
-4. Remove `nerd-tree`
+    现在 `nerd-tree` 已经安装完成, 你可以开始使用了, 通过在普通模式中按键 `Ctrl-D`, 你可以看见`nerd-tree`的文件树出现在左侧, 再次按`Ctrl-D`则消失.
+4. 移除 `nerd-tree`
     
-    If you don't want `nerd-tree` anymore, you can using `:Vimapt remove nerd-tree`, remove the package.
-    After removing, you can press `Ctrl-D` to see if it still work. if everything is ok, the key should not work anymore.
+    当你不再需要 `nerd-tree` 了, 你可以使用 `:Vimapt remove nerd-tree` 来移除这个包.
+    移除后,你可以使用按键 `Ctrl-D` 来确定它是否还能工作. 如果一切正常,这个按键应该不会起作用了.

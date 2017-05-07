@@ -10,19 +10,31 @@ Vimapt is a vim package manager, "vimapt" is the abbreviate of "Vim's Advantage 
 
 
 ## Get vimapt
-you can always download from github / bitbucket
+you can always download from github / [bitbucket](https://bitbucket.org/howl-anderson/vimapt)
 
-## Install
-1. in your home dir's subdir `.vim`, you should make directory `vimapt` and `vimrc`, if their already exists, backup them.
-2. put the vimapt source to the `vimapt`, if you get the source from git repository, vimapt's source locate in `src` directory.
-3. backup you `.vimrc` file (you will use it latter)
-4. clean you `.vimrc`, add code as below show  
+## Install by shell
+
+VimApt provide a script to install.
+
+    `curl -sLf http://www.vimapt.org/install.sh | bash`
+    
+For windows User, please see `Install by hand` section.
+
+## Install by hand
+before you start, let's test vim see if vim support python and support which version
+execute `vim --version`, you will see vim's feature list, if you see `+python` or `+python3` means this vim support python2 or python3.
+`-python` or `-python3` means not support such feature. vimapt need vim support python2 or python3. if both of those are missing, vimapt will not work.
+Remember which version of python this vim support, it will be used latter.
+
+1. put the vimapt source to the `.vim`. if you get the source from git repository, vimapt's source locate in `src` directory.
+2. backup you `.vimrc` file (you will use it latter)
+3. clean you `.vimrc`, add code as below show  
 
     `source ~/.vim/vimapt/vimapt.vim`
 
 5. if your `.vimrc` contain your vim setting, move the common setting to the `.vim/vimrc/vim.vimrc`.
-6. execute `pip install -r ~/.vim/vimapt/library/requirements.txt`
- and `pip3 install -r ~/.vim/vimapt/library/requirements.txt` to install all the dependencies that vimapt will need.
+6. execute `pip install -r ~/.vim/vimapt/library/requirements.txt` if your vim support python2
+or `pip3 install -r ~/.vim/vimapt/library/requirements.txt` if your vim support python3, to install all the dependencies that vimapt will need.
 
 ## Usage
 
@@ -42,7 +54,7 @@ vimapt will show the list of all package that you can install.
 
 In vim console, type `:VimApt install xxx` and press enter.
 
-If everything is OK, you well soon get the `xxx` or packages
+If everything is OK, you well soon get a notification that installation of `xxx` packages is done.
 
 Notice: make sure you are online and the `xxx` plugin is in the repository
 
@@ -60,7 +72,8 @@ Please notice that vim use TAB as auto complete key.
 #### auto complete on commands
 
 In vim console, type `:VimApt `, notice that last character is blank character. 
-now you can press Tab / TAB to auto-complete now. Just like auto-complete function in shell. 
+now you can press Tab / TAB to auto-complete now. Just like auto-complete function in shell.
+ You will see all the possible command alternatively.
 
 Partial command auto-complete is also supported. For example, you want type command `:VimApt install`,
  In vim console, type `:VimApt inst`, and now you can press Tab / TAB to auto-complete now,
@@ -68,14 +81,14 @@ Partial command auto-complete is also supported. For example, you want type comm
  
 #### auto complete on packages
 
-Almost every command in vimapt support auto-complete.For example, if you want remove a package that named 'example-package',
+Almost every command in vimapt support auto-complete. For example, if you want remove a package that named 'example-package',
 When you type `:VimApt remove example-`, then press TAB / Tab, if there are only one package installed in vimapt which name begin with `example-`,
 vimapt will auto-completed with `:VimApt remove example-package`,
 if there multiply packages which name begin with `example-`, vimapt will auto-recycle during those package names.
 
 ## Tutorial
 
-After you installed vimapt, here I will use install `nerd-tree` as an example, show the process of how usage vimapt.
+After you installed vimapt, here will use install `nerd-tree` as an example, show the process of how usage vimapt.
 
 1. Update your vimapt repository cache.
     
