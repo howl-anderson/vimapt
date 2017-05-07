@@ -59,6 +59,9 @@ guard () {
         # make sure directories exists
         mkdir -p "$HOME/.VimApt"
         mkdir -p "$HOME/.VimApt/vimapt/"
+        mkdir -p "$HOME/.VimApt/vimrc/"
+        mkdir -p "$HOME/.VimApt/vimapt/cache/"{index,pool}
+        mkdir -p "$HOME/.VimApt/vimapt/"{control,copyright,install,log,remove}
 
         if [[ -d "$HOME/.VimAptRepo" ]]; then
             # Update VimApt
