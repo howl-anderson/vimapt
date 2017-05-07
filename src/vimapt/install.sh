@@ -10,6 +10,9 @@ guard () {
     Red='\033[0;31m'          # Red
     Blue='\033[0;34m'         # Blue
 
+    # Constant
+    VIMAPT_GIT_REPO_URL='https://howl-anderson@bitbucket.org/howl-anderson/vimapt.git'
+
     check_system_dependency () {
         if ! hash "$1" &>/dev/null; then
             echo -e "${Red}need '$1' (command not found)${Color_off}"
@@ -18,11 +21,24 @@ guard () {
     }
 
     fetch_repo () {
-        if [[ -d "$HOME/.VimApt" ]]; then
-            git --git-dir "$HOME/.VimApt/.git" pull
+        # make sure directory exists
+        mkdir -p "$HOME/.VimApt"
+
+        if [[ -d "$HOME/.VimAptRepo" ]]; then
+            # Update VimApt
+            git --git-dir "$HOME/.VimAptRepo/.git" pull
+
+            # update file from .VimAptRepo to .VimApt
+            cp -R "$HOME/.VimAptRepo/src/vimapt{bin,library,tool}" "$HOME/.VimApt/vimapt/"
+            cp "$HOME/.VimAptRepo/src/vimapt/vimapt.vim" "$HOME/.VimApt/vimapt/"
+
             echo -e "${Blue}Successfully update VimApt${Color_off}"
         else
-            git clone https://github.com/SpaceVim/SpaceVim.git "$HOME/.VimApt"
+            git clone ${VIMAPT_GIT_REPO_URL} "$HOME/.VimAptRepo"
+
+            # copy file from .VimAptRepo to .VimApt
+            cp -R "$HOME/.VimAptRepo/src/*" "$HOME/.VimApt/"
+
             echo -e "${Blue}Successfully clone VimApt${Color_off}"
         fi
     }
@@ -39,6 +55,7 @@ guard () {
             else
                 mv "$HOME/.vim" "$HOME/.vim_back"
                 echo -e "${Blue}BackUp $HOME/.vim${Color_off}"
+
                 ln -s "$HOME/.VimApt" "$HOME/.vim"
                 echo -e "${Blue}Installed VimApt for vim${Color_off}"
             fi
@@ -64,22 +81,22 @@ guard () {
 #        fi
 #    }
 
-    uninstall_vim () {
-        if [[ -d "$HOME/.vim" ]]; then
-            if [[ "$(readlink $HOME/.vim)" =~ \.SpaceVim$ ]]; then
-                rm "$HOME/.vim"
-                echo -e "${Blue}Uninstall VimApt for vim${Color_off}"
-                if [[ -d "$HOME/.vim_back" ]]; then
-                    mv "$HOME/.vim_back" "$HOME/.vim"
-                    echo -e "${Blue}Recover $HOME/.vim${Color_off}"
-                fi
-            fi
-        fi
-        if [[ -f "$HOME/.vimrc_back" ]]; then
-            mv "$HOME/.vimrc_back" "$HOME/.vimrc"
-            echo -e "${Blue}Recover $HOME/.vimrc${Color_off}"
-        fi
-    }
+#    uninstall_vim () {
+#        if [[ -d "$HOME/.vim" ]]; then
+#            if [[ "$(readlink $HOME/.vim)" =~ \.SpaceVim$ ]]; then
+#                rm "$HOME/.vim"
+#                echo -e "${Blue}Uninstall VimApt for vim${Color_off}"
+#                if [[ -d "$HOME/.vim_back" ]]; then
+#                    mv "$HOME/.vim_back" "$HOME/.vim"
+#                    echo -e "${Blue}Recover $HOME/.vim${Color_off}"
+#                fi
+#            fi
+#        fi
+#        if [[ -f "$HOME/.vimrc_back" ]]; then
+#            mv "$HOME/.vimrc_back" "$HOME/.vimrc"
+#            echo -e "${Blue}Recover $HOME/.vimrc${Color_off}"
+#        fi
+#    }
 
 #    uninstall_neovim () {
 #        if [[ -d "$HOME/.config/nvim" ]]; then
@@ -97,7 +114,7 @@ guard () {
     usage () {
         echo "VimApt install script : V 0.1.0"
         echo "    Install VimApt for vim"
-        echo "        curl -sLf https://spacevim.org/install.sh | bash"
+        echo "        curl -sLf https://vimapt.org/install.sh | bash"
     }
 
 
