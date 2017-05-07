@@ -70,6 +70,7 @@ guard () {
             # update file from .VimAptRepo to .VimApt
             cp -R "$HOME/.VimAptRepo/src/vimapt/"{bin,library,tool} "$HOME/.VimApt/vimapt/"
             cp "$HOME/.VimAptRepo/src/vimapt/vimapt.vim" "$HOME/.VimApt/vimapt/"
+            cp -n "$HOME/.VimAptRepo/src/vimapt/source" "$HOME/.VimApt/vimapt/source"
 
             echo -e "${Blue}Successfully update VimApt${Color_off}"
         else
