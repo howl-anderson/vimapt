@@ -16,7 +16,7 @@ you can always download from [github](https://github.com/howl-anderson/vimapt) /
 
 VimApt provide a script to install.
 
-    `curl -sLf http://www.vimapt.org/install.sh | bash`
+    curl -sLf http://www.vimapt.org/install.sh | bash
     
 For windows User, please see `Install by hand` section.
 
@@ -30,7 +30,7 @@ Remember which version of python this vim support, it will be used latter.
 2. backup you `.vimrc` file (you will use it latter)
 3. clean you `.vimrc`, add code as below show  
 
-    `source ~/.vim/vimapt/vimapt.vim`
+    source ~/.vim/vimapt/vimapt.vim
 
 5. if your `.vimrc` contain your vim setting, move the common setting to the `.vim/vimrc/vim.vimrc`.
 6. execute `pip install -r ~/.vim/vimapt/library/requirements.txt` if your vim support python2

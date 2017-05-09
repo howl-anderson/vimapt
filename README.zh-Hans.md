@@ -16,7 +16,7 @@ Vimapt是一个Vim的软件包管理器／软件包管理软件, 其中"vimapt"�
 
 Vimpat提供了自动安装的脚本:
 
-    `curl -sLf http://www.vimapt.org/install.sh | bash`
+    curl -sLf http://www.vimapt.org/install.sh | bash
     
 Windows用户请按照`手动安装`章节进行安装
 
@@ -29,7 +29,7 @@ Windows用户请按照`手动安装`章节进行安装
 2. 备份你的`.vimrc`文件 (稍后你将用到)
 3. 清除`.vimrc`内容并添加如下代码: 
 
-    `source ~/.vim/vimapt/vimapt.vim`
+    source ~/.vim/vimapt/vimapt.vim
 
 5. 如果你的备份的`.vimrc`包含有设置信息, 那么请把它移动到这个文件`.vim/vimrc/vim.vimrc`.
 6. 执行 `pip install -r ~/.vim/vimapt/library/requirements.txt` 如果你的vim支持python2
