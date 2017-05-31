@@ -32,6 +32,7 @@ setup(
 
     entry_points={
         'console_scripts': [
+            'vimapt-makevap=vimapt_tools.makevap:main',
             'vimapt-makevpb=vimapt_tools.makevpb:main',
             'vimapt-maketpl=vimapt_tools.maketpl:main',
             'vimapt-makepool=vimapt_tools.makepool:main',
