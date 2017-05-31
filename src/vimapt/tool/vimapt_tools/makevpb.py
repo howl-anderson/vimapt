@@ -4,7 +4,7 @@ import os
 
 from vimapt.package_format import get_compressor
 
-_PACKAGE_FORMAT = 'vap'
+_PACKAGE_FORMAT = 'vpb'
 
 
 class VimAptMakeVpb(object):
