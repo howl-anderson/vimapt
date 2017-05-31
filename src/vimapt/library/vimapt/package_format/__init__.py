@@ -5,11 +5,11 @@ from .vap.Compress import Compress as VAPCompress
 
 
 _COMPRESSOR_MAPPING = {
-    'vap': VAPExtract
+    'vap': VAPCompress
 }
 
 _EXTRACTOR_MAPPING = {
-    'vap': VAPCompress
+    'vap': VAPExtract
 }
 
 _FILE_EXT_TO_FORMAT_MAPPING = {
