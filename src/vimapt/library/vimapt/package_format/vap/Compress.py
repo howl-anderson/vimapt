@@ -19,6 +19,7 @@ class Compress(BaseCompress):
         :return: None
         """
         file_list = self.scan_dir()
+        rel_file_list = [os.path.relpath(i, self.source_dir) for i in file_list]
         with tarfile.open(self.output_file, _TARFILE_OPEN_MODE) as tar_fd:
-            for file_name in file_list:
-                tar_fd.add(file_name)
+            for i, file_name in enumerate(file_list):
+                tar_fd.add(file_name, rel_file_list[i])
