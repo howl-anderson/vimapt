@@ -2,7 +2,9 @@
 
 import os
 
-from vimapt import Compress
+from vimapt.package_format import get_compressor
+
+_PACKAGE_FORMAT = 'vap'
 
 
 class VimAptMakeVpb(object):
@@ -20,7 +22,8 @@ class VimAptMakeVpb(object):
         self.target_file = os.path.join(self.target_dir, self.full_pkg_name)
 
     def make(self):
-        compress_object = Compress.Compress(self.work_dir, self.target_file)
+        compressor = get_compressor(_PACKAGE_FORMAT)
+        compress_object = compressor(self.work_dir, self.target_file)
         compress_object.compress()
 
 
