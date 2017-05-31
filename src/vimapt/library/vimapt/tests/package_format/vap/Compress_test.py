@@ -12,8 +12,7 @@ class CompressTest(unittest.TestCase):
         :return: 
         """
         workspace_dir = os.path.join(os.path.dirname(os.path.abspath(os.path.realpath(__file__))),
-                                     'test_data_for_compress',
-                                     'vap')
+                                     'test_data_for_compress')
 
         input_dir = os.path.join(workspace_dir, 'input')
         output_file = os.path.join(workspace_dir, 'output.vap')
