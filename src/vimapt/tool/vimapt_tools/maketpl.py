@@ -5,7 +5,7 @@ import sys
 
 from six.moves import input
 
-from vimapt import Extract
+from vimapt.package_format import get_extractor_by_detect_file
 
 
 class Make(object):
@@ -25,7 +25,9 @@ class Make(object):
             sys.exit(0)
         else:
             os.mkdir(package_dir_abspath)
-        extract_object = Extract.Extract(self.tpl_file, package_dir_abspath)
+
+        extractor = get_extractor_by_detect_file(self.tpl_file)
+        extract_object = extractor(self.tpl_file, package_dir_abspath)
         extract_object.extract()
         print("New packaging directory build in: %s" % package_dir_abspath)
 
@@ -56,7 +58,9 @@ class Make(object):
             sys.exit(0)
         else:
             os.mkdir(package_dir_abspath)
-        extract_object = Extract.Extract(tpl_abs_file, package_dir_abspath)
+
+        extractor = get_extractor_by_detect_file(tpl_abs_file)
+        extract_object = extractor(tpl_abs_file, package_dir_abspath)
         extract_object.extract()
         rel_tpl_list = ['vimapt/control/vimapt.yaml',
                         'vimapt/copyright/vimapt.yaml',

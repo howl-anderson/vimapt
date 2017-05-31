@@ -12,7 +12,7 @@ from vimapt.exception import VimaptAbortOperationException
 from . import Record
 from . import LocalRepo
 from . import Vimapt
-from . import Extract
+from .package_format import get_extractor_by_detect_file
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +47,9 @@ class Install(object):
         self._init_check(package_file)
         self._check_repeat_install()
         self._check_depend()
-        install = Extract.Extract(package_file, self.vim_dir)
+
+        extractor = get_extractor_by_detect_file(package_file)
+        install = extractor(package_file, self.vim_dir)
         file_list = install.get_file_list()
         install.filter(self._extract_hook)
         install.extract()
@@ -77,7 +79,8 @@ class Install(object):
 
     def _init_check(self, package_file):
         self.tmp_dir = tempfile.mkdtemp()
-        Extract.Extract(package_file, self.tmp_dir).extract()
+        extractor = get_extractor_by_detect_file(package_file)
+        extractor(package_file, self.tmp_dir).extract()
 
     def _check_repeat_install(self):
         """
