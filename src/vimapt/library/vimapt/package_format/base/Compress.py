@@ -2,7 +2,7 @@
 
 import os
 
-from .data_format import dumps
+from vimapt.data_format import dumps
 
 
 class BaseCompress(object):
