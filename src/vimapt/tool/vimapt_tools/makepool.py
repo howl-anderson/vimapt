@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
 import os
-from . import makevpb
+from . import makevap
 
 
 def make_pool(work_dir):
     for (dir_path, dir_names, file_names) in os.walk(work_dir):
         for dir_name in dir_names:
             pkg_dir = os.path.join(dir_path, dir_name)
-            obj = makevpb.VimAptMakeVpb(pkg_dir)
+            obj = makevap.VimAptMakeVap(pkg_dir)
             try:
                 obj.make()
             except Exception as e:
