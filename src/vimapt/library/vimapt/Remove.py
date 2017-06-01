@@ -19,7 +19,7 @@ class Remove(object):
         fd.close()
         meta_data = loads(file_stream)
 
-        for file_name, _ in meta_data:
+        for file_name in meta_data:
             file_token = file_name.split("/")
             if file_token[0] == "vimrc":
                 continue

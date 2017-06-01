@@ -28,7 +28,7 @@ class Purge(object):
         fd.close()
         meta_data = loads(file_stream)
 
-        for file_name, _ in meta_data:
+        for file_name in meta_data:
             target_path = os.path.join(self.vim_dir, file_name)
             if os.path.isfile(target_path):
                 os.unlink(target_path)
