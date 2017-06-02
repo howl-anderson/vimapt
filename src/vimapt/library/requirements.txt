@@ -2,3 +2,4 @@ pyyaml
 six
 semantic_version
 requirements-parser
+enum34
