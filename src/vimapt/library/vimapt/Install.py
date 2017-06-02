@@ -69,7 +69,7 @@ class Install(object):
             spec.loader.exec_module(hook_module)
 
         try:
-            hook_class = getattr(hook_module, '_VIAMPT_HOOK_CLASS')
+            hook_class = getattr(hook_module, '_VIMAPT_HOOK_CLASS')
         except AttributeError:
             raise VimaptPluginHookNotFound('Can not access `_VIMAPT_HOOK_CLASS` attribute of hook module')
         else:
