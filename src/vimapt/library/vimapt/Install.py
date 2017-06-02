@@ -6,15 +6,27 @@ import logging
 
 import requirements
 import semantic_version
+import six
 
 from .data_format import loads
-from vimapt.exception import VimaptAbortOperationException
+from vimapt.exception import (
+    VimaptException,
+    VimaptAbortOperationException,
+)
 from . import Record
 from . import LocalRepo
 from . import Vimapt
 from .package_format import get_extractor_by_detect_file
+from vimapt.hook.constants import (
+    HookType,
+    HookTypeToMethodNameMapping
+)
 
 logger = logging.getLogger(__name__)
+
+
+class VimaptPluginHookNotFound(VimaptException):
+    pass
 
 
 class Install(object):
@@ -38,6 +50,64 @@ class Install(object):
                 return False
         return True
 
+    @staticmethod
+    def _import_hook_module(package_path, package_name):
+        module_file_name = package_name.replace('-', '_')
+        module_file_path = os.path.join(package_path, 'vimapt', 'hook', module_file_name + '.py')
+        module_name = '.'.join(['plugin_hook', module_file_name])
+
+        hook_module = None
+        if six.PY2:
+            import imp
+
+            hook_module = imp.load_source(module_name, module_file_path)
+        else:
+            # For python 3.5+
+            import importlib.util
+            spec = importlib.util.spec_from_file_location(module_name, module_file_path)
+            hook_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(hook_module)
+
+        try:
+            hook_class = getattr(hook_module, '_VIAMPT_HOOK_CLASS')
+        except AttributeError:
+            raise VimaptPluginHookNotFound('Can not access `_VIAMPT_HOOK_CLASS` attribute of hook module')
+        else:
+            return hook_class
+
+    def _init_package_hook(self, package_path, package_name):
+        try:
+            hook_class = self._import_hook_module(package_path, package_name)
+        except VimaptPluginHookNotFound:
+            return None
+        else:
+            hook_instance = hook_class(self.vim_dir)
+            return hook_instance
+
+    def _run_hook(self, hook_type):
+        package_path = self.tmp_dir
+        package_name = self.pkg_name
+
+        hook_instance = self._init_package_hook(package_path, package_name)
+
+        try:
+            method_name = HookTypeToMethodNameMapping[hook_type]
+        except KeyError as e:
+            raise VimaptAbortOperationException(e.message)
+
+        try:
+            hook_method = getattr(hook_instance, method_name)
+        except AttributeError as e:
+            raise VimaptAbortOperationException(e.message)
+
+        try:
+            result = hook_method()
+        except Exception as e:
+            raise VimaptAbortOperationException(e.message)
+
+        if not result:
+            raise VimaptAbortOperationException("Hook return a not True, means hook execute failed!")
+
     def _install_package(self, package_file):
         """
         The real method that install package from local file
@@ -48,6 +118,8 @@ class Install(object):
         self._check_repeat_install()
         self._check_depend()
 
+        self._run_hook(HookType.PRE_INSTALL)
+
         extractor = get_extractor_by_detect_file(package_file)
         install = extractor(package_file, self.vim_dir)
         file_list = install.get_file_list()
@@ -55,6 +127,8 @@ class Install(object):
         install.extract()
         record = Record.Record(self.vim_dir)
         record.install(self.pkg_name, file_list)
+
+        self._run_hook(HookType.POST_INSTALL)
 
     def file_install(self, package_file):
         """
