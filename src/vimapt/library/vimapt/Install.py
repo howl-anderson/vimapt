@@ -71,7 +71,7 @@ class Install(object):
         try:
             hook_class = getattr(hook_module, '_VIAMPT_HOOK_CLASS')
         except AttributeError:
-            raise VimaptPluginHookNotFound('Can not access `_VIAMPT_HOOK_CLASS` attribute of hook module')
+            raise VimaptPluginHookNotFound('Can not access `_VIMAPT_HOOK_CLASS` attribute of hook module')
         else:
             return hook_class
 
