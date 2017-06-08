@@ -22,7 +22,19 @@ class Extract(BaseExtract):
         :return: None
         """
         with tarfile.open(self.input_file, _TARFILE_OPEN_MODE) as tar_fd:
-            tar_fd.extractall(self.output_dir)
+            package_member_list = tar_fd.getmembers()
+
+            allowed_package_number_list = []
+
+            # apply filter hook
+            if self.hook_object is not None:
+                for member in package_member_list:
+                    if self.hook_object(member.name, None):
+                        allowed_package_number_list.append(member)
+            else:
+                allowed_package_number_list = package_member_list
+
+            tar_fd.extractall(self.output_dir, members=allowed_package_number_list)
 
 
     def get_file_list(self):
