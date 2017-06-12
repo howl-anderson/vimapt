@@ -1,3 +1,5 @@
+import subprocess
+
 from vimapt.exception import VimaptAbortOperationException
 
 
@@ -44,3 +46,12 @@ class BaseHook(object):
         if return_code != 0:
             msg = "Pip package {} uninstall failed!".format(package_specification)
             raise VimaptAbortOperationException(msg)
+
+    def process_execute(self, command):
+        process = subprocess.Popen(command, stdout=subprocess.PIPE)
+        while process.poll() is None:
+            line = process.stdout.readline()  # This blocks until it receives a newline.
+            print(line)
+        # When the subprocess terminates there might be unconsumed output
+        # that still needs to be processed.
+        print(process.stdout.read())
