@@ -54,7 +54,7 @@ class Install(object):
     def _import_hook_module(package_path, package_name):
         module_file_name = package_name.replace('-', '_')
         module_file_path = os.path.join(package_path, 'vimapt', 'hook', module_file_name + '.py')
-        module_name = '.'.join(['plugin_hook', module_file_name])
+        module_name = module_file_name
 
         if not os.path.exists(module_file_path):
             # hook file not exists, raise exception to stop call chain
