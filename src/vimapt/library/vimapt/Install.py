@@ -56,6 +56,10 @@ class Install(object):
         module_file_path = os.path.join(package_path, 'vimapt', 'hook', module_file_name + '.py')
         module_name = '.'.join(['plugin_hook', module_file_name])
 
+        if not os.path.exists(module_file_path):
+            # hook file not exists, raise exception to stop call chain
+            raise VimaptPluginHookNotFound("{} file not exists!".format(module_file_path))
+
         hook_module = None
         if six.PY2:
             import imp
@@ -89,6 +93,10 @@ class Install(object):
         package_name = self.pkg_name
 
         hook_instance = self._init_package_hook(package_path, package_name)
+
+        if hook_instance is None:
+            # hook is not valid in this package, so just return None and finish the process
+            return None
 
         try:
             method_name = HookTypeToMethodNameMapping[hook_type]
