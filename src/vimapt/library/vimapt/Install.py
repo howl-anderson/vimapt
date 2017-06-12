@@ -85,7 +85,7 @@ class Install(object):
         except VimaptPluginHookNotFound:
             return None
         else:
-            hook_instance = hook_class(self.vim_dir)
+            hook_instance = hook_class(self.vim_dir, package_path, package_name)
             return hook_instance
 
     def _run_hook(self, hook_type):

@@ -2,8 +2,10 @@ from vimapt.exception import VimaptAbortOperationException
 
 
 class BaseHook(object):
-    def __init__(self, vim_dir):
+    def __init__(self, vim_dir, package_path, package_name):
         self.vim_dir = vim_dir
+        self.package_path = package_path
+        self.package_name = package_name
 
     def pre_install(self):
         return True
