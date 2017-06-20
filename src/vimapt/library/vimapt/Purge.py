@@ -1,37 +1,17 @@
 #!/usr/bin/env python
 
-import os
+import logging
 
-from .data_format import loads
+from vimapt.manager.manage_action import ManageAction
+from vimapt.manager.manager import Manager
+
+logger = logging.getLogger(__name__)
 
 
 class Purge(object):
     def __init__(self, vim_dir):
-        self.vim_dir = vim_dir
-        self.package_name = None
+        self.vim_dir = vim_dir  # user's .vim dir path
+        self.manager = Manager(vim_dir)
 
     def purge_package(self, package_name):
-        self.package_name = package_name
-
-        file_install_path = os.path.join(self.vim_dir,
-                                         'vimapt/install',
-                                         self.package_name)
-        file_remove_path = os.path.join(self.vim_dir,
-                                        'vimapt/remove',
-                                        self.package_name)
-        if os.path.isfile(file_install_path):
-            file_path = file_install_path
-        else:
-            file_path = file_remove_path
-        fd = open(file_path, 'r')
-        file_stream = fd.read()
-        fd.close()
-        meta_data = loads(file_stream)
-
-        for file_name in meta_data:
-            target_path = os.path.join(self.vim_dir, file_name)
-            if os.path.isfile(target_path):
-                os.unlink(target_path)
-            else:
-                pass
-        os.unlink(file_path)
+        self.manager.execute(ManageAction.UNINSTALL, package_name)
