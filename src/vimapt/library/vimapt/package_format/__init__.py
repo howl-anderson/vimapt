@@ -43,5 +43,5 @@ def get_package_format_by_detect_file(package_file):
     try:
         return _FILE_EXT_TO_FORMAT_MAPPING[ext]
     except KeyError:
-        msg = '{} is not a valid ext. All valid ext is {}'
-        raise ValueError(msg.format(ext, _FILE_EXT_TO_FORMAT_MAPPING.keys()))
+        msg = 'File: {}; {} is not a valid ext. All valid ext is {}'
+        raise ValueError(msg.format(package_file, ext, _FILE_EXT_TO_FORMAT_MAPPING.keys()))
