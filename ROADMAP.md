@@ -22,3 +22,9 @@
 * add new package format `vap', which is abbrevation from `VimApt's Package`. which will support binary file.
 * this version will not cover the dependency solver or outer dependency checker or package compiler.
   
+# version 0.3
+* Add hook for install third-party dependency (mainly for pip package) and compiling package
+
+# version 0.4
+* Add dependency solver for package dependency, but don't support version selection
+* Disable install from file for simplify the implement
