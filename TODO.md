@@ -22,3 +22,8 @@
 * 移除对python非标准库的依赖，比如yaml
 * 考虑lazyload插件的功能,以及具体由vimapt自身提供还是由插件提供
 * 参考dein.vim和vim-plug和vim-addon-manager的功能
+
+# For v0.4
+* Add name section to control file of an package, no more scan the file name, this is an required field
+* Add conflicts section to control file of an package, this is an optional field
+* Add depends and conflicts section to index/package for make dependency solver can happily work
