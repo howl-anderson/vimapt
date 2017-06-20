@@ -76,6 +76,9 @@ class LocalRepo(object):
         source_data = loads(source_stream)
         return source_data
 
+    def get_local_package_repository(self):
+        return self._extract()
+
     def get_package(self, package_name):
         """
         Get package by name from remote repository
