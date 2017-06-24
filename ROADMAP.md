@@ -16,10 +16,10 @@
 * VPB not support binary file, so packages contain binary files (mainly image files) are not supported (e.g. vim-colors-solarized package) 
 ### Leak support for outer dependency check or auto-installer
 * Don't support outer dependency check, so package's requirement may not met (e.g. jedi-vim package need jedi package which is an outer dependency).
-* Don't support compile, so package's can't compile themself during the install (e.g. you-complete-me need compile during the dependency).
+* Don't support compile, so package's can't compile them-self during the install (e.g. you-complete-me need compile during the dependency).
 
 # version 0.2
-* add new package format `vap', which is abbrevation from `VimApt's Package`. which will support binary file.
+* add new package format `vap`, which is abbreviation from `VimApt's Package`. which will support binary file.
 * this version will not cover the dependency solver or outer dependency checker or package compiler.
   
 # version 0.3
@@ -27,4 +27,10 @@
 
 # version 0.4
 * Add dependency solver for package dependency, but don't support version selection
+* change the package name role to fit the dependency solver: `depsolver`
 * Disable install from file for simplify the implement
+* Disable `purge` function for simplify the implement
+** it will cause `update` hard to implement when there is a incompatible config file already exits in system
+** `purge` is hard to implement, when `remove` or `uninstall` case many package to uninstall, 
+    but not all of them are best to keep config file. For future design, 
+    it can be solved more or less by give package an option to indicate if there are configure file want be keep when it be uninstalled.
