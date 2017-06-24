@@ -26,4 +26,10 @@
 # For v0.4
 * Add name section to control file of an package, no more scan the file name, this is an required field
 * Add conflicts section to control file of an package, this is an optional field
+** Done
 * Add depends and conflicts section to index/package for make dependency solver can happily work
+** Done
+
+# For v0.5
+* Current index not allowed multi-version package, but it also seems that vim package don't have version dependency, need further thinking.
+* Keep `purge` and `remove` function make package manager complex, so remove `purge` only keep `remove`? TODO.
