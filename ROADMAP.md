@@ -34,3 +34,19 @@
 ** `purge` is hard to implement, when `remove` or `uninstall` case many package to uninstall, 
     but not all of them are best to keep config file. For future design, 
     it can be solved more or less by give package an option to indicate if there are configure file want be keep when it be uninstalled.
+    
+# version 0.5
+* Make vim-apt can execute as command in the shell out of vim
+
+# version 0.6
+* Clean the code base, refactor the project for better readability.
+
+# version 0.7
+* Add new feature that allow user use vim-apt to install github project like `pathgo` / `bundle`.
+  Function will implement thought wrapper `pathgo` / `bundle` package but provide a `vimapt` like user experience.
+  Something like `VimApt bundle install repo/some-package`
+  
+# version 0.8
+* Add plugin feature, that allow `vimapt` extend by plugin.
+  ** package can expect to extend the vimapt's ablility, 
+     like some package named `bundle` can allow user use `vimapt` to install package for `bundle`
