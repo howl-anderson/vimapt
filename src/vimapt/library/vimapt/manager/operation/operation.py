@@ -1,4 +1,4 @@
-from depsolver.solver.operations import Operation as SolverOperation
+from simplesat.transaction import Operation as SolverOperation
 
 
 class Operation(object):
@@ -7,9 +7,10 @@ class Operation(object):
 
     def execute(self, operation):
         if not isinstance(operation, SolverOperation):
-            msg = '{0} is not an instance of {1}; {0} is an instance of {2}'.format(operation,
-                                                                                    SolverOperation,
-                                                                                    type(operation))
+            msg = (
+                '{0} is not an instance of {1}; '
+                '{0} is an instance of {2}'
+            ).format(operation, SolverOperation, type(operation))
             raise ValueError(msg)
 
         self.do_execute(operation)

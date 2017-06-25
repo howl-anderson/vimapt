@@ -5,7 +5,18 @@ from __future__ import print_function
 import logging
 import os
 
-from depsolver import PackageInfo, Pool, Repository, Request, Requirement, Solver
+# from depsolver import PackageInfo, Pool, Repository, Request, Requirement, Solver
+from simplesat.constraints import (
+    PrettyPackageStringParser,
+    InstallRequirement
+)
+from simplesat.dependency_solver import (
+    DependencySolver,
+)
+from okonomiyaki.versions import EnpkgVersion
+from simplesat.pool import Pool
+from simplesat.repository import Repository
+from simplesat.request import Request
 
 from vimapt import LocalRepo
 from vimapt.data_format import loads
@@ -14,31 +25,37 @@ from vimapt.manager.manage_action import ManageAction
 logger = logging.getLogger(__name__)
 
 
-class DependencySolver(object):
+class Solver(object):
     action_mapping = {
         ManageAction.INSTALL: 'install',
         ManageAction.UNINSTALL: 'remove',
-        ManageAction.UPDATE: 'update'
+        ManageAction.SOFT_UPDATE: 'soft_update',
+        ManageAction.HARD_UPDATE: 'hard_update',
+        ManageAction.UPDATE_ALL: 'upgrade'
     }
 
     def __init__(self, vim_dir):
         self.vim_dir = vim_dir
         self.pkg_name = None  # package's name
 
-    def solve(self, action, package_specification):
+    def solve(self, action, package_specification=None):
         logger.info("Start to scan repository packages.")
+
+        package_parser = PrettyPackageStringParser(
+            EnpkgVersion.from_string
+        )
 
         repository_package_list = []
         for package_data in self.get_repository_package_list():
             package_info_string = '; '.join([
-                '{}-{}'.format(package_data['name'], package_data['version']),
+                '{} {}'.format(package_data['name'], package_data['version']),
                 'depends ({})'.format(package_data['depends']),
                 'conflicts ({})'.format(package_data['conflicts'])
             ])
 
             logger.info("Scanned package: {}".format(package_info_string))
 
-            package_info = PackageInfo.from_string(package_info_string)
+            package_info = package_parser.parse_to_package(package_info_string)
             repository_package_list.append(package_info)
 
         logger.info("End of scanning repository packages.")
@@ -51,14 +68,14 @@ class DependencySolver(object):
 
         for package_data in self.get_installed_package_list():
             package_info_string = '; '.join([
-                '{}-{}'.format(package_data['name'], package_data['version']),
+                '{} {}'.format(package_data['name'], package_data['version']),
                 'depends ({})'.format(package_data['depends']),
                 'conflicts ({})'.format(package_data['conflicts'])
             ])
 
             logger.info("Scanned package: {}".format(package_info_string))
 
-            package_info = PackageInfo.from_string(package_info_string)
+            package_info = package_parser.parse_to_package(package_info_string)
             installed_package_list.append(package_info)
 
         logger.info("End of scanning installed packages.")
@@ -66,14 +83,27 @@ class DependencySolver(object):
         installed_repo = Repository(installed_package_list)
         pool = Pool([repo, installed_repo])
 
-        request = Request(pool)
+        request = Request()
 
         request_action = getattr(request, self.action_mapping[action])
-        request_action(Requirement.from_string(package_specification))
+
+        logger.info("Get attribute: {}".format(request_action))
+
+        if action is ManageAction.UPDATE_ALL:
+            request_action()
+        else:
+            request_action(InstallRequirement._from_string(package_specification))
 
         # request.install(Requirement.from_string(package_specification))
 
-        operation_list = Solver(pool, installed_repo).solve(request)
+        logger.info(
+            ("Performance action: "
+             "\n pool :{}"
+             "\n installed repo: {}"
+             "\n request: {}").format(pool, installed_repo, request)
+        )
+
+        operation_list = DependencySolver(pool, [repo], installed_repo).solve(request)
         return operation_list
 
     def get_installed_package_list(self):
