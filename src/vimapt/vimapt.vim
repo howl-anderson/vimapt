@@ -47,14 +47,14 @@ for vimrc_file in split(glob('~/.vim/vimrc/*.vimrc'), '\n')
 endfor
 
 let s:current_file = expand("<sfile>")
-let s:command_list = ['install', 'remove', 'purge', 'update', 'repolist', 'list', 'purgelist']
+let s:command_list = ['install', 'remove', 'upgrade', 'upgrade-all', 'update', 'repolist', 'list']
 let runtimepath_stream = &runtimepath
 let runtimepath_list = split(runtimepath_stream, ',')
 let vim_dir_var = get(runtimepath_list, 0)
 let s:vim_dir_path = expand(vim_dir_var)
 let s:package_list = []
 let s:package_remove_list = []
-let s:package_purge_list = []
+let s:potential_upgradable_package_list = []
 
 function VimAptInstall(vim_dir, package_name)
     call VimAptCommand('install', a:package_name)
@@ -64,8 +64,12 @@ function VimAptRemove(vim_dir, package_name)
     call VimAptCommand('remove', a:package_name)
 endfunction
 
-function VimAptPurge(vim_dir, package_name)
-    call VimAptCommand('purge', a:package_name)
+function VimAptUpgrade(vim_dir, package_name)
+    call VimAptCommand('upgrade', a:package_name)
+endfunction
+
+function VimAptUpgradeAll(vim_dir)
+    call VimAptCommand('upgrade-all')
 endfunction
 
 function VimAptUpdate()
@@ -88,16 +92,16 @@ function VimApt(command_arg, ...)
         call VimAptInstall(s:vim_dir_path, package_arg)
     elseif vapt_command == 'remove'
         call VimAptRemove(s:vim_dir_path, package_arg)
-    elseif vapt_command == 'purge'
-        call VimAptPurge(s:vim_dir_path, package_arg)
+    elseif vapt_command == 'upgrade'
+        call VimAptUpgrade(s:vim_dir_path, package_arg)
+    elseif vapt_command == 'upgrade-all'
+        call VimAptUpgradeAll(s:vim_dir_path)
     elseif vapt_command == 'update'
         call VimAptUpdate()
     elseif vapt_command == 'list'
         call VimAptList()
     elseif vapt_command == 'repolist'
         call VimAptRepoList()
-    elseif vapt_command == 'purgelist'
-        call VimAptPurgeList()
     else
         echo "Error: unknow command"
     endif
@@ -111,8 +115,8 @@ function VimAptPackageRemoveList()
     call VimAptCommand('pkg_remove_list')
 endfunction
 
-function VimAptPackagePurgeList()
-    call VimAptCommand('pkg_purge_list')
+function VimAptPackageUpgradableList()
+    call VimAptCommand('pkg_upgradable_list')
 endfunction
 
 function VimAptList()
@@ -125,9 +129,9 @@ function VimAptRepoList()
     echo join(s:package_list, "\n")
 endfunction
 
-function VimAptPurgeList()
-    call VimAptPackagePurgeList()
-    echo join(s:package_purge_list, "\n")
+function VimAptUpgradableList()
+    call VimAptPackageUpgradableList()
+    echo join(s:potential_upgradable_package_list, "\n")
 endfunction
 
 function VimAptComplete(ArgLead, CmdLine, CursorPos)
@@ -141,7 +145,7 @@ function VimAptComplete(ArgLead, CmdLine, CursorPos)
         let current_command = get(token, 1)
         for commands in s:command_list
             if commands == current_command 
-                if current_command != "update" && current_command != "repolist" && current_command != "list" && current_command != "purgelist"
+                if current_command != "update" && current_command != "repolist" && current_command != "list" && current_command != "purgelist" && current_command != "upgrade-all"
                     let complete_package_flag = 1 
                 endif
             endif
@@ -155,9 +159,9 @@ function VimAptComplete(ArgLead, CmdLine, CursorPos)
             elseif current_command == "remove"
                 call VimAptPackageRemoveList()
                 return join(s:package_remove_list, "\n")
-            elseif current_command == "purge"
-                call VimAptPackagePurgeList()
-                return join(s:package_purge_list, "\n")
+            elseif current_command == "upgrade"
+                call VimAptUpgradableList()
+                return join(s:potential_upgradable_package_list, "\n")
             endif
         else
             return ""
