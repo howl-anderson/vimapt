@@ -1,0 +1,12 @@
+{
+    "name": "pandas",
+    "version": "1.17.0-2",
+    "install_requires": {
+        "numpy": [["^= 1.8.1"]],
+        "scipy": [["> 2"]],
+        "click": [["< 6"], [">= 7"]]
+    },
+    "conflicts": {
+        "paneldata": []
+    }
+}
