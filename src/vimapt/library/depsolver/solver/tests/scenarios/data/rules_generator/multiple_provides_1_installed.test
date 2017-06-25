@@ -1,0 +1,4 @@
+(-nomkl_numpy-1.7.0 | -nomkl_numpy-1.7.0)
+(-scipy-0.12.0 | +numpy-1.7.0)
+(-numpy-1.7.0 | +mkl-11.0.0)
+(+scipy-0.12.0)

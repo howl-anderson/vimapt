@@ -1,0 +1,5 @@
+-mkl-10.3.0;1
+mkl-10.3.0;4
+-nomkl_numpy-1.7.0;5
+-nomkl_numpy-1.7.0;3
+numpy-1.7.0;2

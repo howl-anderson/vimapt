@@ -1,0 +1,31 @@
+packages:
+    - "mkl-10.3.0"
+    - "mkl-10.4.0"
+    - "numpy-1.6.0; depends (mkl)"
+    - "numpy-1.6.1; depends (mkl)"
+    - "numpy-1.7.1; depends (mkl >= 10.4.0)"
+    - "nomkl_numpy-1.6.0; replaces (numpy==1.6.0)"
+    - "nomkl_numpy-1.6.1; replaces (numpy==1.6.1)"
+    - "nomkl_numpy-1.7.1; replaces (numpy==1.7.1)"
+    - "mkl_numpy-1.6.0; replaces (numpy==1.6.0); depends (mkl)"
+    - "mkl_numpy-1.6.1; replaces (numpy==1.6.1); depends (mkl)"
+    - "mkl_numpy-1.7.1; replaces (numpy==1.7.1); depends (mkl >= 10.4.0)"
+
+installed_repository:
+
+remote_repository:
+    - "mkl-10.3.0"
+    - "mkl-10.4.0"
+    - "numpy-1.6.0"
+    - "numpy-1.6.1"
+    - "numpy-1.7.1"
+    - "nomkl_numpy-1.6.0"
+    - "nomkl_numpy-1.6.1"
+    - "nomkl_numpy-1.7.1"
+    - "mkl_numpy-1.6.0"
+    - "mkl_numpy-1.6.1"
+    - "mkl_numpy-1.7.1"
+
+request:
+    - operation: "install"
+      requirement: "numpy"

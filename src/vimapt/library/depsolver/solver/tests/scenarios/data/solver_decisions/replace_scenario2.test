@@ -1,0 +1,7 @@
+-mkl-10.3.0;1
+mkl-10.3.0;7
+-numpy-1.7.0;2
+numpy-1.7.0;8
+-scikit_learn-0.12.0;9
+-scikit_learn-0.12.0;5
+sklearn-0.13.0;6

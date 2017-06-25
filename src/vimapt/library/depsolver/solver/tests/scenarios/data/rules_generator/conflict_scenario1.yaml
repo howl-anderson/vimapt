@@ -1,0 +1,17 @@
+packages:
+    - "mkl-10.3.0"
+    - "numpy-1.7.0; depends (mkl)"
+    - "nomkl_numpy-1.7.0; provides (numpy == 1.7.0); conflicts (numpy)"
+
+installed_repository:
+    - "mkl-10.3.0"
+    - "nomkl_numpy-1.7.0"
+
+remote_repository:
+    - "mkl-10.3.0"
+    - "numpy-1.7.0"
+    - "nomkl_numpy-1.7.0"
+
+request:
+    - operation: "install"
+      requirement: "numpy"

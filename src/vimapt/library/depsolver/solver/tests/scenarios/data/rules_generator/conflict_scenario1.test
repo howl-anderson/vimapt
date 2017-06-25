@@ -1,0 +1,6 @@
+(-mkl-10.3.0 | -mkl-10.3.0)
+(-nomkl_numpy-1.7.0 | -numpy-1.7.0)
+(-nomkl_numpy-1.7.0 | -nomkl_numpy-1.7.0)
+(-nomkl_numpy-1.7.0 | -numpy-1.7.0)
+(-numpy-1.7.0 | +mkl-10.3.0 | +mkl-10.3.0)
+(+numpy-1.7.0)

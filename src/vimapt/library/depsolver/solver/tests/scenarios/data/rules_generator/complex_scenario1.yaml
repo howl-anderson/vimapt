@@ -1,0 +1,27 @@
+packages:
+    - "mkl-10.1.0"
+    - "mkl-10.2.0"
+    - "mkl-10.3.0"
+    - "mkl-11.0.0"
+    - "numpy-1.6.0; depends (mkl)"
+    - "numpy-1.6.1; depends (mkl)"
+    - "numpy-1.7.0; depends (mkl)"
+    - "scipy-0.11.0; depends (numpy >= 1.5.0)"
+    - "scipy-0.12.0; depends (numpy >= 1.5.0)"
+
+installed_repository:
+
+remote_repository:
+    - "mkl-10.1.0"
+    - "mkl-10.2.0"
+    - "mkl-10.3.0"
+    - "mkl-11.0.0"
+    - "numpy-1.6.0"
+    - "numpy-1.6.1"
+    - "numpy-1.7.0"
+    - "scipy-0.11.0"
+    - "scipy-0.12.0"
+
+request:
+    - operation: "install"
+      requirement: "scipy"
