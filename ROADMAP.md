@@ -26,10 +26,12 @@
 * Add hook for install third-party dependency (mainly for pip package) and compiling package
 
 # version 0.4
-* Add dependency solver for package dependency, but don't support version selection
-* change the package name role to fit the dependency solver: `depsolver`
+* Add dependency solver for package dependency, but don't support version selection (it can specific version, but repo mechanics don't support multi-version of a package :( )
+* change the package name role to fit the dependency solver: `sat-solver` aka `simplesat`
 * Disable install from file for simplify the implement
 * Disable `purge` function for simplify the implement
+* Add new feature called `upgrade` to upgrade specific package to newest version
+* Add new feature called `upgrade-all` to upgrade all installed package to newest version
 ** it will cause `update` hard to implement when there is a incompatible config file already exits in system
 ** `purge` is hard to implement, when `remove` or `uninstall` case many package to uninstall, 
     but not all of them are best to keep config file. For future design, 
