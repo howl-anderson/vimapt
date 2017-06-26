@@ -4,15 +4,20 @@ Vimapt
 Vimapt is a vim package manager, "vimapt" is the abbreviate of "Vim's Advantage Package Tools".
 
 ## Feature ##
-1. web-based repository
-2. "one package, one config file", make vim package manageable, easy to share your config, easy to backup
-3. full-stack tools from package-make-tools to repository-build-tools, anything have the tools no mater what do you want to do with vimapt
+### Genuine package solution for Vim-like editor
+* Standard package format which compatible with traditional vim package.
+* Built-in dependency solver: reliable and stable.
+* Web-based repository: fast, high quality and security.
+* Compatible with other package manage tools: user can use any package tools even manual installed package along with vimapt
+* Full-stack tools from package-make-tools to repository-build-tools, anything have the tools no mater what do you want to do with vimapt
 
+### Make sharing more easily
+* "One package, one config file", make vim package manageable, easy to share your config, easy to backup
 
 ## Get vimapt
-you can always download from [github](https://github.com/howl-anderson/vimapt) / [bitbucket](https://bitbucket.org/howl-anderson/vimapt)
+You can always download from [github](https://github.com/howl-anderson/vimapt) / [bitbucket](https://bitbucket.org/howl-anderson/vimapt)
 
-## Install by shell
+## Quick install
 
 VimApt provide a script to install.
 
@@ -20,8 +25,8 @@ VimApt provide a script to install.
     
 For windows User, please see `Install by hand` section.
 
-## Install by hand
-before you start, let's test vim see if vim support python and support which version
+## Manual install
+Before you start, let's test vim see if vim support python and support which version
 execute `vim --version`, you will see vim's feature list, if you see `+python` or `+python3` means this vim support python2 or python3.
 `-python` or `-python3` means not support such feature. vimapt need vim support python2 or python3. if both of those are missing, vimapt will not work.
 Remember which version of python this vim support, it will be used latter.
@@ -58,6 +63,20 @@ If everything is OK, you well soon get a notification that installation of `xxx`
 
 Notice: make sure you are online and the `xxx` plugin is in the repository
 
+### vimapt list
+
+In vim console, type `:VimApt list` and press enter.
+
+you well soon get a list of installed packages.
+
+### vimapt upgrade / upgrade-all
+
+In vim console, type `:VimApt upgrade xxx` and press enter.
+
+If everything is OK, you well soon get a notification that upgrade of `xxx` packages is done if there has new version.
+
+Notice: you can use `:VimApt upgrade-all` to upgrade all installed packages.
+
 ### vimapt remove
 
 In vim console, type `:VimApt remove xxx` and press enter.
@@ -69,7 +88,7 @@ Vimapt will remove the package `xxx` from your vim system.
 Vimapt support auto complete very well. you can auto complete command and packages.
 Please notice that vim use TAB as auto complete key.
 
-#### auto complete on commands
+#### Auto complete on commands
 
 In vim console, type `:VimApt `, notice that last character is blank character. 
 now you can press Tab / TAB to auto-complete now. Just like auto-complete function in shell.
@@ -79,7 +98,7 @@ Partial command auto-complete is also supported. For example, you want type comm
  In vim console, type `:VimApt inst`, and now you can press Tab / TAB to auto-complete now,
  vimapt will auto complete the command line to `:VimApt install`.
  
-#### auto complete on packages
+#### Auto complete on packages
 
 Almost every command in vimapt support auto-complete. For example, if you want remove a package that named 'example-package',
 When you type `:VimApt remove example-`, then press TAB / Tab, if there are only one package installed in vimapt which name begin with `example-`,
@@ -109,4 +128,5 @@ After you installed vimapt, here will use install `nerd-tree` as an example, sho
 
 ## Acknowledge
 
-1. Auto install script are modified from [SpaceVim](https://github.com/SpaceVim/SpaceVim) project
+1. Auto install script is modified from [SpaceVim](https://github.com/SpaceVim/SpaceVim) project
+2. Dependency solver come from [sat-solver](https://github.com/enthought/sat-solver) project. For technology reasons, this package is integrated in vimapt project.
