@@ -2,6 +2,8 @@
 
 import os
 import logging
+import shutil
+import datetime
 
 from vimapt.data_format import loads
 
@@ -26,8 +28,28 @@ class RemoveExecutor(object):
 
         logger.info("Package meta data: {}".format(meta_data))
 
+        vimrc_backup_dir = os.path.join(self.vim_dir, 'vimapt', 'vimrc_backup')
+        if not os.path.isdir(vimrc_backup_dir):
+            vimrc_backup_dir = None
+
         for file_name in meta_data:
+
             target_path = os.path.join(self.vim_dir, file_name)
+
+            # backup vimrc file to vimrc_backup directory
+            file_token = file_name.split("/")
+            if file_token[0] == "vimrc":
+                if vimrc_backup_dir:
+                    backup_file_name = "_".join([file_token[-1], datetime.datetime.now().isoformat()])
+                    backup_file_full_path = os.path.join(vimrc_backup_dir, backup_file_name)
+
+                    logger.info(
+                        "Copy vimrc file: {} to {} as backup".format(
+                            target_path,
+                            backup_file_full_path
+                        )
+                    )
+                    shutil.copyfile(target_path, backup_file_full_path)
 
             # print target_path
             if os.path.isfile(target_path):
