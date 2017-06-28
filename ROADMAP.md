@@ -52,3 +52,9 @@
 * Add plugin feature, that allow `vimapt` extend by plugin.
   ** package can expect to extend the vimapt's ablility, 
      like some package named `bundle` can allow user use `vimapt` to install package for `bundle`
+
+# version 0.9
+* Add support to NeoVim
+
+# version 0.10
+* Add test case
