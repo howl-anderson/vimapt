@@ -1,7 +1,7 @@
 Vimapt
 ===
 
-Vimapt is a vim package manager, "vimapt" is the abbreviate of "Vim's Advantage Package Tools".
+Vimapt is a vim package manager, "vimapt" is the abbreviate of "Vim's Advanced Package Tool".
 
 ## Feature ##
 ### Genuine package solution for Vim-like editor

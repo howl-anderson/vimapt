@@ -1,12 +1,19 @@
 Vimapt
 ===
 
-Vimapt是一个Vim的软件包管理器／软件包管理软件, 其中"vimapt"是"Vim's Advantage Package Tools"的缩写.
+Vimapt是一个Vim的软件包管理器／软件包管理软件, 其中"vimapt"是"Vim's Advanced Package Tool"的缩写.
 
 ## 特性 ##
-1. 基于Web的软件包仓库
-2. "一个软件包，一个配置文件", 使得vim的软件包更易于管理，更容易分享配置和更容易备份
-3. 从软件打包到软件安装的全系列支持工具，让使用者非常容易使用vimapt
+### 真正的类vim编辑器的包管理解决方案
+* 能兼容传统vim package的package格式
+* 内建依赖解析器(dependency solver): 稳定且可靠
+* 基于Web的软件仓库: 快速,高质量和安全
+* 兼容其他包管理软件: 即使用户手动安装的传统package也能和vimapt无冲突共存
+* 从软件打包到软件安装的全系列支持工具，让使用者非常容易使用vimapt
+
+### 让分享更容易
+* "一个软件包，一个配置文件", 使得vim的软件包更易于管理，更容易分享配置和更容易备份
+
 
 
 ## 获取 vimapt
@@ -56,6 +63,20 @@ vimapt将会显示一个你可以安装的软件的列表.
 如果一切正常,你将很快会被提示 `xxx` 软件包安装成功.
 
 注意: 这个过程需要你的计算机联网并且 `xxx` 包在仓库中
+
+### vimapt list
+
+在vim终端中, 输入 `:VimApt list` 并按回车.
+
+你将会得到一个已经安装的package的列表
+
+### vimapt upgrade / upgrade-all
+
+在vim终端中, 输入  `:VimApt upgrade xxx` 并按回车.
+
+如果一切正常,你将很快会被提示 `xxx` packages 被升级至最新版，如果当前的版本有最新版。
+
+提示: 你可以使用 `:VimApt upgrade-all` 升级所有的已经安装的package.
 
 ### vimapt remove
 
@@ -108,3 +129,4 @@ vimapt会自动补全命令 `:VimApt remove example-package`,
 ## 致谢
 
 1. 自动安装脚本修改自[SpaceVim](https://github.com/SpaceVim/SpaceVim)项目
+2. Dependency solver来自[sat-solver](https://github.com/enthought/sat-solver)项目. 因为技术原因，该package集成在vimapt项目中
